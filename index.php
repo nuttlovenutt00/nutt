@@ -33,20 +33,17 @@
           curl_close($ch);
     return $result;
   }
-  $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
-  $getUser = $mysql->query("SELECT * FROM `Customer` WHERE `UserID`='$userID'");
-  $getuserNum = $getUser->num_rows;
-  $replyText["type"] = "text";
-  if ($getuserNum == "0"){
-    $replyText["text"] = "สวัสดีคับบบบ";
-  } else {
-    while($row = $getUser->fetch_assoc()){
-      $Name = $row['Name'];
-      $Surname = $row['Surname'];
-      $CustomerID = $row['CustomerID'];
-    }
-    $replyText["text"] = "สวัสดีคุณ $Name $Surname (#$CustomerID)";
-  }
+    $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text=="สั่งอาหาร"','$timestamp')");
+
+ 
+ 	if($text=="สั่งอาหาร")
+ 	{
+ 		 $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
+ 	}else{
+ 		 $replyText["text"] = "กรุณาพิม สั่งอาหาร";
+ 	}
+ 
+  
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
