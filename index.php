@@ -45,8 +45,8 @@
 
  	$replyText1= array(
  	 "type" => "image",
-    "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/2.jpg?raw=true",
-    "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true"
+    "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true",
+    "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/2.jpg?raw=true"
 	);
 
 	
