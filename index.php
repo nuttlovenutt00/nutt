@@ -36,30 +36,40 @@
     $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
    $replyText["type"] = "text";
-  if($text=="สั่งอาหาร")
+  if($text=="เมนู")
   {
-     $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
-  }else{
-     $replyText["text"] = "กรุณาพิม สั่งอาหาร";
-  }
-   $replyText1["type"] = "template";
+      $replyText1["type"] = "template";
   $replyText1["altText"] = "this is a confirm template";
   $replyText1["template"] = [
     "type" => "confirm",
-        "text" => "เมนู",
+        "text" => "เมนู ประเภทสินค้า",
         "actions" => [
-     [
-        "type" => "message",
-        "label" => "สั่งอาหาร",
-        "text" => "สั่งอาหาร"
-      ],
-      [
-        "type" => "message",
-        "label" => "ดูรายการที่สั่ง",
-        "text" => "ดูรายการที่สั่ง"
-      ]
-       ]
+               [
+                  "type" => "message",
+                  "label" => "กาแฟ",
+                  "text" => "กาแฟ"
+                ],
+                [
+                  "type" => "message",
+                  "label" => "ชา",
+                  "text" => "ชา"
+                ],
+                [
+                  "type" => "message",
+                  "label" => "โซดา",
+                  "text" => "โซดา"
+                ],
+                [
+                  "type" => "message",
+                  "label" => "ขนมหวาน",
+                  "text" => "ขนมหวาน"
+                ]
+              ]
   ];
+  }else{
+     $replyText["text"] = "กรุณาพิมพ์ เมนู";
+  }
+ 
 
   
 
@@ -71,13 +81,14 @@
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
-  $replyJson["messages"][0] = $replyText;
+ 
   
-  if($text=="สั่งอาหาร")
+  if($text=="เมนู")
   {
     $replyJson["messages"][1] = $replyText1;
-  }
-   
+  }else{
+     $replyJson["messages"][0] = $replyText;
+  }   
   
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
