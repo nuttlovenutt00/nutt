@@ -43,11 +43,11 @@
  		 $replyText["text"] = "กรุณาพิม สั่งอาหาร";
  	}
 
- 	$replyText1= array[
+ 	$replyText1= array(
  	 "type" => "image",
     "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true",
     "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true"
-	];
+	);
 
 
 
