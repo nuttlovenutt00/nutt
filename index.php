@@ -44,9 +44,9 @@
  	}
 
  	$replyText1= array(
-  "type": "sticker",
-  "packageId": "1",
-  "stickerId": "1"
+  "type"=> "sticker",
+  "packageId"=> "1",
+  "stickerId"=> "1"
 );
 
 	
