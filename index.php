@@ -44,9 +44,24 @@
  	}
 
  	$replyText1= array(
- 	 "type" => "image",
-    "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true",
-    "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true"
+ 	"type": "template",
+  "altText": "this is a confirm template",
+  "template": (
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": (
+         (
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          ),
+          (
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          )
+     )
+  )
 	);
 
 
