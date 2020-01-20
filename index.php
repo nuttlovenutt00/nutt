@@ -34,7 +34,7 @@
     return $result;
   }
     $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
-
+     $replyText["text"] = "----";
  
  	if($text=="สั่งอาหาร")
  	{
