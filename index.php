@@ -42,9 +42,31 @@
  	}else{
  		 $replyText["text"] = "กรุณาพิม สั่งอาหาร";
  	}
-$replyText1["type"] = "sticker";
+
+ 	$replyText1["type"] = "sticker";
  	$replyText1["packageId"]="1";
  	$replyText1["stickerId"]="1";
+
+
+
+	$replyText2["type"] = "template";
+	$replyText2["altText"] = "this is a confirm template";
+	$replyText2["template"] = {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
 
 
   
@@ -53,6 +75,7 @@ $replyText1["type"] = "sticker";
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   $replyJson["messages"][1] = $replyText1;
+  $replyJson["messages"][2] = $replyText2;
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
