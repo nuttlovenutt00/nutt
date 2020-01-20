@@ -49,6 +49,27 @@
     "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true"
 	);
 
+$replyText2= array[
+"type": "template",
+  "altText": "this is a confirm template",
+  "template": {
+      "type": "confirm",
+      "text": "Are you sure?",
+      "actions": [
+          {
+            "type": "message",
+            "label": "Yes",
+            "text": "yes"
+          },
+          {
+            "type": "message",
+            "label": "No",
+            "text": "no"
+          }
+      ]
+  }
+	];
+
 	
 
   
@@ -60,6 +81,7 @@
   if($text=="สั่งอาหาร")
  	{
  		$replyJson["messages"][1] = $replyText1;
+	  	$replyJson["messages"][2] = $replyText2;
  	}
    
  	
