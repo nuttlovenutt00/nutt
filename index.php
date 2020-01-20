@@ -45,7 +45,7 @@
 
  	$replyText1= array(
  	 "type" => "image",
-    "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true",
+    "originalContentUrl" => "http://viscctv.dyndns.org:8000/portal/apis/fileExplorer/download.cgi?sid=C0olXmGpPcEBIqRp&act=download&total=1&browser=chrome&mod_cntype=2&path=%2FWeb%2Fnutt&file=por9fs1msd6H30qV3s8m-o.jpg",
     "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/2.jpg?raw=true"
 	);
 
