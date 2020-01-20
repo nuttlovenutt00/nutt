@@ -44,9 +44,9 @@
  	}
 
  	$replyText1= array(
- 	"type"=> "sticker",
-  "packageId"=> "1",
-  "stickerId"=> "1"
+ 	 "type" => "image",
+    "originalContentUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true",
+    "previewImageUrl" => "https://github.com/nuttlovenutt00/nutt/blob/master/1.jpg?raw=true"
 	);
 
 
