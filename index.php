@@ -42,10 +42,26 @@
   }else{
      $replyText["text"] = "กรุณาพิม สั่งอาหาร";
   }
-   $replyText1["type"] = "message";
-  $replyText1["label"] = "Yes";
-$replyText1["text"] = "Yes";
+   $replyText1["type"] = "template";
+  $replyText1["altText"] = "this is a confirm template";
+  $replyText1["template"] = [
+    "type" => "confirm",
+        "text" => "เมนู",
+        "actions" => [
+     [
+        "type" => "message",
+        "label" => "สั่งอาหาร",
+        "text" => "สั่งอาหาร"
+      ],
+      [
+        "type" => "message",
+        "label" => "ดูรายการที่สั่ง",
+        "text" => "ดูรายการที่สั่ง"
+      ]
+       ]
+  ];
 
+  
 
 
 
