@@ -44,7 +44,7 @@
   }
    $replyText1["type"] = "message";
   $replyText1["label"] = "Yes";
-$replyText1["label"] = "Yes";
+$replyText1["text"] = "Yes";
 
 
 
