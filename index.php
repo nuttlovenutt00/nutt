@@ -44,12 +44,11 @@
   }
    $replyText1["type"]="template";
    $replyText1["altText"]="this is a carousel template";
-    $replyText1["template"]=   [
-    "type"=> "template",
-  "altText"=> "this is a carousel template",
-  "template"=> [
-      "type"=> "carousel",
-      "columns"=> [
+
+  $replyText1["template"]["type"]= "template" ;
+  $replyText1["template"]["altText"]= "this is a carousel template" ;
+  $replyText1["template"]["template"]["type"]="carousel";
+  $replyText1["template"]["template"]["columns"]=[
           [
             "thumbnailImageUrl"=> "https://example.com/bot/images/item1.jpg",
             "imageBackgroundColor"=> "#FFFFFF",
@@ -77,40 +76,12 @@
                     "text"=> "http://example.com/page/111"
                 ]
             ]
-          ],
-          [
-            "thumbnailImageUrl"=> "https://example.com/bot/images/item2.jpg",
-            "imageBackgroundColor"=>"#000000",
-            "title"=> "this is menu",
-            "text"=> "description",
-            "defaultAction"=> [
-                "type"=> "uri",
-                "label"=> "View detail",
-                "uri"=> "http://example.com/page/222"
-            ],
-            "actions"=> [
-                [
-                    "type"=> "postback",
-                    "label"=> "Buy",
-                    "text"=> "action=buy&itemid=222"
-                ],
-                [
-                    "type"=> "postback",
-                    "label"=> "Add to cart",
-                    "text"=> "action=add&itemid=222"
-                ],
-                [
-                    "type"=> "uri",
-                    "label"=> "View detail",
-                    "text"=> "http://example.com/page/222"
-                ]
-            ]
           ]
-      ],
-      "imageAspectRatio"=> "rectangle",
-      "imageSize"=> "cover"
-  ]
-  ];
+      ];
+    $replyText1["template"]["template"]["imageAspectRatio"]="rectangle";  
+    $replyText1["template"]["template"]["imageSize"]="cover";  
+  
+  
   
 
 
