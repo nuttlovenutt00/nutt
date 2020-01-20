@@ -52,7 +52,7 @@ $replyText1["type"] = "sticker";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
-  $replyJson["messages"][0] = $replyText1;
+  $replyJson["messages"][1] = $replyText1;
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
