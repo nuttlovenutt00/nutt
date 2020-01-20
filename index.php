@@ -42,7 +42,10 @@
  	}else{
  		 $replyText["text"] = "กรุณาพิม สั่งอาหาร";
  	}
- 
+  $replyText["type"] = "sticker";
+ 	  $replyText["packageId"]="1";
+ 	   $replyText["stickerId"]="1";
+
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
