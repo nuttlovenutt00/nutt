@@ -44,24 +44,9 @@
  	}
 
  	$replyText1= array(
- 	"type"=> "template",
- 	"altText"=> "this is a confirm template",
- 	 "template"=> 	(
-     				 "type"=> "confirm",
-     				 "text"=> "Are you sure?",
-     				 "actions": (
-							        (
-							         	"type"=> "message",
-							            "label"=> "Yes",
-							            "text"=> "yes"
-							        ),
-							        (
-							            "type"=> "message",
-							            "label"=> "No",
-							            "text"=> "no"
-							         )
-				      			)
-				  	)
+ 	 "type"=> "image",
+    "originalContentUrl"=> "http://viscctv.dyndns.org:8000/portal/apis/fileExplorer/download.cgi?sid=C0olXmGpPcEBIqRp&act=download&total=1&browser=chrome&mod_cntype=2&path=%2FWeb%2Fnutt&file=por9fs1msd6H30qV3s8m-o.jpg",
+    "previewImageUrl"=> "http://viscctv.dyndns.org:8000/portal/apis/fileExplorer/download.cgi?sid=C0olXmGpPcEBIqRp&act=download&total=1&browser=chrome&mod_cntype=2&path=%2FWeb%2Fnutt&file=por9fs1msd6H30qV3s8m-o.jpg"
 	);
 
 	
@@ -71,7 +56,11 @@
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
-  $replyJson["messages"][1] = $replyText1;
+  
+  if($text=="สั่งอาหาร")
+ 	{
+ 		 $replyJson["messages"][1] = $replyText1;
+ 	}
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
