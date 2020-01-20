@@ -42,7 +42,9 @@
   }else{
      $replyText["text"] = "กรุณาพิม สั่งอาหาร";
   }
-   $replyText1=[
+   $replyText1["type"]="template";
+   $replyText1["altText"]="this is a carousel template";
+    $replyText1["template"]=   [
     "type"=> "template",
   "altText"=> "this is a carousel template",
   "template"=> [
