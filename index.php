@@ -53,6 +53,11 @@
                   "type" => "message",
                   "label" => "ชา",
                   "text" => "ชา"
+                ],
+                [
+                  "type" => "message",
+                  "label" => "ชา",
+                  "text" => "ชา"
                 ]
               ]
   ];
