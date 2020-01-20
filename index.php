@@ -57,10 +57,8 @@
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   
-  if($text=="สั่งอาหาร")
- 	{
  		 $replyJson["messages"][1] = $replyText1;
- 	}
+ 
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
