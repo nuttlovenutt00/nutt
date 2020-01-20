@@ -36,35 +36,35 @@
     $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
    $replyText["type"] = "text";
- 	if($text=="สั่งอาหาร")
- 	{
- 		 $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
- 	}else{
- 		 $replyText["text"] = "กรุณาพิม สั่งอาหาร";
- 	}
-	 $replyText1["type"] = "template";
-	$replyText1["altText"] = "this is a confirm template";
-	$replyText1["template"] = array(
-		"type"=> "confirm",
-	      "text"=> "Are you sure?",
-	      "actions": (
-		 (
-		    "type"=> "message",
-		    "label"=> "Yes",
-		    "text"=> "yes"
-		  ),
-		  (
-		    "type"=> "message",
-		    "label"=> "No",
-		    "text"=> "no"
-		  )
-	     )
-	);
- 	
+  if($text=="สั่งอาหาร")
+  {
+     $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
+  }else{
+     $replyText["text"] = "กรุณาพิม สั่งอาหาร";
+  }
+   $replyText1["type"] = "template";
+  $replyText1["altText"] = "this is a confirm template";
+  $replyText1["template"] = [
+    "type" => "confirm",
+        "text" => "Are you sure?",
+        "actions" => [
+     [
+        "type" => "message",
+        "label" => "Yes",
+        "text" => "yes"
+      ],
+      [
+        "type" => "message",
+        "label" => "No",
+        "text" => "no"
+      ]
+       ]
+  ];
+  
 
 
 
-	
+  
 
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
@@ -73,11 +73,11 @@
   $replyJson["messages"][0] = $replyText;
   
   if($text=="สั่งอาหาร")
- 	{
- 		$replyJson["messages"][1] = $replyText1;
- 	}
+  {
+    $replyJson["messages"][1] = $replyText1;
+  }
    
- 	
+  
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
