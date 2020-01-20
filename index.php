@@ -53,16 +53,6 @@
                   "type" => "message",
                   "label" => "ชา",
                   "text" => "ชา"
-                ],
-                [
-                  "type" => "message",
-                  "label" => "โซดา",
-                  "text" => "โซดา"
-                ],
-                [
-                  "type" => "message",
-                  "label" => "ขนมหวาน",
-                  "text" => "ขนมหวาน"
                 ]
               ]
   ];
