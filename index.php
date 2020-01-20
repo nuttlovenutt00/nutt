@@ -33,7 +33,7 @@
           curl_close($ch);
     return $result;
   }
-    $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text=="สั่งอาหาร"','$timestamp')");
+    $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
  
  	if($text=="สั่งอาหาร")
