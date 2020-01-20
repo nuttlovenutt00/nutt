@@ -34,8 +34,8 @@
     return $result;
   }
     $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
-     $replyText["text"] = "----";
- 
+
+   $replyText["type"] = "text";
  	if($text=="สั่งอาหาร")
  	{
  		 $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
