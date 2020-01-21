@@ -51,8 +51,8 @@
           [
             "thumbnailImageUrl"=>  "https://example.com/bot/images/item1.jpg",
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "this is menu",
-            "text"=>  "description",
+            "title"=>  "อเมริกาโน่",
+            "text"=>  "เมนู กาแฟ",
             "defaultAction"=>  [
                 "type"=>  "uri",
                 "label"=>  "View detail",
