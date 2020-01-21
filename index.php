@@ -101,34 +101,6 @@
                     "text"=>  "S002"
                 ]
             ]
-          ],
-          [
-             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_LmDES-n5BDDMNbqGNR1sO14ioOU81_W9kBRYXkwgHqHkHbFD&s",
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "เอสเพสโซ่",
-            "text"=>  "เมนู กาแฟ",
-            "defaultAction"=>  [
-                "type"=>  "uri",
-                "label"=>  "View detail",
-                "uri"=>  "http://example.com/page/123"
-            ],
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  "ร้อน 40 บาท",
-                    "text"=>  "H003"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "เย็น 45 บาท",
-                    "text"=>  "C003"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "ปั่น 50 บาท",
-                    "text"=>  "S003"
-                ]
-            ]
           ]
       ],
       "imageAspectRatio"=>  "rectangle",
