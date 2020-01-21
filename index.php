@@ -122,7 +122,7 @@
   
   if($text=="เมนู")
   {
-    $replyJson["messages"][1] = $replyText1;
+    $replyJson["messages"][0] = $replyText1;
   }
    
   
