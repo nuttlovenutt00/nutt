@@ -85,7 +85,7 @@
                 "label"=> "View detail",
                 "uri"=> "http://example.com/page/222"
             ],
-            "actions": [
+            "actions"=> [
                 [
                     "type"=> "postback",
                     "label"=> "Buy",
