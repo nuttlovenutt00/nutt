@@ -38,33 +38,42 @@
    $replyText["type"] = "text";
   if($text=="เมนู")
   {
-      $replyText1["type"] = "template";
-  $replyText1["altText"] = "this is a confirm template";
-  $replyText1["template"] = [
-    "type" => "confirm",
-        "text" => "เมนู ประเภทสินค้า",
-        "actions" => [
-               [
-                  "type" => "message",
-                  "label" => "กาแฟ",
-                  "text" => "กาแฟ"
-                ],
-                [
-                  "type" => "message",
-                  "label" => "ชา",
-                  "text" => "ชา"
-                ],
-                [
-                  "type" => "message",
-                  "label" => "ชา",
-                  "text" => "ชา"
-                ]
-              ]
-  ];
+     $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
   }else{
      $replyText["text"] = "กรุณาพิมพ์ เมนู";
   }
- 
+  $replyText1["type"] = "template";
+  $replyText1["altText"] = "this is a confirm template";
+  $replyText1["template"] = [
+      "type"=> "image_carousel",
+      "columns"=> [
+          [
+            "imageUrl"=> "https://example.com/bot/images/item1.jpg",
+            "action"=> [
+              "type"=> "postback",
+              "label"=> "Buy",
+              "data"=> "action=buy&itemid=111"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://example.com/bot/images/item2.jpg",
+            "action"=> [
+              "type"=> "message",
+              "label"=> "Yes",
+              "text"=> "yes"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://example.com/bot/images/item3.jpg",
+            "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
+          ]
+      ]
+  ]
+  ];
 
   
 
@@ -76,14 +85,13 @@
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
- 
+  $replyJson["messages"][0] = $replyText;
   
-  if($text=="เมนู")
+  if($text=="สั่งอาหาร")
   {
-    $replyJson["messages"][0] = $replyText1;
-  }else{
-     $replyJson["messages"][0] = $replyText;
-  }   
+    $replyJson["messages"][1] = $replyText1;
+  }
+   
   
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
