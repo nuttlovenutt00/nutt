@@ -53,6 +53,11 @@
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  "อเมริกาโน่",
             "text"=>  "เมนู กาแฟ",
+            "defaultAction"=>  [
+                "type"=>  "uri",
+                "label"=>  "View detail",
+                "uri"=>  "http://example.com/page/222"
+            ],
             "actions"=>  [
                 [
                     "type"=>  "text",
