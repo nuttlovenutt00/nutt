@@ -51,56 +51,56 @@
           [
             "thumbnailImageUrl"=>  "https://example.com/bot/images/item1.jpg",
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "อเมริกาโน่",
-            "text"=>  "เมนู กาแฟ",
-             "defaultAction"=>  [
+            "title"=>  "this is menu",
+            "text"=>  "description",
+            "defaultAction"=>  [
                 "type"=>  "uri",
                 "label"=>  "View detail",
-                "uri"=>  "http://example.com/page/222"
+                "uri"=>  "http://example.com/page/123"
             ],
             "actions"=>  [
                 [
-                    "type"=>  "text",
-                    "label"=>  "ร้อน 40 บาท",
-                    "data"=>  "H001"
+                    "type"=>  "postback",
+                    "label"=>  "Buy",
+                    "data"=>  "action=buy&itemid=111"
                 ],
                 [
-                    "type"=>  "text",
-                    "label"=>  "เย็น 45 บาท",
-                    "data"=>  "C001"
+                    "type"=>  "postback",
+                    "label"=>  "Add to cart",
+                    "data"=>  "action=add&itemid=111"
                 ],
                 [
-                    "type"=>  "text",
-                    "label"=>  "ปั่น 50 บาท",
-                    "uri"=>  "S001"
+                    "type"=>  "uri",
+                    "label"=>  "View detail",
+                    "uri"=>  "http://example.com/page/111"
                 ]
             ]
           ],
           [
-            "thumbnailImageUrl"=>  "https://example.com/bot/images/item1.jpg",
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "อเมริกาโน่",
-            "text"=>  "เมนู กาแฟ",
-             "defaultAction"=>  [
-                "type"=>  "uri",
-                "label"=>  "View detail",
+            "thumbnailImageUrl"=> "https://example.com/bot/images/item2.jpg",
+            "imageBackgroundColor"=>  "#000000",
+            "title"=>  "this is menu",
+            "text"=>  "description",
+            "defaultAction"=>  [
+                "type"=> "uri",
+                "label"=> "View detail",
                 "uri"=>  "http://example.com/page/222"
             ],
             "actions"=>  [
                 [
-                    "type"=>  "text",
-                    "label"=>  "ร้อน 40 บาท",
-                    "data"=>  "H001"
+                    "type"=> "postback",
+                    "label"=>  "Buy",
+                    "data"=>  "action=buy&itemid=222"
                 ],
                 [
-                    "type"=>  "text",
-                    "label"=>  "เย็น 45 บาท",
-                    "data"=>  "C001"
+                    "type"=>  "postback",
+                    "label"=>  "Add to cart",
+                    "data"=>  "action=add&itemid=222"
                 ],
                 [
-                    "type"=>  "text",
-                    "label"=>  "ปั่น 50 บาท",
-                    "uri"=>  "S001"
+                    "type"=>  "uri",
+                    "label"=>  "View detail",
+                    "uri"=>  "http://example.com/page/222"
                 ]
             ]
           ]
