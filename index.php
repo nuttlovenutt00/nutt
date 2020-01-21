@@ -36,10 +36,8 @@
     $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
    $replyText["type"] = "text";
-  if($text=="เมนู")
+  if($text!="เมนู")
   {
-     $replyText["text"] = "กรุณาพิม รหัสโต๊ะ ตามด้วย @ และเมนูอาหารครับ เช่น a1@001";
-  }else{
      $replyText["text"] = "กรุณาพิมพ์ เมนู";
   }
   $replyText1= [ 
@@ -61,46 +59,74 @@
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  "ร้อน 40บาท",
+                    "label"=>  "ร้อน 40 บาท",
                     "text"=>  "H001"
                 ],
                 [
-                    "type"=>  "postback",
-                    "label"=>  "Add to cart",
-                    "data"=>  "action=add&itemid=111"
+                    "type"=>  "message",
+                    "label"=>  "เย็น 45 บาท",
+                    "text"=>  "C001"
                 ],
                 [
-                    "type"=>  "uri",
-                    "label"=>  "View detail",
-                    "uri"=>  "http://example.com/page/111"
+                    "type"=>  "message",
+                    "label"=>  "ปั่น 50 บาท",
+                    "text"=>  "S001"
                 ]
             ]
           ],
           [
-            "thumbnailImageUrl"=> "https://example.com/bot/images/item2.jpg",
-            "imageBackgroundColor"=>  "#000000",
-            "title"=>  "this is menu",
-            "text"=>  "description",
+             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS89_NK4a73QxTpBxzwbvot9MYIq2oajLI5CZ3D2xApX6h-XbjHWw&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  "ลาเต้",
+            "text"=>  "เมนู กาแฟ",
             "defaultAction"=>  [
-                "type"=> "uri",
-                "label"=> "View detail",
-                "uri"=>  "http://example.com/page/222"
+                "type"=>  "uri",
+                "label"=>  "View detail",
+                "uri"=>  "http://example.com/page/123"
             ],
             "actions"=>  [
                 [
-                    "type"=> "postback",
-                    "label"=>  "Buy",
-                    "data"=>  "action=buy&itemid=222"
+                    "type"=>  "message",
+                    "label"=>  "ร้อน 40 บาท",
+                    "text"=>  "H002"
                 ],
                 [
-                    "type"=>  "postback",
-                    "label"=>  "Add to cart",
-                    "data"=>  "action=add&itemid=222"
+                    "type"=>  "message",
+                    "label"=>  "เย็น 45 บาท",
+                    "text"=>  "C002"
                 ],
                 [
-                    "type"=>  "uri",
-                    "label"=>  "View detail",
-                    "uri"=>  "http://example.com/page/222"
+                    "type"=>  "message",
+                    "label"=>  "ปั่น 50 บาท",
+                    "text"=>  "S002"
+                ]
+            ]
+          ],
+          [
+             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_LmDES-n5BDDMNbqGNR1sO14ioOU81_W9kBRYXkwgHqHkHbFD&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  "เอสเพสโซ่",
+            "text"=>  "เมนู กาแฟ",
+            "defaultAction"=>  [
+                "type"=>  "uri",
+                "label"=>  "View detail",
+                "uri"=>  "http://example.com/page/123"
+            ],
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  "ร้อน 40 บาท",
+                    "text"=>  "H003"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "เย็น 45 บาท",
+                    "text"=>  "C003"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "ปั่น 50 บาท",
+                    "text"=>  "S003"
                 ]
             ]
           ]
@@ -122,7 +148,7 @@
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   
-  if($text=="สั่งอาหาร")
+  if($text=="เมนู")
   {
     $replyJson["messages"][1] = $replyText1;
   }
