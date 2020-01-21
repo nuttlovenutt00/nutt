@@ -56,14 +56,28 @@
                 "label"=>  "View detail",
                 "uri"=>  "http://example.com/page/123"
             ],
-           "type"=> "button",
-              "action"=> [
-               "type"=>  "message",
-                    "label"=>  "ร้อน 40 บาท",
-                    "text"=>  "H002"
-              ],
-              "style"=> "primary",
-              "color"=> "#0000ff"
+            "actions"=>  [
+                [
+                    "type"=> "button",
+                    "action"=> [
+                      "type"=> "uri",
+                      "label"=> "Tap me",
+                      "uri"=> "https://example.com"
+                    ],
+                    "style"=> "primary",
+                    "color"=> "#0000ff"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "เย็น 45 บาท",
+                    "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "ปั่น 50 บาท",
+                    "text"=>  "S001"
+                ]
+            ]
           ],
           [
              "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS89_NK4a73QxTpBxzwbvot9MYIq2oajLI5CZ3D2xApX6h-XbjHWw&s",
