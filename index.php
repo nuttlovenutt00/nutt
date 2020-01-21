@@ -107,8 +107,7 @@
       "imageAspectRatio"=> "rectangle",
       "imageSize"=> "cover"
   
-  ]
-];
+  ];
 
   
 
