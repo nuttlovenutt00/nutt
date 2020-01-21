@@ -53,7 +53,35 @@
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  "อเมริกาโน่",
             "text"=>  "เมนู กาแฟ",
-            "defaultAction"=>  [
+             "defaultAction"=>  [
+                "type"=>  "uri",
+                "label"=>  "View detail",
+                "uri"=>  "http://example.com/page/222"
+            ],
+            "actions"=>  [
+                [
+                    "type"=>  "text",
+                    "label"=>  "ร้อน 40 บาท",
+                    "data"=>  "H001"
+                ],
+                [
+                    "type"=>  "text",
+                    "label"=>  "เย็น 45 บาท",
+                    "data"=>  "C001"
+                ],
+                [
+                    "type"=>  "text",
+                    "label"=>  "ปั่น 50 บาท",
+                    "uri"=>  "S001"
+                ]
+            ]
+          ],
+          [
+            "thumbnailImageUrl"=>  "https://example.com/bot/images/item1.jpg",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  "อเมริกาโน่",
+            "text"=>  "เมนู กาแฟ",
+             "defaultAction"=>  [
                 "type"=>  "uri",
                 "label"=>  "View detail",
                 "uri"=>  "http://example.com/page/222"
