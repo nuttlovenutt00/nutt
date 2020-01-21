@@ -49,7 +49,7 @@
       "type"=>  "carousel",
       "columns"=>  [
           [
-            "thumbnailImageUrl"=>  "https://example.com/bot/images/item1.jpg",
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  "อเมริกาโน่",
             "text"=>  "เมนู กาแฟ",
@@ -60,9 +60,9 @@
             ],
             "actions"=>  [
                 [
-                    "type"=>  "postback",
-                    "label"=>  "Buy",
-                    "data"=>  "action=buy&itemid=111"
+                    "type"=>  "text",
+                    "label"=>  "ร้อน 40บาท",
+                    "text"=>  "H001"
                 ],
                 [
                     "type"=>  "postback",
