@@ -60,7 +60,7 @@
             ],
             "actions"=>  [
                 [
-                    "type"=>  "text",
+                    "type"=>  "message",
                     "label"=>  "ร้อน 40บาท",
                     "text"=>  "H001"
                 ],
