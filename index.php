@@ -39,13 +39,21 @@
 
 $textmenu = "H";
 
-  
-        if(strpos($text, $textmenu)){
-           $replyText["text"] = "ระบบรับ Order: $text เรียบร้อยแล้วค่ะ";
+  $type_product="";
+        if($text=="เมนูกาแฟ"){
+            $type_product="1";
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
           }
       
+$sql = "SELECT * FROM type 
+        left join type_product  on type.t_id_auto = type_product.tp_t_id
+        left join menu  on type_product.tp_id = menu.m_tp_id
+        where type.t_id_auto=$type_product        ";
+$result = $mysql->query($sql);
+
+
+
   $replyText1= [ 
   "type"=> "template",
   "altText"=>  "this is a carousel template",
@@ -55,7 +63,7 @@ $textmenu = "H";
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "อเมริกาโน่",
+            "title"=>   $type_product,
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
