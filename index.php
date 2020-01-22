@@ -39,7 +39,7 @@
 
 
 
-  $type_product="";
+  $type_product="1";
         if($text=="เมนูกาแฟ"){
             $type_product="1";
           }else{
@@ -52,33 +52,43 @@ $sql = "SELECT * FROM type
 $result = $mysql->query($sql);
  $aa="";
  $num=0;
+ $num2=0;
+ $num1[]="";
 if ($result->num_rows > 0) {
 // output data of each row
     while($row = $result->fetch_assoc()) {
-    
-      
 
+       $id =  $row["tp_id"];
+        $sql2 = "SELECT * FROM menu where m_tp_id=$id ";
+        $result2 = $mysql->query($sql2);
+
+        
+        while($row2 = $result2->fetch_array()) {
+          $num1[$num2]=$row2["m_price"];
+          $num2++;
+        }
+echo '<pre>'; print_r($num1); echo '</pre>';
            $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>   $num,
+            "title"=>  $row["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  "ร้อน 40 บาท",
+                    "label"=>  "ร้อน ".$num1[0]." บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  "เย็น 45 บาท",
+                    "label"=>  "เย็น ".$num1[1]." บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  "ปั่น 50 บาท",
+                    "label"=>  "ปั่น ".$num1[2]." บาท",
                     "text"=>  "S001"
                 ]
             ]
