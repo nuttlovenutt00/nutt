@@ -45,12 +45,6 @@ $textmenu = "H";
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
           }
-      
-$sql = "SELECT * FROM type 
-        left join type_product  on type.t_id_auto = type_product.tp_t_id
-        left join menu  on type_product.tp_id = menu.m_tp_id
-        where type.t_id_auto=$type_product        ";
-$result = $mysql->query($sql);
 
 
 
