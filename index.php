@@ -39,16 +39,13 @@
 
 $textmenu = "HCSD";
 
-  if($text!="เมนู")
-  {
-     $replyText["text"] = "กรุณาพิมพ์ เมนู";
-  }else{ 
+  
         if(strpos($text, $textmenu)){
            $replyText["text"] = "ระบบรับ Order: $text เรียบร้อยแล้วค่ะ";
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
           }
-      }
+      
   $replyText1= [ 
   "type"=> "template",
   "altText"=>  "this is a carousel template",
