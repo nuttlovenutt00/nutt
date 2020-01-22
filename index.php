@@ -40,20 +40,23 @@
 
 
   $type_product="";
-        if($text=="เมนู"){
+        if($text=="เมนูกาแฟ"){
             $type_product="1";
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
           }
+      
+$sql = "SELECT * FROM type 
+        left join type_product  on type.t_id_auto = type_product.tp_t_id
+        where type.t_id_auto=$type_product        ";
+$result = $mysql->query($sql);
+ $aa="";
+if ($result->num_rows > 0) {
+// output data of each row
+    while($row = $result->fetch_assoc()) {
+    
+      $aa=$aa .'
 
-
-
-  $replyText1= [ 
-  "type"=> "template",
-  "altText"=>  "this is a carousel template",
-  "template"=>  [
-      "type"=>  "carousel",
-      "columns"=>  [
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
@@ -77,31 +80,21 @@
                     "text"=>  "S001"
                 ]
             ]
-          ],
-          [
-             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS89_NK4a73QxTpBxzwbvot9MYIq2oajLI5CZ3D2xApX6h-XbjHWw&s",
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  "ลาเต้",
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  "ร้อน 40 บาท",
-                    "text"=>  "H002"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "เย็น 45 บาท",
-                    "text"=>  "C002"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "ปั่น 50 บาท",
-                    "text"=>  "S002"
-                ]
-            ]
-          ],
+          ],';
+        }
+      }
+      
+
+  $replyText1= [ 
+  "type"=> "template",
+  "altText"=>  "this is a carousel template",
+  "template"=>  [
+      "type"=>  "carousel",
+      "columns"=>  [
+
+      $aa
+    
+         
       ],
       "imageAspectRatio"=>  "rectangle",
       "imageSize"=>  "cover"
@@ -120,7 +113,7 @@
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   
-  if($text=="เมนู")
+  if($text=="เมนูกาแฟ")
   {
     $replyJson["messages"][0] = $replyText1;
   }
