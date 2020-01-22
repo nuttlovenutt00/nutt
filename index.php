@@ -56,7 +56,7 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
     
       $aa=
-[
+
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
@@ -80,31 +80,7 @@ if ($result->num_rows > 0) {
                     "text"=>  "S001"
                 ]
             ]
-          ],
-          [
-            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>   $type_product,
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  "ร้อน 40 บาท",
-                    "text"=>  "H001"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "เย็น 45 บาท",
-                    "text"=>  "C001"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "ปั่น 50 บาท",
-                    "text"=>  "S001"
-                ]
-            ]
-          ]];
+          ];
 
 
         }
