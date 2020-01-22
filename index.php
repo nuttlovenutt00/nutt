@@ -39,7 +39,7 @@
 
 
 
-  $type_product="";
+  $type_product="1";
         if($text=="เมนูกาแฟ"){
             $type_product="1";
           }else{
@@ -55,8 +55,8 @@ if ($result->num_rows > 0) {
 // output data of each row
     while($row = $result->fetch_assoc()) {
     
-      $aa=$aa .'
-
+      $aa=
+[
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
@@ -80,7 +80,33 @@ if ($result->num_rows > 0) {
                     "text"=>  "S001"
                 ]
             ]
-          ],';
+          ],
+          [
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>   $type_product,
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  "ร้อน 40 บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "เย็น 45 บาท",
+                    "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "ปั่น 50 บาท",
+                    "text"=>  "S001"
+                ]
+            ]
+          ]];
+
+
         }
       }
       
@@ -92,7 +118,7 @@ if ($result->num_rows > 0) {
       "type"=>  "carousel",
       "columns"=>  [
 
-      $aa
+      $aa,
     
          
       ],
@@ -101,8 +127,8 @@ if ($result->num_rows > 0) {
   ]
   ];
 
-  
 
+echo '<pre>'; print_r($replyText1); echo '</pre>';
 
 
   
