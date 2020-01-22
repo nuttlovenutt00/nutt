@@ -37,10 +37,10 @@
 
    $replyText["type"] = "text";
 
-$textmenu = "H";
+
 
   $type_product="";
-        if($text=="เมนูกาแฟ"){
+        if($text=="เมนู"){
             $type_product="1";
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
