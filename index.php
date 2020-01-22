@@ -37,7 +37,7 @@
 
    $replyText["type"] = "text";
 
-$textmenu = "HCSD";
+$textmenu = "H";
 
   
         if(strpos($text, $textmenu)){
