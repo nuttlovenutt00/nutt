@@ -39,7 +39,7 @@
 
 
 
-  $type_product="1";
+  $type_product="";
         if($text=="เมนูกาแฟ"){
             $type_product="1";
           }else{
@@ -51,16 +51,18 @@ $sql = "SELECT * FROM type
         where type.t_id_auto=$type_product        ";
 $result = $mysql->query($sql);
  $aa="";
+ $num=0;
 if ($result->num_rows > 0) {
 // output data of each row
     while($row = $result->fetch_assoc()) {
     
-      $aa=
+      
 
+           $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>   $type_product,
+            "title"=>   $num,
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
@@ -82,22 +84,24 @@ if ($result->num_rows > 0) {
             ]
           ];
 
-
+$num++;
         }
       }
-      
+ 
+
 
   $replyText1= [ 
   "type"=> "template",
   "altText"=>  "this is a carousel template",
   "template"=>  [
       "type"=>  "carousel",
-      "columns"=>  [
+      "columns"=>  
 
-      $aa,
+      
+      $a2
     
          
-      ],
+      ,
       "imageAspectRatio"=>  "rectangle",
       "imageSize"=>  "cover"
   ]
