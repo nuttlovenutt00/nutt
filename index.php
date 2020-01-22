@@ -93,7 +93,7 @@
                     "text"=>  "S002"
                 ]
             ]
-          ]
+          ],
       ],
       "imageAspectRatio"=>  "rectangle",
       "imageSize"=>  "cover"
