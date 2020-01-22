@@ -51,11 +51,7 @@
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  "อเมริกาโน่",
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-            "defaultAction"=>  [
-                "type"=>  "uri",
-                "label"=>  "View detail",
-                "uri"=>  "http://example.com/page/123"
-            ],
+           
             "actions"=>  [
                 [
                     "type"=>  "message",
@@ -79,11 +75,7 @@
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  "ลาเต้",
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-            "defaultAction"=>  [
-                "type"=>  "uri",
-                "label"=>  "View detail",
-                "uri"=>  "http://example.com/page/123"
-            ],
+           
             "actions"=>  [
                 [
                     "type"=>  "message",
