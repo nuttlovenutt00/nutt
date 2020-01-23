@@ -51,6 +51,7 @@
         where type.t_id_auto=$type_product        ";
 
   $a=[];
+  $aaa=[];
 $b="";
   $result = $mysql->query($sql);
   $num=0;    
@@ -65,6 +66,7 @@ $b="";
       while($row2 = $result2->fetch_assoc()) 
         {
           $a[$numm]= $row2['m_name'].$row2['m_price'];
+          $aaa[$numm]=$row2['m_id'];
            $numm++;
         }
         
@@ -80,12 +82,12 @@ $b="";
                 [
                     "type"=>  "message",
                     "label"=>  $a[0]." บาท",
-                    "text"=>  "H001"
+                    "text"=>  $aaa[0]
                 ],
                 [
                     "type"=>  "message",
                     "label"=>  $a[1]." บาท",
-                    "text"=>  "C001"
+                    "text"=>  $aaa[1]
                 ],
                 [
                     "type"=>  "message",
@@ -106,17 +108,17 @@ $b="";
                 [
                     "type"=>  "message",
                     "label"=>  $a[0]." บาท",
-                    "text"=>  "H001"
+                    "text"=>  $aaa[0]
                 ],
                 [
                     "type"=>  "message",
                     "label"=>  $a[1]." บาท",
-                    "text"=>  "C001"
+                    "text"=>  $aaa[1]
                 ],
                 [
                     "type"=>  "message",
                     "label"=>  $a[2]." บาท",
-                    "text"=>  "S001"
+                    "text"=>  $aaa[2]
                 ]
             ]
           ];
