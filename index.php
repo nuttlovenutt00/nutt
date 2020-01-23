@@ -51,7 +51,7 @@
         where type.t_id_auto='1'        ";
 
   $a=[];
-
+$b="";
   $result = $mysql->query($sql);
   $num=0;    
   while($row = $result->fetch_assoc()) 
@@ -65,12 +65,10 @@
       while($row2 = $result2->fetch_assoc()) 
         {
       
-            $a[$numm]= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
+            $b= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
            $numm++;
         }
-        $b1=$a[0];
-        $b2=$a[1];
-        $b3=$a[2];
+        
       $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
@@ -81,17 +79,17 @@
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $b1." บาท",
+                    "label"=>  $b." บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $b2." บาท",
+                    "label"=>  $b." บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $b3." บาท",
+                    "label"=>  $b." บาท",
                     "text"=>  "S001"
                 ]
             ]
