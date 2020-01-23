@@ -68,9 +68,9 @@
             $a[$numm]= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
            $numm++;
         }
-        $b1="111";
-        $b2="222";
-        $b3="3333";
+        $b1=$a[0];
+        $b2=$a[1];
+        $b3=$a[2];
       $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
