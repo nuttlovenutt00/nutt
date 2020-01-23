@@ -84,13 +84,13 @@ $b="";
                 ],
                 [
                     "type"=>  "message",
-                    "label"=> " บาท",
+                    "label"=> "บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  "",
-                    "text"=>  ""
+                    "label"=>  "บาท",
+                    "text"=>  "บาท"
                 ]
             ]
           ];
