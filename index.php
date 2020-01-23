@@ -34,20 +34,30 @@
     return $result;
   }
 
-  $datetime=date("Y-m-d");
+  //บันทึก Log ไฟล์
+  $datetime=date("d-m-Y");
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `datetime`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime')");
 
-   $replyText["type"] = "text";
+
+   //กำหนดค่าของตัวแปร
+  $replyText["type"] = "text";
 
 
-
+  //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
-        if($text=="เมนูกาแฟ"){
-            $type_product="1";
-          }else{
-             $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
-          }
+
+  if(strpos($text, "H") !== FALSE)
+  {
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order ของท่านแล้วค่ะ";
+  }elseif($text=="เมนูกาแฟ")
+  {
+    $type_product="1";
+  }else{
+    $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
+  }
   
+
+  //แสดงเมนูกาแฟ
   if($text=="เมนูกาแฟ"){
   $sql = "SELECT * FROM type 
         left join type_product  on type.t_id_auto = type_product.tp_t_id
