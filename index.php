@@ -68,7 +68,7 @@ $b="";
            $numm++;
         }
         
-      if($aa=="1"){
+      if(5>2){
          $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
