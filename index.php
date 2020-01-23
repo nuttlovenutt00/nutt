@@ -34,8 +34,8 @@
     return $result;
   }
 
-
-   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `datetime`) VALUES ('$userID','$replyToken','$text','$timestamp',Timestamp)");
+  $datetime=date("Y-m-d");
+   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `datetime`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime')");
 
    $replyText["type"] = "text";
 
