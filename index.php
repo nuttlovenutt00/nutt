@@ -48,7 +48,7 @@
   
   $sql = "SELECT * FROM type 
         left join type_product  on type.t_id_auto = type_product.tp_t_id
-        where type.t_id_auto='1'        ";
+        where type.t_id_auto=$type_product        ";
 
   $a=[];
 $b="";
@@ -68,7 +68,7 @@ $b="";
            $numm++;
         }
         
-      if($numm==0){
+      if($numm==2){
          $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
