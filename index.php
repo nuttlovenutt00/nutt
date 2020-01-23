@@ -1,20 +1,11 @@
 <?php
 
   include("GetDataLine.php");
+  include("ConnectSql.php.php");
 
 
-  $servername = "37.59.55.185";
-  $username = "Z01XVlWSlA";
-  $password = "ogqvLgVKmd";
-  $dbname = "Z01XVlWSlA";
-  $mysql = new mysqli($servername, $username, $password, $dbname);
-  mysqli_set_charset($mysql, "utf8");
-  if ($mysql->connect_error){
-  $errorcode = $mysql->connect_error;
-  print("MySQL(Connection)> ".$errorcode);
-  }
  
-    $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
+ $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
    $replyText["type"] = "text";
 
@@ -136,17 +127,32 @@ $b="";
           $num++;
     }
 
+$replyText1= [ 
+  "type"=> "template",
+  "altText"=>  "this is a carousel template",
+  "template"=>  [
+      "type"=>  "carousel",
+      "columns"=>  
 
+      
+      $a2
+    
+         
+      ,
+      "imageAspectRatio"=>  "rectangle",
+      "imageSize"=>  "cover"
+  ]
+  ];
  
 
 
-include("connn.php");
+
 
 
   
 
   
- 
+ $replyJson["messages"][0] = $replyText;
   
   if($text=="เมนูกาแฟ")
   {
