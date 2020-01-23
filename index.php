@@ -48,7 +48,7 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   {
-      $replyText["text"] = "ระบบได้ทำการบันทึก Order ของท่านแล้วค่ะ";
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$text ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
