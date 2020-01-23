@@ -56,8 +56,21 @@
   $num=0;    
   while($row = $result->fetch_assoc()) 
     {
+      $aa=$row["tp_id"];
+      $sql2 = "SELECT * FROM menu 
+      left join type_product  on menu.m_tp_id = type_product.tp_id
+      where m_tp_id=  $aa      ";
+      $result2 = $mysql->query($sql2);
+      $numm=0;
+      while($row2 = $result2->fetch_assoc()) 
+        {
       
-
+            $a[$numm]= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
+           $numm++;
+        }
+        $b1=$a[0];
+        $b2=$a[1];
+        $b3=$a[2];
       $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
@@ -68,17 +81,17 @@
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  " บาท",
+                    "label"=>  $b1." บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  " บาท",
+                    "label"=>  $b2." บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=> " บาท",
+                    "label"=>  $b3." บาท",
                     "text"=>  "S001"
                 ]
             ]
