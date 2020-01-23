@@ -70,7 +70,7 @@ $b="";
         }
 
         
-            $a2[$num]=
+      $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
@@ -90,16 +90,11 @@ $b="";
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
-                    "text"=>  "C001"
+                    "label"=>  $a[2]." บาท",
+                    "text"=>  "S001"
                 ]
             ]
           ];
-
-       
-        
-        
-      
           $num++;
     }
 
