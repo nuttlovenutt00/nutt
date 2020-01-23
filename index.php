@@ -46,7 +46,7 @@
   //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
 
-  if(strpos($text, "H") !== FALSE)
+  if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   {
       $replyText["text"] = "ระบบได้ทำการบันทึก Order ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
