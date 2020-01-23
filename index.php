@@ -56,9 +56,20 @@
   $num=0;    
   while($row = $result->fetch_assoc()) 
     {
+      $aa=$row["tp_id"];
+      $sql2 = "SELECT * FROM menu 
+      left join type_product  on menu.m_tp_id = type_product.tp_id
+      where m_tp_id=  $aa      ";
+      $result2 = $mysql->query($sql2);
+      $numm=0;
+      while($row2 = $result2->fetch_assoc()) 
+        {
       
+            $a[$numm]= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
+           $numm++;
+        }
         $b1="111";
-        $b2="2222";
+        $b2="222";
         $b3="3333";
       $a2[$num]=
           [
