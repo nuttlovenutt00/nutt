@@ -51,8 +51,7 @@
     $sql_snp = "SELECT * FROM menu     
                           left join type_product  on menu.m_tp_id = type_product.tp_id
                           where menu.m_id=  $text";
-    $result_snp = $mysql->query($sql_snp);
-    $show_snp = $result_snp->fetch_assoc();  
+    $result_snp = $mysql->query($sql_snp); 
 
       $replyText["text"] = "ระบบได้ทำการบันทึก Order:$text ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
