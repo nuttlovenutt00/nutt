@@ -65,8 +65,8 @@ $b="";
       while($row2 = $result2->fetch_assoc()) 
         {
       
-            $b= $row2['m_name'].$row2['m_price']."บาท";
-           $numm++;
+             $b= "5555";
+          
         }
         
       $a2[$num]=
