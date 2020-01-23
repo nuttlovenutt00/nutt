@@ -58,7 +58,7 @@
             "imageBackgroundColor"=> "#FFFFFF",
             "title"=> "this is menu",
             "text"=> "description",
-            "defaultAction"=> {
+            "defaultAction"=> [
                 "type"=> "uri",
                 "label"=> "View detail",
                 "uri"=> "http://example.com/page/123"
@@ -110,8 +110,8 @@
             ]
           ]
       ],
-      "imageAspectRatio": "rectangle",
-      "imageSize": "cover"
+      "imageAspectRatio"=> "rectangle",
+      "imageSize"=> "cover"
   ]
   ];
 
