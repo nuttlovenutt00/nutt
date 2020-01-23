@@ -47,7 +47,16 @@
   $type_product="";
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
-  {
+  { 
+    $sql_snp = "SELECT tp_name,m_name,m_price FROM menu     
+                          left join type_product  on menu.m_tp_id = type_product.tp_id
+                          where m_id=  $text";
+    $result_snp = $mysql->query($sql_snp);
+    $show_snp = $result_snp->fetch_assoc();  
+    $showtp_name_snp = $show_snp["tp_name"];
+    $showm_name_snp = $show_snp["m_name"];
+    $showm_price_snp = $show_snp["m_price"];
+
       $replyText["text"] = "ระบบได้ทำการบันทึก Order:$text ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
