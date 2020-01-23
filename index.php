@@ -65,11 +65,12 @@ $b="";
       while($row2 = $result2->fetch_assoc()) 
         {
       
-           $b= $row2['m_name']." ".$row2['m_price'];
-          
+            $a[$numm]= $row2['m_name']." ".$row2['m_price'];
+           $numm++;
         }
-        
-      $a2[$num]=
+
+        if($row["tp_name"]==อเมริกาโน่){
+            $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
             "imageBackgroundColor"=>  "#FFFFFF",
@@ -79,21 +80,46 @@ $b="";
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $b." บาท",
+                    "label"=>  $a[0]." บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $b." บาท",
+                    "label"=>  $a[1]." บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $b." บาท",
+                    "label"=>  $a[2]." บาท",
                     "text"=>  "S001"
                 ]
             ]
           ];
+
+        }else{
+            $a2[$num]=
+          [
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  $row["tp_name"],
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[0]." บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[1]." บาท",
+                    "text"=>  "C001"
+                ]
+            ]
+          ];
+        }
+        
+      
           $num++;
     }
 
