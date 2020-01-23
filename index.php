@@ -68,7 +68,7 @@ $b="";
            $numm++;
         }
         
-      if($numm==$numm){
+     
          $a2[$num]=
           [
             "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
@@ -79,12 +79,12 @@ $b="";
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
+                    "label"=> " บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
+                    "label"=> " บาท",
                     "text"=>  "C001"
                 ],
                 [
@@ -94,34 +94,7 @@ $b="";
                 ]
             ]
           ];
-      }else{
-         $a2[$num]=
-          [
-            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  $row["tp_name"],
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
-                    "text"=>  "H001"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
-                    "text"=>  "C001"
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  $a[2]." บาท",
-                    "text"=>  "S001"
-                ]
-            ]
-          ];
-
-      }
+     
      
           $num++;
     }
