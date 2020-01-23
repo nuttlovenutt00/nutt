@@ -35,7 +35,7 @@
   }
 
 
-  $mysql->query("INSERT INTO LOG (UserID,replyToken,Text,Timestamp,datetime) VALUES ('$userID','$replyToken','$text','$timestamp',TIMESTAMP)");
+  $mysql->query("INSERT INTO `LOG`(`UserID`,`replyToken`, `Text`, `Timestamp`) VALUES ('$userID','$replyToken','$text','$timestamp')");
 
    $replyText["type"] = "text";
 
