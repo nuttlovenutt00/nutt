@@ -33,9 +33,7 @@
           curl_close($ch);
     return $result;
   }
-
-
-  $mysql->query("INSERT INTO `LOG`(`UserID`,`replyToken`, `Text`, `Timestamp`) VALUES ('$userID','$replyToken','$text','$timestamp')");
+    $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
 
    $replyText["type"] = "text";
 
