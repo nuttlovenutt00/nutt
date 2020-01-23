@@ -65,7 +65,7 @@ $b="";
       while($row2 = $result2->fetch_assoc()) 
         {
       
-             $b= "5555";
+             $b= $row2['m_name'];
           
         }
         
