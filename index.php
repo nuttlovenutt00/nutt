@@ -64,8 +64,7 @@ $b="";
       $numm=0;
       while($row2 = $result2->fetch_assoc()) 
         {
-          $text = $row2['m_name']." ".$row2['m_price'];
-            $a[$numm]=  $text;
+          $a[$numm]= $row2['m_name'].$row2['m_price'];
            $numm++;
         }
         
