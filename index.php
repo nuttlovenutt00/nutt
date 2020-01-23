@@ -114,6 +114,11 @@ $b="";
                     "type"=>  "message",
                     "label"=>  $a[1]." บาท",
                     "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[2]." บาท",
+                    "text"=>  "S001"
                 ]
             ]
           ];
