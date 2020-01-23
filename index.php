@@ -127,10 +127,52 @@ $b="";
   "altText"=>  "this is a carousel template",
   "template"=>  [
       "type"=>  "carousel",
-      "columns"=>  
+      "columns"=> [
+        [
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  "gtg",
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  " บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  " บาท",
+                    "text"=>  "C001"
+                ]
+            ]
+        ],
+        [
+        "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  "234",
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=> " บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  " บาท",
+                    "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  " บาท",
+                    "text"=>  "S001"
+                ]
+            ]
+          ]
 
-      
-      $a2
+      ] 
     
          
       ,
