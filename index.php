@@ -56,18 +56,7 @@
   $num=0;    
   while($row = $result->fetch_assoc()) 
     {
-      $aa=$row["tp_id"];
-      $sql2 = "SELECT * FROM menu 
-      left join type_product  on menu.m_tp_id = type_product.tp_id
-      where m_tp_id=  $aa      ";
-      $result2 = $mysql->query($sql2);
-      $numm=0;
-      while($row2 = $result2->fetch_assoc()) 
-        {
       
-            $a[$numm]= $row2['m_name']."&nbsp;".$row2['m_price']."&nbsp;"."บาท"."<br>";
-           $numm++;
-        }
 
       $a2[$num]=
           [
@@ -79,17 +68,17 @@
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
+                    "label"=>  " บาท",
                     "text"=>  "H001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
+                    "label"=>  " บาท",
                     "text"=>  "C001"
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[2]." บาท",
+                    "label"=> " บาท",
                     "text"=>  "S001"
                 ]
             ]
