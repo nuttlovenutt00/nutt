@@ -64,9 +64,10 @@ $b="";
       $numm=0;
       while($row2 = $result2->fetch_assoc()) 
         {
-            $z=$row2['m_name'];
+          $z=$row2['m_name'];
           $y=$row2['m_price'];
-          $a[$numm]= $z + $y;
+          $x=$z + $y;
+          $a[$numm]= $x;
            $numm++;
         }
         
