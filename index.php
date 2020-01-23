@@ -48,16 +48,8 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
-    $sql_snp = "SELECT * FROM menu     
-                          where m_id=  $text";
-    $result_snp = $mysql->query($sql_snp);
-    while($show = $result_snp->fetch_assoc()) 
-        {
-          $showtext= $show['m_name'];
-         
-        } 
-
-      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$showtext ของท่านแล้วค่ะ";
+    
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$text ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
