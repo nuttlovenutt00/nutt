@@ -45,63 +45,102 @@
           }else{
              $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
           }
+  
+  $sql = "SELECT * FROM type 
+        left join type_product  on type.t_id_auto = type_product.tp_t_id
+        where type.t_id_auto=$type_product        ";
+
+  $a=[];
+$b="";
+  $result = $mysql->query($sql);
+  $num=0;    
+  while($row = $result->fetch_assoc()) 
+    {
+      $aa=$row["tp_id"];
+      $sql2 = "SELECT * FROM menu 
+      left join type_product  on menu.m_tp_id = type_product.tp_id
+      where m_tp_id=  $aa      ";
+      $result2 = $mysql->query($sql2);
+      $numm=0;
+      while($row2 = $result2->fetch_assoc()) 
+        {
+          $a[$numm]= $row2['m_name'].$row2['m_price'];
+           $numm++;
+        }
+        
+      if($numm==2){
+         $a2[$num]=
+          [
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  $row["tp_name"],
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[0]." บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[1]." บาท",
+                    "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  "",
+                    "text"=>  ""
+                ]
+            ]
+          ];
+      }else{
+         $a2[$num]=
+          [
+            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "imageBackgroundColor"=>  "#FFFFFF",
+            "title"=>  $row["tp_name"],
+            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+           
+            "actions"=>  [
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[0]." บาท",
+                    "text"=>  "H001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[1]." บาท",
+                    "text"=>  "C001"
+                ],
+                [
+                    "type"=>  "message",
+                    "label"=>  $a[2]." บาท",
+                    "text"=>  "S001"
+                ]
+            ]
+          ];
+
+      }
+     
+          $num++;
+    }
 
 
   $replyText1= [ 
-    "type"=> "template",
-  "altText"=> "this is a carousel template",
-  "template"=> [
-      "type"=> "carousel",
-      "columns"=> [
-          [
-            "thumbnailImageUrl"=> "https://example.com/bot/images/item1.jpg",
-            "imageBackgroundColor"=> "#FFFFFF",
-            "title"=> "this is menu",
-            "text"=> "description",
-            "defaultAction"=> [
-                "type"=> "uri",
-                "label"=> "View detail",
-                "uri"=> "http://example.com/page/123"
-            ],
-            "actions"=> [
-                [
-                    "type"=> "postback",
-                    "label"=> "Buy",
-                    "data"=> "action=buy&itemid=111"
-                ],
-                [
-                    "type"=> "postback",
-                    "label"=> "Add to cart",
-                    "data"=> "action=add&itemid=111"
-                ]
-            ]
-          ],
-          [
-            "thumbnailImageUrl"=> "https://example.com/bot/images/item2.jpg",
-            "imageBackgroundColor"=> "#000000",
-            "title"=> "this is menu",
-            "text"=> "description",
-            "defaultAction"=> [
-                "type"=> "uri",
-                "label"=> "View detail",
-                "uri"=>"http://example.com/page/222"
-            ],
-            "actions"=> [
-                [
-                    "type"=> "postback",
-                    "label"=> "Buy",
-                    "data"=> "action=buy&itemid=222"
-                ],
-                [
-                    "type"=> "postback",
-                    "label"=> "Add to cart",
-                    "data"=> "action=add&itemid=222"
-                ]
-            ]
-          ]
-      ],
-      "imageAspectRatio"=> "rectangle",
-      "imageSize"=> "cover"
+  "type"=> "template",
+  "altText"=>  "this is a carousel template",
+  "template"=>  [
+      "type"=>  "carousel",
+      "columns"=>  
+
+      
+      $a2
+    
+         
+      ,
+      "imageAspectRatio"=>  "rectangle",
+      "imageSize"=>  "cover"
   ]
   ];
 
