@@ -56,7 +56,7 @@
     $showtp_name_snp = $show_snp["tp_name"];
     $showm_name_snp = $show_snp["m_name"];
 
-      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$showtp_name_snp $showm_name_snp ของท่านแล้วค่ะ";
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$showtp_name_snp ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
