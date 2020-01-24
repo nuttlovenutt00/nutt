@@ -52,15 +52,21 @@
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
 
-    $sql_sirt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
-    $result_sirt = $mysql->query($sql_sirt);
-    $objResult = $result_sirt->fetch_assoc(); 
+    $sql_sdrt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+    $result_sdrt = $mysql->query($sql_sdrt);
+    $objResult_sdrt = $result_sdrt->fetch_assoc(); 
 
-    $cid =$objResult['orId'];
-    $cdate =$objResult['ortDate'];
-    $ctime =$objResult['ortTime'];
-    $cuser =$objResult['ortUserId'];
+    $cid =$objResult_sdrt['orId'];
+    $cdate =$objResult_sdrt['ortDate'];
+    $ctime =$objResult_sdrt['ortTime'];
+    $cuser =$objResult_sdrt['ortUserId'];
 
+    if($cid=="")
+     {
+      $noid ="yes";
+     }else{
+      $noid ="no";
+     }
 
     function DateTimeDiff($strDateTime1,$strDateTime2)
    {
@@ -70,7 +76,7 @@
     $datetime_ort=$cdate." ".$ctime;
     $datetime_now=$datetime." ".$time;
 
-    if(DateTimeDiff($datetime_ort,$datetime_now)>0.083)
+    if(DateTimeDiff($datetimee,$datetimenow)>0.083 || $noid == "yes"){
     {
 
    
@@ -132,10 +138,10 @@
 
       $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
-       $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$id_temp','H001','1')");
+       $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$id_temp','$text','1')");
      }else{
       $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
-     $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','H001','1')");
+     $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','$text','1')");
 
       }
 
