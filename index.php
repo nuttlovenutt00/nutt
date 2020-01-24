@@ -76,7 +76,7 @@
     $datetime_ort=$cdate." ".$ctime;
     $datetime_now=$datetime." ".$time;
 
-    if(DateTimeDiff($datetimee,$datetimenow)>0.083 || $noid == "yes"){
+    if(DateTimeDiff($datetimee,$datetimenow)>0.083 || $noid == "yes")
     {
 
    
@@ -144,13 +144,9 @@
      $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','$text','1')");
 
       }
+    
 
-      $sql_sirt = "SELECT tp_name,m_name FROM menu 
-      left join type_product on menu.m_tp_id = type_product.tp_id
-      where m_id=  '$text'     ";
-      $result_sirt = $mysql->query($sql_sirt);
-      $row_sirt = $result_sirt->fetch_assoc();
-      $nametypecafe=$row_sirt['tp_name'];
+      
 
       //ค้นหาชื่อกาแฟจากฐานข้อมูล
       $sql_snc = "SELECT tp_name,m_name FROM menu 
