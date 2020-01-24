@@ -320,17 +320,7 @@
     $datetime_ort=$cdate." ".$ctime;
     $datetime_now=$datetime." ".$time;
 
-    function DateTimeDiff($strDateTime1,$strDateTime2)
-   {
-        return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
-   }
-
-    if(DateTimeDiff($datetime_ort,$datetime_now)<0.083 )
-    {
-
-    }else{
-      $replyText2["text"] = "ไม่พบเมนูในรายการของฉันค่ะ";
-    }
+   
   }
 
 
