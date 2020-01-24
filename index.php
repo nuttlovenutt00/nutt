@@ -6,6 +6,7 @@
   $replyToken = $jsonData["events"][0]["replyToken"];
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
+
   $timestamp = $jsonData["events"][0]["timestamp"];
 
 
@@ -48,8 +49,14 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
-    
-      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$text ของท่านแล้วค่ะ";
+     $sql3 = "SELECT * FROM menu 
+      left join type_product  on menu.m_tp_id = type_product.tp_id
+      where m_tp_id=  '1'     ";
+      $result3 = $mysql->query($sql3);
+      $row3 = $result3->fetch_assoc();
+      $namecafe=$row3['m_name'];
+
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$namecafe ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
