@@ -169,44 +169,57 @@
 
   //แสดงเมนูกาแฟ
   if($text=="เมนูกาแฟ"){
-  $sql = "SELECT tp_pic,tp_id,tp_name FROM type 
-        left join type_product  on type.t_id_auto = type_product.tp_t_id
-        where type.t_id_auto=$type_product        ";
 
-  $a=[];
-  $aaa=[];
-$b="";
-  $result = $mysql->query($sql);
+  //ค้นหาชื่อของกาแฟทั้งหมด
+  $sql_m_cafe = "SELECT tp_pic,tp_id,tp_name FROM type 
+        left join type_product  on type.t_id_auto = type_product.tp_t_id
+        where type.t_id_auto=$type_product";
+
+  $result_m_cafe = $mysql->query($sql_m_cafe);
+
+  // Array ที่เก็บข้อมูล ร้อน เย็น ปั่น เมนูกาแฟเพื่อไปแสดงในไลน์
+  $showdetailmenu=[];
+
+  // Array ที่เก็บข้อมูล รหัส เมนูกาแฟเพื่อไปแสดงในไลน์
+  $iddetailmenu=[];
+
+  //จำนวนที่ใส่ไปใน Array 
   $num=0;    
-  while($row = $result->fetch_assoc()) 
+  while($row_m_cafe = $result_m_cafe->fetch_assoc()) 
     {
-      $pic= $row['tp_pic'];
-      $aa=$row["tp_id"];
-      $sql2 = "SELECT m_name,m_price,m_id FROM menu 
+
+      $pic= $row_m_cafe['tp_pic']; //รูปของกาแฟ
+      $idtypecafe=$row_m_cafe["tp_id"]; //รหัสประเภทของกาแฟ
+
+      //ลิชรายการประเภทของกาแฟมาแสดงว่า ร้อน เย็น ปั่น
+      $sql_d_cafe = "SELECT m_name,m_price,m_id FROM menu 
       left join type_product  on menu.m_tp_id = type_product.tp_id
-      where m_tp_id=  $aa      ";
-      $result2 = $mysql->query($sql2);
-      $numm=0;
-      while($row2 = $result2->fetch_assoc()) 
+      where m_tp_id=  $idtypecafe";
+      $result_d_cafe = $mysql->query($sql_d_cafe);
+
+      //ตัวแปรเอาไว้นับประเภทของการแฟ ร้อน เย็น ปั่น ว่ามีเท่าไร
+      $num_unit_m=0;
+
+      while($row_d_cafe = $result_d_cafe->fetch_assoc()) 
         {
 
-          $a[$numm]= $row2['m_name'].$row2['m_price'];
-          $aaa[$numm]=$row2['m_id'];
-           $numm++;
+          $showdetailmenu[$num_unit_m]= $row_d_cafe['m_name'].$row_d_cafe['m_price'];
+          $iddetailmenu[$num_unit_m]=$row_d_cafe['m_id'];
+           $num_unit_m++;
         }
         
-      if($numm==1){
+      if($num_unit_m==1){
          $a2[$num]=
           [
             "thumbnailImageUrl"=>  $pic,
-            "title"=>  $row["tp_name"],
+            "title"=>  $row_m_cafe["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
-                    "text"=>  $aaa[0]
+                    "label"=>  $showdetailmenu[0]." บาท",
+                    "text"=>  $iddetailmenu[0]
                 ],
                 [
                      "type"=>  "message",
@@ -220,25 +233,25 @@ $b="";
                 ]
             ]
           ];
-      }elseif($numm==2)
+      }elseif($num_unit_m==2)
       {
         $a2[$num]=
           [
             "thumbnailImageUrl"=>  $pic,
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  $row["tp_name"],
+            "title"=>  $row_m_cafe["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
-                    "text"=>  $aaa[0]
+                    "label"=>  $showdetailmenu[0]." บาท",
+                    "text"=>  $iddetailmenu[0]
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
-                    "text"=>  $aaa[1]
+                    "label"=>  $showdetailmenu[1]." บาท",
+                    "text"=>  $iddetailmenu[1]
                 ],
                 [
                     "type"=>  "message",
@@ -252,24 +265,24 @@ $b="";
           [
             "thumbnailImageUrl"=>  $pic,
             "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  $row["tp_name"],
+            "title"=>  $row_m_cafe["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
             "actions"=>  [
                 [
                     "type"=>  "message",
-                    "label"=>  $a[0]." บาท",
-                    "text"=>  $aaa[0]
+                    "label"=>  $showdetailmenu[0]." บาท",
+                    "text"=>  $iddetailmenu[0]
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[1]." บาท",
-                    "text"=>  $aaa[1]
+                    "label"=>  $showdetailmenu[1]." บาท",
+                    "text"=>  $iddetailmenu[1]
                 ],
                 [
                     "type"=>  "message",
-                    "label"=>  $a[2]." บาท",
-                    "text"=>  $aaa[2]
+                    "label"=>  $showdetailmenu[2]." บาท",
+                    "text"=>  $iddetailmenu[2]
                 ]
             ]
           ];
@@ -280,7 +293,14 @@ $b="";
     }
 
 
-  $replyText1= [ 
+  
+
+
+}
+
+
+//ส่งข้อมูลกลับไปหาไลน์
+$replyText1= [ 
   "type"=> "template",
   "altText"=>  "this is a carousel template",
   "template"=>  [
@@ -298,10 +318,7 @@ $b="";
   ];
 
 
-}
 
-
-echo $userID;
 
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
