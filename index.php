@@ -51,8 +51,8 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
-      $mysql->query("INSERT INTO `order_temp`(`ort_date`, `ort_time`, `ort_user_id  `) 
-        VALUES ('$datetime','$time','$userID')");
+      $mysql->query("INSERT INTO `order_temp`(`ort_date`, `ort_time`, `ort_user_id`) 
+        VALUES ('111','222','333')");
 
       //ค้นหาชื่อกาแฟจากฐานข้อมูล
       $sql_snc = "SELECT tp_name,m_name FROM menu 
