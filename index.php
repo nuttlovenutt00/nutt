@@ -317,16 +317,14 @@
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   
-  if($text=="เมนูกาแฟ" )
+  if($text=="เมนูกาแฟ")
   {
     $replyJson["messages"][0] = $replyText1;
   }
-
    
   
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
   http_response_code(200);
-  }
 ?>
