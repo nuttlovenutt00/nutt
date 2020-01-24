@@ -51,7 +51,7 @@
   { 
      $sql3 = "SELECT * FROM menu 
       left join type_product  on menu.m_tp_id = type_product.tp_id
-      where m_tp_id=  '1'     ";
+      where m_id=  '$text'     ";
       $result3 = $mysql->query($sql3);
       $row3 = $result3->fetch_assoc();
       $nametypecafe=$row3['tp_name'];
