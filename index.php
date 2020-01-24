@@ -306,11 +306,6 @@
           "imageSize"=>  "cover"
         ]
     ];
-  }elseif($text=="รายการของฉัน")
-  {
-      
-      $replyText2["text"] = "666";
-   
   }
 
 
