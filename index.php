@@ -162,6 +162,9 @@
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
+  }elseif($text=="รายการของฉัน")
+  {
+    
   }else{
     $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
   }
@@ -303,6 +306,27 @@
           "imageSize"=>  "cover"
         ]
     ];
+  }elseif ($text == "รายการของฉัน") {
+    $sql_sdrt = "Select orId,ortDate,ortTime,ortUserId from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+    $result_sdrt = $mysql->query($sql_sdrt);
+    $objResult_sdrt = $result_sdrt->fetch_assoc(); 
+
+    $cid =$objResult_sdrt['orId'];
+    $cdate =$objResult_sdrt['ortDate'];
+    $ctime =$objResult_sdrt['ortTime'];
+    $cuser =$objResult_sdrt['ortUserId'];
+
+
+    $datetime_ort=$cdate." ".$ctime;
+    $datetime_now=$datetime." ".$time;
+
+
+    if(DateTimeDiff($datetime_ort,$datetime_now)<0.083 && $cid !== "")
+    {
+
+    }else{
+      $replyText2["text"] = "ไม่พบเมนูในรายการของฉันค่ะ";
+    }
   }
 
 
@@ -317,14 +341,19 @@
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   
-  if($text=="เมนูกาแฟ")
+  if($text=="เมนูกาแฟ" )
   {
     $replyJson["messages"][0] = $replyText1;
+  }elseif($text=="รายการของฉัน")
+  {
+    $replyJson["messages"][0] = $replyText2;
   }
+
    
   
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
   http_response_code(200);
+  }
 ?>
