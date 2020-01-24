@@ -50,7 +50,7 @@
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
      $sql3 = "SELECT tp_nameม FROM menu 
-      left join type_product,m_name  on menu.m_tp_id = type_product.tp_id
+      left join tp_name,m_name  on menu.m_tp_id = type_product.tp_id
       where m_id=  '$text'     ";
       $result3 = $mysql->query($sql3);
       $row3 = $result3->fetch_assoc();
