@@ -306,10 +306,6 @@
           "imageSize"=>  "cover"
         ]
     ];
-  }elseif($text == "รายการของฉัน") {
-  
-
-
   }
 
 
