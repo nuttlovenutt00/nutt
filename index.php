@@ -168,134 +168,130 @@
   
 
   //แสดงเมนูกาแฟ
-  if($text=="เมนูกาแฟ"){
+  if($text=="เมนูกาแฟ")
+  {
 
-  //ค้นหาชื่อของกาแฟทั้งหมด
-  $sql_m_cafe = "SELECT tp_pic,tp_id,tp_name FROM type 
-        left join type_product  on type.t_id_auto = type_product.tp_t_id
-        where type.t_id_auto=$type_product";
+    //ค้นหาชื่อของกาแฟทั้งหมด
+    $sql_m_cafe = "SELECT tp_pic,tp_id,tp_name FROM type 
+          left join type_product  on type.t_id_auto = type_product.tp_t_id
+          where type.t_id_auto=$type_product";
 
-  $result_m_cafe = $mysql->query($sql_m_cafe);
+    $result_m_cafe = $mysql->query($sql_m_cafe);
 
-  // Array ที่เก็บข้อมูล ร้อน เย็น ปั่น เมนูกาแฟเพื่อไปแสดงในไลน์
-  $showdetailmenu=[];
+    // Array ที่เก็บข้อมูล ร้อน เย็น ปั่น เมนูกาแฟเพื่อไปแสดงในไลน์
+    $showdetailmenu=[];
 
-  // Array ที่เก็บข้อมูล รหัส เมนูกาแฟเพื่อไปแสดงในไลน์
-  $iddetailmenu=[];
+    // Array ที่เก็บข้อมูล รหัส เมนูกาแฟเพื่อไปแสดงในไลน์
+    $iddetailmenu=[];
 
-  //จำนวนที่ใส่ไปใน Array 
-  $num=0;    
-  while($row_m_cafe = $result_m_cafe->fetch_assoc()) 
-    {
-
-      $pic= $row_m_cafe['tp_pic']; //รูปของกาแฟ
-      $idtypecafe=$row_m_cafe["tp_id"]; //รหัสประเภทของกาแฟ
-
-      //ลิชรายการประเภทของกาแฟมาแสดงว่า ร้อน เย็น ปั่น
-      $sql_d_cafe = "SELECT m_name,m_price,m_id FROM menu 
-      left join type_product  on menu.m_tp_id = type_product.tp_id
-      where m_tp_id=  $idtypecafe";
-      $result_d_cafe = $mysql->query($sql_d_cafe);
-
-      //ตัวแปรเอาไว้นับประเภทของการแฟ ร้อน เย็น ปั่น ว่ามีเท่าไร
-      $num_unit_m=0;
-
-      while($row_d_cafe = $result_d_cafe->fetch_assoc()) 
-        {
-
-          $showdetailmenu[$num_unit_m]= $row_d_cafe['m_name'].$row_d_cafe['m_price'];
-          $iddetailmenu[$num_unit_m]=$row_d_cafe['m_id'];
-           $num_unit_m++;
-        }
-        
-      if($num_unit_m==1){
-         $a2[$num]=
-          [
-            "thumbnailImageUrl"=>  $pic,
-            "title"=>  $row_m_cafe["tp_name"],
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[0]." บาท",
-                    "text"=>  $iddetailmenu[0]
-                ],
-                [
-                     "type"=>  "message",
-                    "label"=>  "  ",
-                    "text"=>  "  "
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "  ",
-                    "text"=>  "  "
-                ]
-            ]
-          ];
-      }elseif($num_unit_m==2)
+    //จำนวนที่ใส่ไปใน Array 
+    $num=0;    
+    while($row_m_cafe = $result_m_cafe->fetch_assoc()) 
       {
-        $a2[$num]=
-          [
-            "thumbnailImageUrl"=>  $pic,
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  $row_m_cafe["tp_name"],
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[0]." บาท",
-                    "text"=>  $iddetailmenu[0]
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[1]." บาท",
-                    "text"=>  $iddetailmenu[1]
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  "  ",
-                    "text"=>  "  "
-                ]
-            ]
-          ];
-      }else{
-         $a2[$num]=
-          [
-            "thumbnailImageUrl"=>  $pic,
-            "imageBackgroundColor"=>  "#FFFFFF",
-            "title"=>  $row_m_cafe["tp_name"],
-            "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-           
-            "actions"=>  [
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[0]." บาท",
-                    "text"=>  $iddetailmenu[0]
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[1]." บาท",
-                    "text"=>  $iddetailmenu[1]
-                ],
-                [
-                    "type"=>  "message",
-                    "label"=>  $showdetailmenu[2]." บาท",
-                    "text"=>  $iddetailmenu[2]
-                ]
-            ]
-          ];
 
+        $pic= $row_m_cafe['tp_pic']; //รูปของกาแฟ
+        $idtypecafe=$row_m_cafe["tp_id"]; //รหัสประเภทของกาแฟ
+
+        //ลิชรายการประเภทของกาแฟมาแสดงว่า ร้อน เย็น ปั่น
+        $sql_d_cafe = "SELECT m_name,m_price,m_id FROM menu 
+        left join type_product  on menu.m_tp_id = type_product.tp_id
+        where m_tp_id=  $idtypecafe";
+        $result_d_cafe = $mysql->query($sql_d_cafe);
+
+        //ตัวแปรเอาไว้นับประเภทของการแฟ ร้อน เย็น ปั่น ว่ามีเท่าไร
+        $num_unit_m=0;
+
+        while($row_d_cafe = $result_d_cafe->fetch_assoc()) 
+          {
+
+            $showdetailmenu[$num_unit_m]= $row_d_cafe['m_name'].$row_d_cafe['m_price'];
+            $iddetailmenu[$num_unit_m]=$row_d_cafe['m_id'];
+             $num_unit_m++;
+          }
+          
+        if($num_unit_m==1){
+           $a2[$num]=
+            [
+              "thumbnailImageUrl"=>  $pic,
+              "title"=>  $row_m_cafe["tp_name"],
+              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+             
+              "actions"=>  [
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[0]." บาท",
+                      "text"=>  $iddetailmenu[0]
+                  ],
+                  [
+                       "type"=>  "message",
+                      "label"=>  "  ",
+                      "text"=>  "  "
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  "  ",
+                      "text"=>  "  "
+                  ]
+              ]
+            ];
+        }elseif($num_unit_m==2)
+        {
+          $a2[$num]=
+            [
+              "thumbnailImageUrl"=>  $pic,
+              "imageBackgroundColor"=>  "#FFFFFF",
+              "title"=>  $row_m_cafe["tp_name"],
+              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+             
+              "actions"=>  [
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[0]." บาท",
+                      "text"=>  $iddetailmenu[0]
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[1]." บาท",
+                      "text"=>  $iddetailmenu[1]
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  "  ",
+                      "text"=>  "  "
+                  ]
+              ]
+            ];
+        }else{
+           $a2[$num]=
+            [
+              "thumbnailImageUrl"=>  $pic,
+              "imageBackgroundColor"=>  "#FFFFFF",
+              "title"=>  $row_m_cafe["tp_name"],
+              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+             
+              "actions"=>  [
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[0]." บาท",
+                      "text"=>  $iddetailmenu[0]
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[1]." บาท",
+                      "text"=>  $iddetailmenu[1]
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  $showdetailmenu[2]." บาท",
+                      "text"=>  $iddetailmenu[2]
+                  ]
+              ]
+            ];
+
+        }
+       
+            $num++;
       }
-     
-          $num++;
-    }
-
-
-  
-
-
 }
 
 
