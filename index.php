@@ -76,11 +76,11 @@
     $datetime_ort=$cdate." ".$ctime;
     $datetime_now=$datetime." ".$time;
 
-    if(DateTimeDiff($datetimee,$datetimenow)>0.083 || $noid == "yes")
+    if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
     {
 
    
-      $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                                $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc(); 
 
@@ -136,12 +136,12 @@
                                   }
                                 }
 
-      $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
-       $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$id_temp','$text','1')");
+          $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$id_temp','$text','1')");
      }else{
-      $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
-     $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','$text','1')");
+         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
+          $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','$text','1')");
 
       }
     
