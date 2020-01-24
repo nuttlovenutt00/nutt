@@ -51,6 +51,33 @@
   $type_product="";
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
+
+    $sql_sirt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+    $result_sirt = $mysql->query($sql_sirt);
+    $objResult = $result_sirt->fetch_assoc(); 
+
+    $cid =$objResult['orId'];
+    $cdate =$objResult['ortDate'];
+    $ctime =$objResult['ortTime'];
+    $cuser =$objResult['ortUserId'];
+
+
+    function DateTimeDiff($strDateTime1,$strDateTime2)
+   {
+        return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+   }
+
+    $datetime_ort=$cdate." ".$ctime;
+    $datetime_now=$datetime." ".$time;
+
+    if(DateTimeDiff($datetime_ort,$datetime_now)>0.083)
+    {
+
+   
+      $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                                $result_sirt = $mysql->query($sql_sirt);
+                                $objResult = $result_sirt->fetch_assoc(); 
+
                                 $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
@@ -100,18 +127,17 @@
                                     
                                     $tmpnewyearfull=date("Ym");
                                     $id_temp= "ORD".$tmpnewyearfull."-0001";
-                                    
-                                    
-                                  }else{
-                                    echo "<script>";
-                                    echo "alert(\" พบปัญหา!!! เนื่องจากมีความผิดปกติของเรื่องวันที่ กรุณาติดต่อฝ่าย Support\") ;";
-                                    echo "window.history.back()"; 
-                                    echo "</script>";
-
                                   }
                                 }
 
       $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+
+       $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$id_temp','H001','1')");
+     }else{
+      $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
+     $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit) VALUES ('$cid','H001','1')");
+
+      }
 
       $sql_sirt = "SELECT tp_name,m_name FROM menu 
       left join type_product on menu.m_tp_id = type_product.tp_id
