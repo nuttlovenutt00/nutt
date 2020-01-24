@@ -162,9 +162,6 @@
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
-  }elseif($text=="รายการของฉัน")
-  {
-    
   }else{
     $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
   }
