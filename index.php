@@ -306,6 +306,9 @@
           "imageSize"=>  "cover"
         ]
     ];
+  }elseif($text=="รายการของฉัน")
+  {
+      $replyText2["text"] = "รายการของฉัน";
   }
 
 
@@ -323,6 +326,9 @@
   if($text=="เมนูกาแฟ")
   {
     $replyJson["messages"][0] = $replyText1;
+  }elseif($text=="รายการของฉัน")
+  {
+      $replyJson["messages"][0] = $replyText2;
   }
    
   
