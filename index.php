@@ -49,7 +49,7 @@
 
   //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
-  if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
+  if(strpos($text, "H") == "0" )
   { 
 
     $sql_sdrt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
