@@ -292,26 +292,21 @@
        
             $num++;
       }
+      //ส่งข้อมูลกลับไปหาไลน์
+      $replyText1= [ 
+      "type"=> "template",
+      "altText"=>  "this is a carousel template",
+      "template"=>  [
+          "type"=>  "carousel",
+          "columns"=>  $a2 ,
+          "imageAspectRatio"=>  "rectangle",
+          "imageSize"=>  "cover"
+        ]
+    ];
   }
 
 
-//ส่งข้อมูลกลับไปหาไลน์
-$replyText1= [ 
-  "type"=> "template",
-  "altText"=>  "this is a carousel template",
-  "template"=>  [
-      "type"=>  "carousel",
-      "columns"=>  
 
-      
-      $a2
-    
-         
-      ,
-      "imageAspectRatio"=>  "rectangle",
-      "imageSize"=>  "cover"
-  ]
-  ];
 
 
 
