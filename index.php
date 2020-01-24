@@ -37,6 +37,8 @@
 
   //บันทึก Log ไฟล์
   $datetime=date("d-m-Y");
+  $time=date("H:i:s");
+
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `datetime`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime')");
 
 
@@ -49,13 +51,18 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
-     $sql3 = "SELECT tp_name,m_name FROM menu 
+      $mysql->query("INSERT INTO `order_temp`(`ort_date`, `ort_time`, `ort_user_id  `) 
+        VALUES ('$datetime','$time','$userID')");
+
+      //ค้นหาชื่อกาแฟจากฐานข้อมูล
+      $sql_snc = "SELECT tp_name,m_name FROM menu 
       left join type_product on menu.m_tp_id = type_product.tp_id
       where m_id=  '$text'     ";
-      $result3 = $mysql->query($sql3);
-      $row3 = $result3->fetch_assoc();
-      $nametypecafe=$row3['tp_name'];
-      $namecafe=$row3['m_name'];
+      $result_snc = $mysql->query($sql_snc);
+      $row_snc = $result_snc->fetch_assoc();
+      $nametypecafe=$row_snc['tp_name'];
+      $namecafe=$row_snc['m_name'];
+       //สิ้นสุดค้นหาชื่อกาแฟจากฐานข้อมูล
 
       $replyText["text"] = "ระบบได้ทำการบันทึก Order:$nametypecafe $namecafe ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
