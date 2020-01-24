@@ -49,11 +49,10 @@
 
   //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
-  $checktext = strpos($text, "MP");
-  if($checktext == 0 )
+  if(strpos($text, "MP") !== FALSE )
   { 
 
-    $sql_sdrt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+    $sql_sdrt = "Select orId,ortDate,ortTime,ortUserId from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
     $result_sdrt = $mysql->query($sql_sdrt);
     $objResult_sdrt = $result_sdrt->fetch_assoc(); 
 
