@@ -164,7 +164,7 @@
     $type_product="1";
   }elseif($text=="รายการของฉัน")
   {
-    $replyText2["text"] = "777";
+    $replyText["text"] = "777";
   }else{
     $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
   }
@@ -323,9 +323,6 @@
   if($text=="เมนูกาแฟ")
   {
     $replyJson["messages"][0] = $replyText1;
-  }elseif($text=="รายการของฉัน")
-  {
-      $replyJson["messages"][0] = $replyText2;
   }
    
   
