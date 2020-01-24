@@ -49,6 +49,8 @@
 
   //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
+
+  //
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
 
