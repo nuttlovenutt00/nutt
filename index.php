@@ -54,9 +54,10 @@
       where m_tp_id=  '1'     ";
       $result3 = $mysql->query($sql3);
       $row3 = $result3->fetch_assoc();
+      $nametypecafe=$row3['tp_name'];
       $namecafe=$row3['m_name'];
 
-      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$namecafe ของท่านแล้วค่ะ";
+      $replyText["text"] = "ระบบได้ทำการบันทึก Order:$nametypecafe $namecafe ของท่านแล้วค่ะ";
   }elseif($text=="เมนูกาแฟ")
   {
     $type_product="1";
