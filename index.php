@@ -308,7 +308,30 @@
     ];
   }elseif($text=="รายการของฉัน")
   {
-      $replyText2["text"] = "รายการของฉัน";
+      $sql_sdrt = "Select orId,ortDate,ortTime,ortUserId from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+    $result_sdrt = $mysql->query($sql_sdrt);
+    $objResult_sdrt = $result_sdrt->fetch_assoc(); 
+
+    $cid =$objResult_sdrt['orId'];
+    $cdate =$objResult_sdrt['ortDate'];
+    $ctime =$objResult_sdrt['ortTime'];
+    $cuser =$objResult_sdrt['ortUserId'];
+
+    
+    function DateTimeDiff($strDateTime1,$strDateTime2)
+   {
+        return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+   }
+
+    $datetime_ort=$cdate." ".$ctime;
+    $datetime_now=$datetime." ".$time;
+
+    if(DateTimeDiff($datetime_ort,$datetime_now)<0.083 || $cid !== "")
+    {
+      $replyText2["text"] = "5555";
+    }else{
+      $replyText2["text"] = "666";
+    }
   }
 
 
