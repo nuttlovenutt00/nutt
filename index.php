@@ -164,7 +164,7 @@
     $type_product="1";
   }elseif($text=="รายการของฉัน")
   {
-    $replyText["text"] = "777";
+    
   }else{
     $replyText["text"] = "กรุณาเลือกเมนูอีกรอบค่ะ";
   }
@@ -306,6 +306,9 @@
           "imageSize"=>  "cover"
         ]
     ];
+  }elseif($text=="รายการของฉัน")
+  {
+    $replyText["text"] = "777";
   }
 
 
