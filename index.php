@@ -321,7 +321,7 @@
     $datetime_now=$datetime." ".$time;
 
 
-    if(DateTimeDiff($datetime_ort,$datetime_now)<0.083 && $cid !== "")
+    if(DateTimeDiff($datetime_ort,$datetime_now)<0.083 )
     {
 
     }else{
