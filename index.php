@@ -79,6 +79,7 @@ $b="";
   $num=0;    
   while($row = $result->fetch_assoc()) 
     {
+      $pic= $row2['tp_pic'];
       $aa=$row["tp_id"];
       $sql2 = "SELECT * FROM menu 
       left join type_product  on menu.m_tp_id = type_product.tp_id
@@ -87,6 +88,7 @@ $b="";
       $numm=0;
       while($row2 = $result2->fetch_assoc()) 
         {
+
           $a[$numm]= $row2['m_name'].$row2['m_price'];
           $aaa[$numm]=$row2['m_id'];
            $numm++;
@@ -95,8 +97,7 @@ $b="";
       if($numm==1){
          $a2[$num]=
           [
-            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
-            "imageBackgroundColor"=>  "#FFFFFF",
+            "thumbnailImageUrl"=>  $pic,
             "title"=>  $row["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
            
@@ -122,7 +123,7 @@ $b="";
       {
         $a2[$num]=
           [
-            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "thumbnailImageUrl"=>  $pic,
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  $row["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
@@ -148,7 +149,7 @@ $b="";
       }else{
          $a2[$num]=
           [
-            "thumbnailImageUrl"=>  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9WvUF2kYT0Rg316K9-4zMCvH2TkNvp15gK6SDQwfRLSQhbkDv&s",
+            "thumbnailImageUrl"=>  $pic,
             "imageBackgroundColor"=>  "#FFFFFF",
             "title"=>  $row["tp_name"],
             "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
