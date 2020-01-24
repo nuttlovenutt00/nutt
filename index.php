@@ -49,9 +49,7 @@
 
   //ตั้งค่าการตอบ-รับข้อความ
   $type_product="";
-
-  //
-  if(strpos($text, "MP") == 0)
+  if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
 
     $sql_sdrt = "Select * from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
@@ -305,8 +303,6 @@
           "imageSize"=>  "cover"
         ]
     ];
-  
-
   }
 
 
