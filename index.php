@@ -49,8 +49,8 @@
 
   if(strpos($text, "H") !== FALSE || strpos($text, "C") !== FALSE || strpos($text, "S") !== FALSE)
   { 
-     $sql3 = "SELECT * FROM menu 
-      left join type_product  on menu.m_tp_id = type_product.tp_id
+     $sql3 = "SELECT tp_nameม FROM menu 
+      left join type_product,m_name  on menu.m_tp_id = type_product.tp_id
       where m_id=  '$text'     ";
       $result3 = $mysql->query($sql3);
       $row3 = $result3->fetch_assoc();
@@ -68,7 +68,7 @@
 
   //แสดงเมนูกาแฟ
   if($text=="เมนูกาแฟ"){
-  $sql = "SELECT * FROM type 
+  $sql = "SELECT tp_pic,tp_id,tp_name FROM type 
         left join type_product  on type.t_id_auto = type_product.tp_t_id
         where type.t_id_auto=$type_product        ";
 
@@ -81,7 +81,7 @@ $b="";
     {
       $pic= $row['tp_pic'];
       $aa=$row["tp_id"];
-      $sql2 = "SELECT * FROM menu 
+      $sql2 = "SELECT m_name,m_price,m_id FROM menu 
       left join type_product  on menu.m_tp_id = type_product.tp_id
       where m_tp_id=  $aa      ";
       $result2 = $mysql->query($sql2);
