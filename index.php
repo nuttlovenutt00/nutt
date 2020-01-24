@@ -79,7 +79,7 @@ $b="";
   $num=0;    
   while($row = $result->fetch_assoc()) 
     {
-      $pic= $row2['tp_pic'];
+      $pic= $row['tp_pic'];
       $aa=$row["tp_id"];
       $sql2 = "SELECT * FROM menu 
       left join type_product  on menu.m_tp_id = type_product.tp_id
