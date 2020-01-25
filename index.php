@@ -339,7 +339,7 @@
           while ($objResult_sot = $result_sot->fetch_assoc()) {
             $a.=$objResult_sot["tp_name"].$objResult_sot["m_name"]."\n";
           } 
-         $replyText2= $a;
+         $replyText2["text"]= $a;
     }else{
       $replyText2["text"] = "คุณยังไม่มีรายการที่สั่งค่ะ";
     }
