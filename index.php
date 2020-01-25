@@ -330,13 +330,16 @@
 
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
-      $a="";
-        $sql_sot = "Select * from  OrderDetailTemp  where ordtOrId='$cid' ";
+      $a="รายการของฉัน\n";
+        $sql_sot = "Select * from  OrderDetailTemp
+                    left join menu on OrderDetailTemp.ordtMId = menu.m_id
+                    left join type_product on menu.m_tp_id = type_product.tp_id
+                      where ordtOrId='$cid' ";
          $result_sot = $mysql->query($sql_sot);
           while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $a.=$objResult_sot["ordtMId"]."\n";
+            $a.=$objResult_sot["tp_name"]." ".$objResult_sot["m_name"]"\n";
           } 
-         $replyText2["text"] = $a;
+         $replyText2= $a;
     }else{
       $replyText2["text"] = "9999";
     }
