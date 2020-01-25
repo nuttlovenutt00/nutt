@@ -330,20 +330,11 @@
 
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
-     $a="รายการของฉัน\n";
-        $sql_sot = "Select ordtMId from  OrderDetailTemp
-                    left join menu on OrderDetailTemp.ordtMId = menu.m_id
-                    left join type_product on menu.m_tp_id = type_product.tp_id
-                     where ordtOrId='$cid'";
-         $result_sot = $mysql->query($sql_sot);
-         $a3=[];
-         $num=0;
-          while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $pic= $objResult_sot['tp_pic']; //รูปของกาแฟ
+     
            $a3[$num]=
             [
-              "thumbnailImageUrl"=>  $pic,
-              "title"=>  $objResult_sot["tp_name"],
+              "thumbnailImageUrl"=>  "",
+              "title"=>  "1111",
               "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
              
               "actions"=>  [
@@ -364,7 +355,7 @@
                   ]
               ]
             ];
-          }
+          
 
 
            //ส่งข้อมูลกลับไปหาไลน์
