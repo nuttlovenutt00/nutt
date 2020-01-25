@@ -330,16 +330,17 @@
 
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
-      $a="รายการของฉัน\n";
-        $sql_sot = "Select * from  OrderDetailTemp
+     $a="รายการของฉัน\n";
+        $sql_sot = "Select ordtMId,SUM(ordtUnit) from  OrderDetailTemp
                     left join menu on OrderDetailTemp.ordtMId = menu.m_id
                     left join type_product on menu.m_tp_id = type_product.tp_id
-                      where ordtOrId='$cid' ";
+                     where ordtOrId='$cid'
+                     GROUP BY ordtMId";
          $result_sot = $mysql->query($sql_sot);
           while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $a.=$objResult_sot["tp_name"].$objResult_sot["m_name"]."\n";
+            $a.=$objResult_sot["tp_name"]." ".$objResult_sot["m_name"]." ".$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
           } 
-         $replyText2["text"]= $a;
+         $replyText2= $a;
     }else{
       $replyText2["text"] = "คุณยังไม่มีรายการที่สั่งค่ะ";
     }
