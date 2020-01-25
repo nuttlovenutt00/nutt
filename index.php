@@ -330,7 +330,13 @@
 
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
-         $replyText2["text"] = "8888";
+      $a="";
+        $sql_sot = "Select * from  OrderDetailTemp  where ordtOrId='$cid' ";
+         $result_sot = $mysql->query($sql_sot);
+          while ($objResult_sot = $result_sot->fetch_assoc()) {
+            $a.=$objResult_sot["ordtMId"]."\n";
+          } 
+         $replyText2["text"] = $a;
     }else{
       $replyText2["text"] = "9999";
     }
