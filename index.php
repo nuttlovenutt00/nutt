@@ -330,9 +330,14 @@
 
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
-     
-           $a3=
-            [
+
+           //ส่งข้อมูลกลับไปหาไลน์
+      $replyText2= [ 
+      "type"=> "template",
+      "altText"=>  "this is a carousel template",
+      "template"=>  [
+          "type"=>  "carousel",
+          "columns"=>  [
               "thumbnailImageUrl"=>  "",
               "title"=>  "1111",
               "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
@@ -354,17 +359,7 @@
                       "text"=>  "  "
                   ]
               ]
-            ];
-          
-
-
-           //ส่งข้อมูลกลับไปหาไลน์
-      $replyText2= [ 
-      "type"=> "template",
-      "altText"=>  "this is a carousel template",
-      "template"=>  [
-          "type"=>  "carousel",
-          "columns"=>  $a3 ,
+            ] ,
           "imageAspectRatio"=>  "rectangle",
           "imageSize"=>  "cover"
         ]
