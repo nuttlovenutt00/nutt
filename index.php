@@ -331,7 +331,7 @@
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
      
-           $a3[$num]=
+           $a3=
             [
               "thumbnailImageUrl"=>  "",
               "title"=>  "1111",
