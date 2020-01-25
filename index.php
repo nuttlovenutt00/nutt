@@ -341,7 +341,7 @@
           } 
          $replyText2= $a;
     }else{
-      $replyText2["text"] = "9999";
+      $replyText2["text"] = "คุณยังไม่มีรายการที่สั่งค่ะ";
     }
   }
 
