@@ -45,7 +45,7 @@
 
    //กำหนดค่าของตัวแปร
   $replyText["type"] = "text";
-  $replyText2["type"] = "text";
+  
 
 
   //ตั้งค่าการตอบ-รับข้อความ
@@ -331,17 +331,56 @@
     if(DateTimeDiff1($datetime_ort,$datetime_now)<0.083 && $cid !== "")
     {
      $a="รายการของฉัน\n";
-        $sql_sot = "Select ordtMId,SUM(ordtUnit) from  OrderDetailTemp
+        $sql_sot = "Select ordtMId from  OrderDetailTemp
                     left join menu on OrderDetailTemp.ordtMId = menu.m_id
                     left join type_product on menu.m_tp_id = type_product.tp_id
-                     where ordtOrId='$cid'
-                     GROUP BY ordtMId";
+                     where ordtOrId='$cid'";
          $result_sot = $mysql->query($sql_sot);
+         $a3=[];
+         $num=0;
           while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $a.=$objResult_sot["tp_name"]." ".$objResult_sot["m_name"]." ".$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
-          } 
-         $replyText2= $a;
+            $pic= $objResult_sot['tp_pic']; //รูปของกาแฟ
+           $a3[$num]=
+            [
+              "thumbnailImageUrl"=>  $pic,
+              "title"=>  $objResult_sot["tp_name"],
+              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+             
+              "actions"=>  [
+                  [
+                      "type"=>  "message",
+                      "label"=>  " บาท",
+                      "text"=>  "";
+                  ],
+                  [
+                       "type"=>  "message",
+                      "label"=>  "  ",
+                      "text"=>  "  "
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  "  ",
+                      "text"=>  "  "
+                  ]
+              ]
+            ];
+          }
+
+
+           //ส่งข้อมูลกลับไปหาไลน์
+      $replyText2= [ 
+      "type"=> "template",
+      "altText"=>  "this is a carousel template",
+      "template"=>  [
+          "type"=>  "carousel",
+          "columns"=>  $a3 ,
+          "imageAspectRatio"=>  "rectangle",
+          "imageSize"=>  "cover"
+        ]
+    ];
+         
     }else{
+      $replyText2["type"] = "text";
       $replyText2["text"] = "คุณยังไม่มีรายการที่สั่งค่ะ";
     }
   }
