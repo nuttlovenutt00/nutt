@@ -337,7 +337,7 @@
                       where ordtOrId='$cid' ";
          $result_sot = $mysql->query($sql_sot);
           while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $a.=$objResult_sot["tp_name"]." ".$objResult_sot["m_name"]."\n";
+            $a.=$objResult_sot["tp_name"].$objResult_sot["m_name"]."\n";
           } 
          $replyText2= $a;
     }else{
