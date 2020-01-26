@@ -340,7 +340,7 @@
           while ($objResult_sot = $result_sot->fetch_assoc()) {
 
               $idpro=$objResult_sot["ordtMId"];
-              $sql_sot1 = "Select  menu 
+              $sql_sot1 = "Select * from  menu 
                     left join type_product on menu.m_tp_id = type_product.tp_id
                      where menu.m_id='$cid' ";
                $result_sot1 = $mysql->query($sql_sot1);
