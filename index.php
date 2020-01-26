@@ -342,7 +342,7 @@
               $idpro=$objResult_sot["ordtMId"];
               $sql_sot1 = "Select * from  menu 
                     left join type_product on menu.m_tp_id = type_product.tp_id
-                     where menu.m_id='$cid' ";
+                     where menu.m_id='$idpro' ";
                $result_sot1 = $mysql->query($sql_sot1);
                $objResult_sot1 = $result_sot1->fetch_assoc();
 
