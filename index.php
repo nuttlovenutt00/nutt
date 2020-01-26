@@ -332,13 +332,21 @@
     {
      $a="รายการของฉัน\n";
         $sql_sot = "Select ordtMId,SUM(ordtUnit) from  OrderDetailTemp
-                    left join menu on OrderDetailTemp.ordtMId = menu.m_id
-                    left join type_product on menu.m_tp_id = type_product.tp_id
                      where ordtOrId='$cid'
                      GROUP BY ordtMId";
+         
+
          $result_sot = $mysql->query($sql_sot);
           while ($objResult_sot = $result_sot->fetch_assoc()) {
-            $a.=$objResult_sot["tp_name"]." ".$objResult_sot["m_name"]." ".$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
+
+              $idpro=$objResult_sot["ordtMId"];
+              $sql_sot1 = "Select  menu 
+                    left join type_product on menu.m_tp_id = type_product.tp_id
+                     where menu.m_id='$cid' ";
+               $result_sot1 = $mysql->query($sql_sot1);
+               $objResult_sot1 = $result_sot1->fetch_assoc();
+
+            $a.=$objResult_sot1["tp_name"]." ".$objResult_sot1["m_name"]." ".$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
           } 
          $replyText2= $a;
     }else{
