@@ -346,9 +346,9 @@
                $result_sot1 = $mysql->query($sql_sot1);
                $objResult_sot1 = $result_sot1->fetch_assoc();
 
-             $a.=$objResult_sot1["tp_name"].$objResult_sot1["m_name"].$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
+             $a.=$objResult_sot1["tp_name"]." ".$objResult_sot1["m_name"]." ".$objResult_sot["SUM(ordtUnit)"]." แก้ว\n";
           } 
-         $replyText2= $a;
+         $replyText2["text"] = $a;
     }else{
       $replyText2["text"] = "คุณยังไม่มีรายการที่สั่งค่ะ";
     }
