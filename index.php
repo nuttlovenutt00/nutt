@@ -44,7 +44,8 @@
 
 
 
-$replyText=[ "type": "flex",
+$replyText=[ 
+  "type"=> "flex",
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
