@@ -45,91 +45,10 @@
 
 
 $replyText=[
-   "type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "bubble",
-    "direction"=> "ltr",
-    "header"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "รายการของฉัน",
-          "align"=> "center"
-        ]
-      ]
-    ],
-    "body"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "Textพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเ"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ]
-      ]
-    ],
-    "footer"=> [
-      "type"=> "box",
-      "layout"=> "horizontal",
-      "contents"=> [
-        [
-          "type"=> "button",
-          "action"=> [
-            "type"=> "uri",
-            "label"=> "ยืนยันการสั่ง",
-            "uri"=> "https=>//linecorp.com"
-          ]
-        ]
-      ]
-    ]
-  ]
+  "type"=> "image",
+    "originalContentUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
+    "previewImageUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
+
 
 ];
 
