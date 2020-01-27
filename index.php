@@ -45,9 +45,107 @@
 
 
 $replyText=[
-   "type" => "image",
-    "originalContentUrl" => "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/001.jpg",
-    "previewImageUrl" => "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/001.jpg"
+   "type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "bubble",
+    "body"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "รายการของฉัน",
+          "size"=> "lg",
+          "align"=> "start",
+          "weight"=> "bold",
+          "color"=> "#C8690E"
+        ],
+        [
+          "type"=> "box",
+          "layout"=> "vertical",
+          "spacing"=> "sm",
+          "margin"=> "lg",
+          "contents"=> [
+            [
+              "type"=> "text",
+              "text"=> "ดแไำดแไำดไำดไำดไำดไอดกเปหกดกหดหกดหกดหกหกดหกดดหก"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ]
+          ]
+        ]
+      ]
+    ],
+    "footer"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "flex"=> 0,
+      "spacing"=> "sm",
+      "contents"=> [
+        [
+          "type"=> "button",
+          "action"=> [
+            "type"=> "uri",
+            "label"=> "ยืนยันการสั่ง",
+            "uri"=> "https=>//linecorp.com"
+          ],
+          "height"=> "sm",
+          "style"=> "link"
+        ]
+      ]
+    ]
+  ]
 
 ];
 
