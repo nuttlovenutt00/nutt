@@ -45,52 +45,53 @@
 
 
 $replyText=[
-"type"=> "flex",
+ "type"=> "flex",
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
-    "direction"=> "ltr",
-    "header"=> [
+    "body"=> [
       "type"=> "box",
       "layout"=> "vertical",
       "contents"=> [
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
-          "flex"=> 0,
-          "size"=> "md",
-          "align"=> "center",
+          "size"=> "lg",
+          "align"=> "start",
           "weight"=> "bold",
           "color"=> "#94796D"
-        ]
-      ]
-    ],
-    "body"=>[
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
         ],
         [
-          "type"=> "text",
-          "text"=> "P2 มอคค่า(ร้อน) จำนวน  แก้ว"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
+          "type"=> "box",
+          "layout"=> "vertical",
+          "spacing"=> "sm",
+          "margin"=> "lg",
+          "contents"=> [
+            [
+              "type"=> "text",
+              "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "P2 มอคค่า(ร้อน) จำนวน 3 แก้ว"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
+            ]
+          ]
         ]
       ]
     ],
     "footer"=> [
-      "type"=>"box",
-      "layout"=> "horizontal",
-     "contents"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "spacing"=> "sm",
+      "contents"=> [
         [
           "type"=> "button",
           "action"=> [
@@ -99,7 +100,7 @@ $replyText=[
             "text"=> "ยืนยันการสั่ง"
           ],
           "color"=> "#94796D",
-          "height"=>"sm",
+          "height"=> "sm",
           "style"=> "primary"
         ]
       ]
