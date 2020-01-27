@@ -17,7 +17,7 @@
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
-    $errorcode = $mysql->connect_error;
+  $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
   }
   function sendMessage($replyJson, $sendInfo){
@@ -37,41 +37,28 @@
 
   //บันทึก Log ไฟล์
   date_default_timezone_set("Asia/Bangkok");
-  $date=date("Y-m-d");
+  $datetime=date("Y-m-d");
   $time=date("H:i:s");
 
-   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$date','$time')");
-
-
-   //กำหนดค่าของตัวแปร
-  $replyText["type"] = "text";
-
-
-  if($text=="สวัสดี")
-  {
-    $replyText["text"] = "สวัสดีค่ะ";
-  }else{
-    $replyText["text"] = "พูดใหม่อีกครั้งค่ะ";
-  }
+   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `datetime`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime')");
 
 
 
+$replyText=[
+   "type" => "image",
+    "originalContentUrl" => "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/001.jpg",
+    "previewImageUrl" => "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/001.jpg"
 
-  //ส่งข้อมูลกลับไปหาไลน์
-      $replyText1= [ 
-       "type"=> "image",
-    "originalContentUrl"=> "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
-    "previewImageUrl"=> "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
-}
-    ];
-
+];
 
 
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
-  $replyJson["messages"][0] = $replyText1;
+  $replyJson["messages"][0] = $replyText;
+  
+
    
   
   $encodeJson = json_encode($replyJson);
