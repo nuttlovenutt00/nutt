@@ -47,7 +47,7 @@
 $replyText=[
 "type"=> "template",
   "altText"=> "this is a buttons template",
-  "template"=>[
+  "template"=> [
     "type"=> "buttons",
     "actions"=> [
       [
@@ -61,7 +61,6 @@ $replyText=[
         "text"=> "Action 2"
       ]
     ],
-    "thumbnailImageUrl"=> "SPECIFY_YOUR_IMAGE_URL",
     "title"=> "Title",
     "text"=> "Text"
   ]
