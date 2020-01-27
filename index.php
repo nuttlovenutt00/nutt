@@ -45,11 +45,26 @@
 
 
 $replyText=[
-  "type"=> "image",
-    "originalContentUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
-    "previewImageUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
-
-
+"type"=> "template",
+  "altText"=> "this is a buttons template",
+  "template"=>[
+    "type": "buttons",
+    "actions"=> [
+      [
+        "type"=> "message",
+        "label"=> "Action 1",
+        "text"=> "Action 1"
+      ],
+      [
+        "type"=> "message",
+        "label"=> "Action 2",
+        "text"=> "Action 2"
+      ]
+    ],
+    "thumbnailImageUrl"=> "SPECIFY_YOUR_IMAGE_URL",
+    "title"=> "Title",
+    "text"=> "Text"
+  ]
 ];
 
 
