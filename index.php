@@ -72,6 +72,106 @@ $replyText=[
         [
           "type"=> "text",
           "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
         ]
       ]
     ],
@@ -79,17 +179,17 @@ $replyText=[
       "type"=>"box",
       "layout"=> "horizontal",
      "contents"=> [
-        {
+        [
           "type"=> "button",
-          "action"=> {
+          "action"=> [
             "type"=> "message",
             "label"=> "ยืนยันการสั่ง",
             "text"=> "ยืนยันการสั่ง"
-          },
+          ],
           "color"=> "#94796D",
           "height"=>"sm",
           "style"=> "primary"
-        }
+        ]
       ]
     ]
   ]
