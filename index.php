@@ -16,7 +16,7 @@
   $dbname = "Z01XVlWSlA";
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
-  if ($mysql->connect_error)[
+  if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
   }
@@ -49,6 +49,7 @@ $replyText=[
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
+    "direction"=> "ltr",
     "body"=> [
       "type"=> "box",
       "layout"=> "vertical",
@@ -56,43 +57,40 @@ $replyText=[
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
-          "size"=> "lg",
-          "align"=> "start",
+          "flex"=> 0,
+          "size"=> "md",
+          "align"=> "center",
           "weight"=> "bold",
           "color"=> "#94796D"
+        ]
+      ]
+    ],
+    "body"=>[
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
         ],
         [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "margin"=> "lg",
-          "contents"=> [
-            [
-              "type"=> "text",
-              "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P2 มอคค่า(ร้อน) จำนวน 3 แก้ว"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
-            ]
-          ]
+          "type"=> "text",
+          "text"=> "P2 มอคค่า(ร้อน) จำนวน  แก้ว"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
         ]
       ]
     ],
     "footer"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "flex"=> 0,
-      "spacing"=> "sm",
-      "contents"=> [
+      "type"=>"box",
+      "layout"=> "horizontal",
+     "contents"=> [
         [
           "type"=> "button",
           "action"=> [
@@ -101,7 +99,7 @@ $replyText=[
             "text"=> "ยืนยันการสั่ง"
           ],
           "color"=> "#94796D",
-          "height"=> "sm",
+          "height"=>"sm",
           "style"=> "primary"
         ]
       ]
