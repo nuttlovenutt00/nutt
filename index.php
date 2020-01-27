@@ -49,89 +49,75 @@ $replyText=[
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
-    "body"=> [
+    "direction"=> "ltr",
+    "header"=> [
       "type"=> "box",
       "layout"=> "vertical",
       "contents"=> [
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
-          "size"=> "lg",
-          "align"=> "start",
-          "weight"=> "bold",
-          "color"=> "#C8690E"
+          "align"=> "center"
+        ]
+      ]
+    ],
+    "body"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "Textพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเพะเ"
         ],
         [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "margin"=> "lg",
-          "contents"=> [
-            [
-              "type"=> "text",
-              "text"=> "ดแไำดแไำดไำดไำดไำดไอดกเปหกดกหดหกดหกดหกหกดหกดดหก"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ]
-          ]
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
         ]
       ]
     ],
     "footer"=> [
       "type"=> "box",
-      "layout"=> "vertical",
-      "flex"=> 0,
-      "spacing"=> "sm",
+      "layout"=> "horizontal",
       "contents"=> [
         [
           "type"=> "button",
@@ -139,9 +125,7 @@ $replyText=[
             "type"=> "uri",
             "label"=> "ยืนยันการสั่ง",
             "uri"=> "https=>//linecorp.com"
-          ],
-          "height"=> "sm",
-          "style"=> "link"
+          ]
         ]
       ]
     ]
