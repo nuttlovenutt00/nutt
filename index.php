@@ -57,12 +57,42 @@
 
 
 
- $a=[
-  "type"=> "text",
-  "text"=> "this is a carousel template"
-  
+  //ส่งข้อมูลกลับไปหาไลน์
+      $replyText1= [ 
+      "type"=> "template",
+      "altText"=>  "this is a carousel template",
+      "template"=>  [
+          "type"=>  "carousel",
+          "columns"=>  [
+              "thumbnailImageUrl"=>  "",
+              "imageBackgroundColor"=>  "#FFFFFF",
+              "title"=>  " บาท",
+              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
+             
+              "actions"=>  [
+                  [
+                      "type"=>  "message",
+                      "label"=>  " บาท",
+                      "text"=>  " บาท"
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  " บาท",
+                      "text"=>  " บาท"
+                  ],
+                  [
+                      "type"=>  "message",
+                      "label"=>  " บาท",
+                      "text"=>  " บาท"
+                  ]
+              ]
+            ]
 
- ];
+          ,
+          "imageAspectRatio"=>  "rectangle",
+          "imageSize"=>  "cover"
+        ]
+    ];
 
 
 
@@ -70,7 +100,7 @@
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
-  $replyJson["messages"][0] = $a;
+  $replyJson["messages"][0] = $replyText1;
    
   
   $encodeJson = json_encode($replyJson);
