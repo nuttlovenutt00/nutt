@@ -56,8 +56,12 @@ $replyText=[
       "contents"=> [
         [
           "type"=> "text",
-          "text"=> "Header",
-          "align"=> "center"
+          "text"=> "รายการของฉัน",
+          "flex"=> 0,
+          "size"=> "lg",
+          "align"=> "center",
+          "weight"=> "bold",
+          "color"=> "#B65022"
         ]
       ]
     ],
@@ -68,21 +72,124 @@ $replyText=[
         [
           "type"=> "text",
           "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text"
         ]
       ]
     ],
     "footer"=> [
       "type"=>"box",
       "layout"=> "horizontal",
-      "contents"=> [
-        [
+     "contents"=> [
+        {
           "type"=> "button",
-          "action"=> [
-            "type"=> "uri",
-            "label"=> "Button",
-            "uri"=> "https://linecorp.com"
-          ]
-        ]
+          "action"=> {
+            "type"=> "message",
+            "label"=> "ยืนยันการสั่ง",
+            "text"=> "ยืนยันการสั่ง"
+          },
+          "color"=> "#94796D",
+          "height"=>"sm",
+          "style"=> "primary"
+        }
       ]
     ]
   ]
