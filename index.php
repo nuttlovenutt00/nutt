@@ -58,59 +58,44 @@
 
 
  $a=[
-      "type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "bubble",
-    "body"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "รายการของฉัน",
-          "size"=> "lg",
-          "align"=> "start",
-          "weight"=> "bold",
-          "color"=> "#C8690E"
-        ],
-        [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "margin"=> "lg",
-          "contents"=> [
-            [
-              "type"=> "text",
-              "text"=> "5555"
-             ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "Text"
-            ]
+  "type"=> "template",
+  "altText"=> "this is a carousel template",
+  "template"=> [
+    "type"=> "carousel",
+    "actions"=> [],
+    "columns"=> [
+      [
+        "thumbnailImageUrl"=> "SPECIFY_YOUR_IMAGE_URL",
+        "title"=> "Title",
+        "text"=> "Text",
+        "actions"=> [
+          [
+            "type"=> "message",
+            "label"=> "Action 1",
+            "text"=> "Action 1"
+          ],
+          [
+            "type"=> "message",
+            "label"=> "Action 2",
+            "text"=> "Action 2"
           ]
         ]
-      ]
-    ],
-    "footer"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "flex"=> 0,
-      "spacing"=> "sm",
-      "contents"=> [
-        [
-          "type"=> "button",
-          "action"=> [
-            "type"=> "uri",
-            "label"=> "ยืนยันการสั่ง",
-            "uri"=> "https=>//linecorp.com"
+      ],
+      [
+        "thumbnailImageUrl"=> "SPECIFY_YOUR_IMAGE_URL",
+        "title"=> "Title",
+        "text"=> "Text",
+        "actions"=> [
+          [
+            "type"=> "message",
+            "label"=> "Action 1",
+            "text"=> "Action 1"
           ],
-          "height"=> "sm",
-          "style"=> "link"
+          [
+            "type"=> "message",
+            "label"=> "Action 2",
+            "text"=> "Action 2"
+          ]
         ]
       ]
     ]
