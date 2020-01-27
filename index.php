@@ -59,39 +59,10 @@
 
   //ส่งข้อมูลกลับไปหาไลน์
       $replyText1= [ 
-      "type"=> "template",
-      "altText"=>  "this is a carousel template",
-      "template"=>  [
-          "type"=>  "carousel",
-          "columns"=>  [
-              "thumbnailImageUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
-              "imageBackgroundColor"=>  "#FFFFFF",
-              "title"=>  " บาท",
-              "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
-             
-              "actions"=>  [
-                  [
-                      "type"=>  "message",
-                      "label"=>  " บาท",
-                      "text"=>  " บาท"
-                  ],
-                  [
-                      "type"=>  "message",
-                      "label"=>  " บาท",
-                      "text"=>  " บาท"
-                  ],
-                  [
-                      "type"=>  "message",
-                      "label"=>  " บาท",
-                      "text"=>  " บาท"
-                  ]
-              ]
-            ]
-
-          ,
-          "imageAspectRatio"=>  "rectangle",
-          "imageSize"=>  "cover"
-        ]
+       "type": "image",
+    "originalContentUrl": "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
+    "previewImageUrl": "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
+}
     ];
 
 
