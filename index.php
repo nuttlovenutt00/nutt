@@ -48,7 +48,7 @@ $replyText=[
 "type"=> "template",
   "altText"=> "this is a buttons template",
   "template"=>[
-    "type": "buttons",
+    "type"=> "buttons",
     "actions"=> [
       [
         "type"=> "message",
