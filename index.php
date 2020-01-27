@@ -59,9 +59,9 @@
 
   //ส่งข้อมูลกลับไปหาไลน์
       $replyText1= [ 
-       "type": "image",
-    "originalContentUrl": "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
-    "previewImageUrl": "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
+       "type"=> "image",
+    "originalContentUrl"=> "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
+    "previewImageUrl"=> "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg"
 }
     ];
 
