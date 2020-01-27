@@ -44,20 +44,19 @@
 
 
 
-$replyText=[
- "type"=> "flex",
+$replyText=[ "type": "flex",
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
     "body"=> [
       "type"=> "box",
       "layout"=> "vertical",
-      "spacing"=> "md",
       "contents"=> [
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
           "size"=> "lg",
+          "align"=> "start",
           "weight"=> "bold",
           "color"=> "#905C44"
         ],
@@ -65,46 +64,34 @@ $replyText=[
           "type"=> "box",
           "layout"=> "vertical",
           "spacing"=> "sm",
+          "margin"=> "lg",
           "contents"=> [
             [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "P1:เอสเพรชโซ่(ร้อน)",
-                  "align"=> "start",
-                  "weight"=> "bold"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "2 แก้ว",
-                  "size"=> "sm",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#905C44"
-                ]
-              ]
+              "type"=> "text",
+              "text"=> "P1:เอสเพรชโซ่(ร้อน) 1 แก้ว",
+              "weight"=> "bold",
+              "color"=> "#000000"
             ],
             [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "P2:มอคค่า(ร้อน)",
-                  "margin"=> "sm",
-                  "weight"=> "bold"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "1 แก้ว",
-                  "size"=>"sm",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#905C44"
-                ]
-              ]
+              "type"=> "text",
+              "text"=> "P2:มอคค่า(ร้อน)  3 แก้ว",
+              "weight"=> "bold",
+              "color"=> "#000000"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "P3:เอสเพรชโซ่(ปั่น)  1 แก้ว",
+              "weight"=> "bold",
+              "color"=> "#000000"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "P4:ขนมเค้กช็อกโกแล็ต  2 ชิ้น",
+              "weight"=> "bold",
+              "color"=> "#000000"
+            ],
+            [
+              "type"=> "spacer"
             ]
           ]
         ],
@@ -112,8 +99,7 @@ $replyText=[
           "type"=> "text",
           "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า+0 เช่น P1+0",
           "size"=> "xs",
-          "color"=> "#000000",
-          "wrap"=> true
+          "color"=> "#000000"
         ],
         [
           "type"=> "text",
@@ -126,7 +112,8 @@ $replyText=[
     "footer"=> [
       "type"=> "box",
       "layout"=> "vertical",
-      "contents"=>[
+      "spacing"=> "sm",
+      "contents"=> [
         [
           "type"=> "button",
           "action"=> [
