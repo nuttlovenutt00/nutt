@@ -64,7 +64,7 @@
       "template"=>  [
           "type"=>  "carousel",
           "columns"=>  [
-              "thumbnailImageUrl"=>  "",
+              "thumbnailImageUrl"=>  "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
               "imageBackgroundColor"=>  "#FFFFFF",
               "title"=>  " บาท",
               "text"=>  "กรุณาเลือกประเภทของกาแฟของท่าน ตามเมนูข้างล่างค่ะ",
