@@ -45,24 +45,46 @@
 
 
 $replyText=[
-"type"=> "template",
-  "altText"=> "this is a buttons template",
-  "template"=> [
-    "type"=> "buttons",
-    "actions"=> [
-      [
-        "type"=> "message",
-        "label"=> "Action 1",
-        "text"=> "Action 1"
-      ],
-      [
-        "type"=> "message",
-        "label"=> "Action 2",
-        "text"=> "Action 2"
+"type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "bubble",
+    "direction"=> "ltr",
+    "header"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "Header",
+          "align"=> "center"
+        ]
       ]
     ],
-    "title"=> "Title",
-    "text"=> "Text"
+    "body"=>[
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "Text"
+        ]
+      ]
+    ],
+    "footer"=> [
+      "type"=>"box",
+      "layout"=> "horizontal",
+      "contents"=> [
+        [
+          "type"=> "button",
+          "action"=> [
+            "type"=> "uri",
+            "label"=> "Button",
+            "uri"=> "https://linecorp.com"
+          ]
+        ]
+      ]
+    ]
   ]
 ];
 
