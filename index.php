@@ -52,54 +52,94 @@ $replyText=[
     "body"=> [
       "type"=> "box",
       "layout"=> "vertical",
+      "spacing"=> "md",
+      "action"=> [
+        "type"=> "uri",
+        "label"=> "Action",
+        "uri"=> "https://linecorp.com"
+      ],
       "contents"=> [
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
           "size"=> "lg",
-          "align"=> "start",
           "weight"=> "bold",
-          "color"=> "#94796D"
+          "color"=> "#905C44"
         ],
         [
           "type"=> "box",
           "layout"=> "vertical",
           "spacing"=> "sm",
-          "margin"=> "lg",
           "contents"=> [
             [
-              "type"=> "text",
-              "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "P1:เอสเพรชโซ่(ร้อน)",
+                  "align"=> "start",
+                  "weight"=> "bold"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "2 แก้ว",
+                  "size"=> "sm",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#905C44"
+                ]
+              ]
             ],
             [
-              "type"=> "text",
-              "text"=> "P2 มอคค่า(ร้อน) จำนวน 3 แก้ว"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "P2:มอคค่า(ร้อน)",
+                  "margin"=> "sm",
+                  "weight"=> "bold"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "1 แก้ว",
+                  "size"=>"sm",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#905C44"
+                ]
+              ]
             ]
           ]
+        ],
+        [
+          "type"=> "text",
+          "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า+0 เช่น P1+0",
+          "size"=> "xs",
+          "color"=> "#000000",
+          "wrap"=> true
+        ],
+        [
+          "type"=> "text",
+          "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า+จำนวนที่ต้องการ",
+          "size"=> "xs",
+          "color"=> "#000000"
         ]
       ]
     ],
     "footer"=> [
       "type"=> "box",
       "layout"=> "vertical",
-      "spacing"=> "sm",
-      "contents"=> [
+      "contents"=>[
         [
           "type"=> "button",
           "action"=> [
-            "type"=> "message",
+            "type"=> "uri",
             "label"=> "ยืนยันการสั่ง",
-            "text"=> "ยืนยันการสั่ง"
+            "uri"=> "https://linecorp.com"
           ],
-          "color"=> "#94796D",
+          "color"=> "#905C44",
           "height"=> "sm",
           "style"=> "primary"
         ]
