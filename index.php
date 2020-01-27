@@ -17,7 +17,7 @@
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
-  $errorcode = $mysql->connect_error;
+    $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
   }
   function sendMessage($replyJson, $sendInfo){
@@ -57,7 +57,110 @@
 
 
 
+ $a=[
+      "type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "bubble",
+    "body"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "รายการของฉัน",
+          "size"=> "lg",
+          "align"=> "start",
+          "weight"=> "bold",
+          "color"=> "#C8690E"
+        ],
+        [
+          "type"=> "box",
+          "layout"=> "vertical",
+          "spacing"=> "sm",
+          "margin"=> "lg",
+          "contents"=> [
+            [
+              "type"=> "text",
+              "text"=> "ดแไำดแไำดไำดไำดไำดไอดกเปหกดกหดหกดหกดหกหกดหกดดหก"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ],
+            [
+              "type"=> "text",
+              "text"=> "Text"
+            ]
+          ]
+        ]
+      ]
+    ],
+    "footer"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "flex"=> 0,
+      "spacing"=> "sm",
+      "contents"=> [
+        [
+          "type"=> "button",
+          "action"=> [
+            "type"=> "uri",
+            "label"=> "CALL",
+            "uri"=> "https=>//linecorp.com"
+          ],
+          "height"=> "sm",
+          "style"=> "link"
+        ]
+      ]
+    ]
+  ]
 
+ ];
 
 
 
@@ -66,7 +169,7 @@
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
-
+  $replyJson["messages"][1] = a;
    
   
   $encodeJson = json_encode($replyJson);
