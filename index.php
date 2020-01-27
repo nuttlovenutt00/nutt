@@ -58,10 +58,10 @@ $replyText=[
           "type"=> "text",
           "text"=> "รายการของฉัน",
           "flex"=> 0,
-          "size"=> "lg",
+          "size"=> "md",
           "align"=> "center",
           "weight"=> "bold",
-          "color"=> "#B65022"
+          "color"=> "#94796D"
         ]
       ]
     ],
@@ -71,107 +71,19 @@ $replyText=[
       "contents"=> [
         [
           "type"=> "text",
-          "text"=> "Text"
+          "text"=> "P1 เอสเพรชโซ่(ร้อน) จำนวน 1 แก้ว"
         ],
         [
           "type"=> "text",
-          "text"=> "Text"
+          "text"=> "P2 มอคค่า(ร้อน) จำนวน 3 แก้ว"
         ],
         [
           "type"=> "text",
-          "text"=> "Text"
+          "text"=> "P3 เอสเพรชโซ่(ปั่น) จำนวน 1 แก้ว"
         ],
         [
           "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text"
+          "text"=> "P4 ขนมเค้กช็อกโกแล็ต จำนวน 2 ชิ้น"
         ]
       ]
     ],
