@@ -53,11 +53,6 @@ $replyText=[
       "type"=> "box",
       "layout"=> "vertical",
       "spacing"=> "md",
-      "action"=> [
-        "type"=> "uri",
-        "label"=> "Action",
-        "uri"=> "https://linecorp.com"
-      ],
       "contents"=> [
         [
           "type"=> "text",
@@ -135,9 +130,9 @@ $replyText=[
         [
           "type"=> "button",
           "action"=> [
-            "type"=> "uri",
+            "type"=> "message",
             "label"=> "ยืนยันการสั่ง",
-            "uri"=> "https://linecorp.com"
+            "text"=> "ยืนยันการสั่ง"
           ],
           "color"=> "#905C44",
           "height"=> "sm",
