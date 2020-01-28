@@ -57,37 +57,37 @@
 
     $ord=[
           "type"=> "template",
-          "altText"=> "this is a image carousel template",
-          "template"=> [
-              "type"=> "image_carousel",
-              "columns"=> [
-                 
-                  [
-                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
-                    "action"=> [
-                      "type"=> "message",
-                      "label"=> "Code : P102",
-                      "text"=> " "
-                    ]
-                  ],
-                  [
-                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
-                    "action"=> [
-                     "type"=> "message",
-                      "label"=> "Code : P103",
-                      "text"=> " "
-                    ]
-                  ],
-                  [
-                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/4.jpg",
-                    "action"=> [
-                      "type"=> "message",
-                      "label"=> "Code : P104",
-                       "text"=> " "
-                    ]
-                  ]
-              ]
-          ]  
+  "altText"=> "this is a carousel template",
+  "template"=> [
+    "type"=> "carousel",
+    "actions"=> [],
+    "columns"=> [
+      [
+        "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
+        "title"=> "มอคค่า",
+        "text"=> "วิธีการสั่ง P101@จำนวนที่ต้องการ",
+        "actions"=> [
+          [
+            "type"=> "message",
+            "label"=> "Code : P100",
+            "text"=> " "
+          ]
+        ]
+      ],
+      [
+        "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
+        "title"=> "มอคค่า",
+        "text"=> "วิธีการสั่ง P101@จำนวนที่ต้องการ",
+        "actions"=> [
+          [
+            "type"=> "message",
+            "label"=> "Code : P101",
+            "text"=> " "
+          ]
+        ]
+      ]
+    ]
+  ]
         ];
         $replyJson["messages"][0] = $ord;
   }
