@@ -73,27 +73,27 @@ $order=[
             [
               "type"=> "text",
               "text"=> "P1:เอสเพรชโซ่(ร้อน) x[1]",
-              "size": "sm",
+              "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P2:มอคค่า(ร้อน) x[3] แก้ว",
-              "size": "sm",
+              "text"=> "P2:มอคค่า(ร้อน) x[3]",
+              "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P3:เอสเพรชโซ่(ปั่น) x[1] แก้ว",
-              "size": "sm",
+              "text"=> "P3:เอสเพรชโซ่(ปั่น) x[1]",
+              "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P4:ขนมเค้กช็อกโกแล็ต x[2] ชิ้น",
+              "text"=> "P4:ขนมเค้กช็อกโกแล็ต x[2]",
               "size": "sm",
               "weight"=> "bold",
               "color"=> "#000000"
