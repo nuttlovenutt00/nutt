@@ -57,37 +57,26 @@
 
     $ord=[
           "type"=> "template",
-  "altText"=> "this is a carousel template",
-  "template"=> [
-    "type"=> "carousel",
-    "actions"=> [],
-    "columns"=> [
-      [
-        "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
-        "title"=> "มอคค่า",
-        "text"=> "วิธีการสั่ง P101@จำนวนที่ต้องการ",
-        "actions"=> [
-          [
-            "type"=> "message",
-            "label"=> "Code : P100",
-            "text"=> " "
+          "altText"=> "this is a carousel template",
+          "template"=> [
+            "type"=> "carousel",
+            "actions"=> [],
+            "columns"=> [
+              [
+                "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
+                "title"=> "มอคค่า",
+                "text"=> "วิธีการสั่ง พิมพ์ P101@จำนวนที่ต้องการ",
+                "actions"=> [
+                  [
+                    "type"=> "message",
+                    "label"=> "Code : P100",
+                    "text"=> " "
+                  ]
+                ]
+              ],
+              
+            ]
           ]
-        ]
-      ],
-      [
-        "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
-        "title"=> "มอคค่า",
-        "text"=> "วิธีการสั่ง P101@จำนวนที่ต้องการ",
-        "actions"=> [
-          [
-            "type"=> "message",
-            "label"=> "Code : P101",
-            "text"=> " "
-          ]
-        ]
-      ]
-    ]
-  ]
         ];
         $replyJson["messages"][0] = $ord;
   }
