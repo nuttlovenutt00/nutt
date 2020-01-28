@@ -56,7 +56,7 @@ $order=[
         [
           "type"=> "text",
           "text"=> "รายการของฉัน",
-          "size"=> "lg",
+          "size"=> "sm",
           "align"=> "start",
           "weight"=> "bold",
           "color"=> "#6E422D"
@@ -72,28 +72,28 @@ $order=[
           "contents"=> [
             [
               "type"=> "text",
-              "text"=> "P1:เอสเพรชโซ่(ร้อน) x[1]",
+              "text"=> "P1:เอสเพรชโซ่(ร้อน) x1",
               "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P2:มอคค่า(ร้อน) x[3]",
+              "text"=> "P2:มอคค่า(ร้อน) x3",
               "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P3:เอสเพรชโซ่(ปั่น) x[1]",
+              "text"=> "P3:เอสเพรชโซ่(ปั่น) x1",
               "size"=> "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
             [
               "type"=> "text",
-              "text"=> "P4:ขนมเค้กช็อกโกแล็ต x[2]",
+              "text"=> "P4:ขนมเค้กช็อกโกแล็ต x2",
               "size"=>  "sm",
               "weight"=> "bold",
               "color"=> "#000000"
@@ -115,13 +115,13 @@ $order=[
         [
           "type"=> "text",
           "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า+0 เช่น P1+0",
-          "size"=> "xs",
+          "size"=> "xxs",
           "color"=> "#000000"
         ],
         [
           "type"=> "text",
           "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า+จำนวนที่ต้องการ",
-          "size"=> "xs",
+          "size"=> "xxs",
           "color"=> "#000000"
         ]
       ]
@@ -176,14 +176,14 @@ $re1=[
         [
           "type"=> "text",
           "text"=> "#ORD202001-1",
-          "size"=> "sm",
+          "size"=> "md",
           "weight"=> "bold",
           "color"=> "#000000"
         ],
         [
           "type"=> "text",
           "text"=> "2020-01-28  10:18",
-          "size"=> "xs",
+          "size"=> "xxs",
           "color"=> "#929292"
         ],
         [
