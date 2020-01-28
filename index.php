@@ -220,7 +220,7 @@ $re1=[
   $replyJson["replyToken"] = $replyToken;
 
   if($text=="รายการของฉัน"){
-    $replyJson["messages"][0] = $replyText;
+    $replyJson["messages"][0] = $order;
   }elseif($text=="ยืนยันการสั่ง"){
     $replyJson["messages"][0] = $re1;
   }elseif($text=="แสดงใบเสร็จรับเงินเพิ่มเติม"){
