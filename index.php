@@ -497,16 +497,28 @@ $ord=[
       "type"=> "image_carousel",
       "columns"=> [
           [
-            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg"
-            
+            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
+             "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
           ],
           [
-            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2018/05/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88.jpg"
-            
+           "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
+             "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
           ],
           [
-            "imageUrl"=> "https://www.promotiontoyou.com/wp-content/uploads/2019/06/promotion-kfc-Tuesday-Special-Set-199-Baht-Jun-July-2019.jpg"
-           
+           "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
+             "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
           ]
       ]
   ]
