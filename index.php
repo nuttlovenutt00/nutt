@@ -62,6 +62,9 @@ $order=[
           "color"=> "#905C44"
         ],
         [
+          "type"=> "separator"
+        ],
+        [
           "type"=> "box",
           "layout"=> "vertical",
           "spacing"=> "sm",
@@ -95,6 +98,15 @@ $order=[
               "type"=> "spacer"
             ]
           ]
+        ],
+        [
+          "type"=> "separator"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "size"=> "xxs",
+          "color"=>"#FFFFFF"
         ],
         [
           "type"=> "text",
