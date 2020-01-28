@@ -497,7 +497,7 @@ $ord=[
       "type"=> "image_carousel",
       "columns"=> [
           [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/1.jpg",
             "action"=> [
               "type"=> "postback",
               "label"=> "Buy",
@@ -505,11 +505,27 @@ $ord=[
             ]
           ],
           [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
             "action"=> [
               "type"=> "message",
               "label"=> "Yes",
               "text"=> "yes"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
+            "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/4.jpg",
+            "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
             ]
           ],
           [
