@@ -54,10 +54,10 @@
 
 
   if($text=="เมนูแนะนำ"){
-    Hotmenu(); 
+    Hotmenu("11111"); 
   }
 
-  function Hotmenu()//ฟังก์ชั่น เมนูแนะนำ
+  function Hotmenu(asd)//ฟังก์ชั่น เมนูแนะนำ
   {
     $replyText["type"] = "text";
     $replyText["text"] = "Hotmenu";
