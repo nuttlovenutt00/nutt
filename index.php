@@ -60,7 +60,7 @@
         left join Product as b  on a.PHPId = b.PId
         where PHStatus= 'เปิดใช้งาน'";
     $result_ProHot = $mysql->query($sql_ProHot);
-    if( $result_ProHot -> $num_rows() > 0)
+     if( $result_ProHot->num_rows > 0)
     {
         while($row_ProHot = $result_ProHot->fetch_assoc()) 
           {
