@@ -94,7 +94,7 @@ $order=[
             [
               "type"=> "text",
               "text"=> "P4:ขนมเค้กช็อกโกแล็ต x[2]",
-              "size": "sm",
+              "size"=>  "sm",
               "weight"=> "bold",
               "color"=> "#000000"
             ],
