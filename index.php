@@ -242,7 +242,7 @@ $re2=[
         [
           "type"=> "text",
           "text"=> "#ORD202001-1",
-          "size"=> "lg",
+          "size"=> "xl",
           "weight"=> "bold",
           "color"=> "#000000"
         ],
