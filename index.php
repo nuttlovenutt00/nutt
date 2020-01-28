@@ -59,7 +59,7 @@ $order=[
           "size"=> "lg",
           "align"=> "start",
           "weight"=> "bold",
-          "color"=> "#905C44"
+          "color"=> "#6E422D"
         ],
         [
           "type"=> "separator"
@@ -138,7 +138,7 @@ $order=[
             "label"=> "ยืนยันการสั่ง",
             "text"=> "ยืนยันการสั่ง"
           ],
-          "color"=> "#905C44",
+          "color"=> "#6E422D",
           "height"=> "sm",
           "style"=> "primary"
         ]
