@@ -499,41 +499,41 @@ $ord=[
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/1.jpg",
             "action"=> [
-              "type"=> "postback",
-              "label"=> "Buy",
-              "data"=> "action=buy&itemid=111"
+              "type"=> "message",
+              "label"=> "Code : P101",
+              "text"=> "พิมพ์รหัส P101@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
             ]
           ],
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
             "action"=> [
               "type"=> "message",
-              "label"=> "Yes",
-              "text"=> "yes"
+              "label"=> "Code : P102",
+              "text"=> "พิมพ์รหัส P102@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
             ]
           ],
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
+             "type"=> "message",
+              "label"=> "Code : P103",
+              "text"=> "พิมพ์รหัส P103@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
             ]
           ],
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/4.jpg",
             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
+              "type"=> "message",
+              "label"=> "Code : P104",
+               "text"=> "พิมพ์รหัส P104@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
             ]
           ],
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
+              "type"=> "message",
+              "label"=> "Code : P105",
+               "text"=> "พิมพ์รหัส P105@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
             ]
           ]
       ]
