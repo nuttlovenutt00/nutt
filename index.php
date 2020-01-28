@@ -54,16 +54,12 @@
 
 
   if($text=="เมนูแนะนำ"){
-    Hotmenu(); 
-  }
-
-  function Hotmenu()//ฟังก์ชั่น เมนูแนะนำ
-  {
     $replyText["type"] = "text";
     $replyText["text"] = "Hotmenu";
     $replyJson["messages"][0] = $replyText;
   }
-  
+
+
   
 
    
