@@ -490,6 +490,29 @@ $re2=[
 ];
 
 
+$ord=[
+"type"=> "template",
+  "altText"=> "this is a image carousel template",
+  "template"=> [
+      "type"=> "image_carousel",
+      "columns"=> [
+          [
+            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg"
+            
+          ],
+          [
+            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2018/05/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88.jpg"
+            
+          ],
+          [
+            "imageUrl"=> "https://www.promotiontoyou.com/wp-content/uploads/2019/06/promotion-kfc-Tuesday-Special-Set-199-Baht-Jun-July-2019.jpg"
+           
+          ]
+      ]
+  ]
+];
+
+
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
@@ -501,6 +524,8 @@ $re2=[
     $replyJson["messages"][0] = $re1;
   }elseif($text=="แสดงใบเสร็จรับเงินเพิ่มเติม"){
     $replyJson["messages"][0] = $re2;
+  }elseif($text=="เมนูแนะนำ"){
+    $replyJson["messages"][0] = $ord;
   }
   
   
