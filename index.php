@@ -201,12 +201,276 @@ $re1=[
           "action"=> [
             "type"=> "message",
             "label"=> "ดูเพิ่มเติม",
-            "text"=> "ดูรายละเอียดเพิ่มเติม"
+            "text"=> "แสดงใบเสร็จรับเงินเพิ่มเติม"
           ],
           "color"=> "#6E422D",
           "height"=> "sm",
           "style"=> "primary"
        ]
+      ]
+    ]
+  ]
+
+];
+
+$re2=[
+  "type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "bubble",
+    "direction"=> "ltr",
+    "header"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "ใบเสร็จรับเงิน",
+          "size"=> "sm",
+          "weight"=> "bold",
+          "color"=> "#6E422D"
+        ],
+        [
+          "type"=> "separator"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "size"=> "xs",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "#ORD202001-1",
+          "size"=> "lg",
+          "weight"=> "bold",
+          "color"=> "#000000"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "2020-01-28  10=>18",
+          "size"=> "xs"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "size"=> "xxs",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "separator"
+        ]
+      ]
+    ],
+    "body"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "box",
+          "layout"=> "vertical",
+          "spacing"=> "sm",
+          "contents"=> [
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "spacing"=> "sm",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "P1=>เอสเพรชโซ่(ร้อน)",
+                  "margin"=> "xxl",
+                  "size"=> "xs",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "45.00 (2)",
+                  "margin"=> "xs",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#6E422D"
+                ]
+              ]
+            ],
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "P2=>มอคค่า(ร้อน)",
+                  "size"=> "xs",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "45.00 (1)",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#905C44"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "type"=> "text",
+          "text"=> "text",
+          "size"=> "xs",
+          "color"=> "#FFFDFD"
+        ],
+        [
+          "type"=> "separator"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "box",
+          "layout"=> "vertical",
+          "spacing"=> "sm",
+          "contents"=> [
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "spacing"=> "sm",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "จำนวน",
+                  "margin"=> "xxl",
+                  "size"=> "xs",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "3",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#6E422D"
+                ]
+              ]
+            ],
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "spacing"=> "sm",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "ราคาสุทธิ",
+                  "margin"=> "xxl",
+                  "size"=> "xs",
+                  "align"=> "start",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "135.00",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#6E422D"
+                ]
+              ]
+            ],
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "รับมา",
+                  "size"=> "xs",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "200.00",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#6E422D"
+                ]
+              ]
+            ],
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "เงินทอน",
+                  "size"=> "xs",
+                  "weight"=> "bold",
+                  "color"=> "#000000"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "65.00",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#6E422D"
+                ]
+              ]
+            ]
+          ]
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "size"=> "xxs",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "separator"
+        ]
+      ]
+    ],
+    "footer"=> [
+      "type"=> "box",
+      "layout"=> "horizontal",
+      "contents"=> [
+        [
+          "type"=> "box",
+          "layout"=> "vertical",
+          "contents"=> [
+            [
+              "type"=> "box",
+              "layout"=> "baseline",
+              "contents"=> [
+                [
+                  "type"=> "text",
+                  "text"=> "พนักงานขาย",
+                  "size"=> "xs",
+                  "align"=> "start",
+                  "weight"=> "bold",
+                  "color"=> "#7B7B7B"
+                ],
+                [
+                  "type"=> "text",
+                  "text"=> "นัทคำเดียว",
+                  "size"=> "xs",
+                  "align"=> "end",
+                  "weight"=> "bold",
+                  "color"=> "#7B7B7B"
+                ]
+              ]
+            ]
+          ]
+        ]
       ]
     ]
   ]
@@ -224,7 +488,7 @@ $re1=[
   }elseif($text=="ยืนยันการสั่ง"){
     $replyJson["messages"][0] = $re1;
   }elseif($text=="แสดงใบเสร็จรับเงินเพิ่มเติม"){
-    $replyJson["messages"][0] = $re1;
+    $replyJson["messages"][0] = $re2;
   }
   
   
