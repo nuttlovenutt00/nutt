@@ -54,16 +54,46 @@
 
 
   if($text=="เมนูแนะนำ"){
-    Hotmenu(); 
+
+    $ord=[
+          "type"=> "template",
+          "altText"=> "this is a image carousel template",
+          "template"=> [
+              "type"=> "image_carousel",
+              "columns"=> [
+                 
+                  [
+                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
+                    "action"=> [
+                      "type"=> "message",
+                      "label"=> "Code : P102",
+                      "text"=> " "
+                    ]
+                  ],
+                  [
+                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
+                    "action"=> [
+                     "type"=> "message",
+                      "label"=> "Code : P103",
+                      "text"=> " "
+                    ]
+                  ],
+                  [
+                    "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/4.jpg",
+                    "action"=> [
+                      "type"=> "message",
+                      "label"=> "Code : P104",
+                       "text"=> " "
+                    ]
+                  ]
+              ]
+          ]  
+        ];
+        $replyJson["messages"][0] = $ord;
   }
 
-  function Hotmenu()//ฟังก์ชั่น เมนูแนะนำ
-  {
-    $replyText["type"] = "text";
-    $replyText["text"] = "Hotmenu";
-    
-  }
-  $replyJson["messages"][0] = $replyText;
+  
+  
   
 
    
