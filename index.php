@@ -1,15 +1,14 @@
 <?php
 
-
+  //รับค่าจาก line
   $LINEData = file_get_contents('php://input');
   $jsonData = json_decode($LINEData,true);
   $replyToken = $jsonData["events"][0]["replyToken"];
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
-
   $timestamp = $jsonData["events"][0]["timestamp"];
 
-
+  //เชื่อมต่อฐานข้อมูล
   $servername = "37.59.55.185";
   $username = "Z01XVlWSlA";
   $password = "ogqvLgVKmd";
@@ -20,6 +19,13 @@
   $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
   }
+
+
+  //ฟังก์ชั่นการส่งข้อมูลไปหา Line
+  $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
+  $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
+  $replyJson["replyToken"] = $replyToken;
+
   function sendMessage($replyJson, $sendInfo){
           $ch = curl_init($sendInfo["URL"]);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -35,490 +41,34 @@
     return $result;
   }
 
-  //บันทึก Log ไฟล์
+
+  //ตั้งค่า วันที่ เวลา
   date_default_timezone_set("Asia/Bangkok");
   $datetime=date("Y-m-d");
   $time=date("H:i:s");
 
+   //บันทึก Log ไฟล์
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
 
 
-$order=[ 
-  "type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "bubble",
-    "body"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "รายการของฉัน",
-          "size"=> "sm",
-          "align"=> "start",
-          "weight"=> "bold",
-          "color"=> "#6E422D"
-        ],
-        [
-          "type"=> "separator"
-        ],
-        [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "margin"=> "lg",
-          "contents"=> [
-            [
-              "type"=> "text",
-              "text"=> "P1:เอสเพรชโซ่(ร้อน) x1",
-              "size"=> "sm",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P2:มอคค่า(ร้อน) x3",
-              "size"=> "sm",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P3:เอสเพรชโซ่(ปั่น) x1",
-              "size"=> "sm",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "P4:ขนมเค้กช็อกโกแล็ต x2",
-              "size"=>  "sm",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ],
-            [
-              "type"=> "spacer"
-            ]
-          ]
-        ],
-        [
-          "type"=> "separator"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "size"=> "xxs",
-          "color"=>"#FFFFFF"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า+0 เช่น P1+0",
-          "size"=> "xxs",
-          "color"=> "#000000"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า+จำนวนที่ต้องการ",
-          "size"=> "xxs",
-          "color"=> "#000000"
-        ]
-      ]
-    ],
-    "footer"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "spacing"=> "sm",
-      "contents"=> [
-        [
-          "type"=> "button",
-          "action"=> [
-            "type"=> "message",
-            "label"=> "ยืนยันการสั่ง",
-            "text"=> "ยืนยันการสั่ง"
-          ],
-          "color"=> "#6E422D",
-          "height"=> "sm",
-          "style"=> "primary"
-        ]
-      ]
-    ]
-  ]
-];
 
+  if($text=="เมนูแนะนำ"){
+    Hotmenu(); 
+  }else{
 
-$re1=[
-  "type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "bubble",
-    "direction"=> "ltr",
-    "header"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "ใบเสร็จรับเงิน",
-          "size"=> "sm",
-          "align"=> "start",
-          "weight"=> "bold",
-          "color"=> "#6E422D"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "฿ 500.00",
-          "size"=> "xxl",
-          "weight"=> "bold",
-          "color"=> "#000000"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "#ORD202001-1",
-          "size"=> "md",
-          "weight"=> "bold",
-          "color"=> "#000000"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "2020-01-28  10:18",
-          "size"=> "xxs",
-          "color"=> "#929292"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "การชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ",
-          "size"=> "xs",
-          "weight"=> "bold",
-          "color"=> "#000000"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "separator"
-        ]
-      ]
-    ],
-    "footer"=> [
-      "type"=> "box",
-      "layout"=> "horizontal",
-      "contents"=> [
-        [
-          "type"=> "button",
-          "action"=> [
-            "type"=> "message",
-            "label"=> "ดูเพิ่มเติม",
-            "text"=> "แสดงใบเสร็จรับเงินเพิ่มเติม"
-          ],
-          "color"=> "#6E422D",
-          "height"=> "sm",
-          "style"=> "primary"
-       ]
-      ]
-    ]
-  ]
+  }
 
-];
-
-$re2=["type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "bubble",
-    "direction"=> "ltr",
-    "header"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "text",
-          "text"=> "ใบเสร็จรับเงิน",
-          "size"=> "sm",
-          "weight"=> "bold",
-          "color"=> "#6E422D"
-        ],
-        [
-          "type"=> "separator"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "size"=> "xs",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "#ORD202001-1",
-          "size"=> "xl",
-          "weight"=> "bold",
-          "color"=> "#000000"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "2020-01-28  10:18",
-          "size"=> "xs"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "size"=> "xxs",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "separator"
-        ]
-      ]
-    ],
-    "body"=> [
-      "type"=> "box",
-      "layout"=> "vertical",
-      "contents"=> [
-        [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "contents"=> [
-            [
-              "type"=> "text",
-              "text"=> "เอสเพรชโซ่(ร้อน) [2] x ฿45.00",
-              "size"=> "xs",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ],
-            [
-              "type"=> "text",
-              "text"=> "เอสเพรชโซ่(ปั่น) [1] x ฿55.00",
-              "size"=> "xs",
-              "weight"=> "bold",
-              "color"=> "#000000"
-            ]
-          ]
-        ],
-        [
-          "type"=> "text",
-          "text"=> "text",
-          "size"=> "xs",
-          "color"=> "#FFFDFD"
-        ],
-        [
-          "type"=> "separator"
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "spacing"=> "sm",
-          "contents"=> [
-            [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "spacing"=> "sm",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "จำนวน",
-                  "margin"=> "xxl",
-                  "size"=> "xs",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "3",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
-            ],
-            [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "spacing"=> "sm",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "ราคาสุทธิ",
-                  "margin"=> "xxl",
-                  "size"=> "xs",
-                  "align"=> "start",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "135.00",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
-            ],
-            [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "รับมา",
-                  "size"=> "xs",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "200.00",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
-            ],
-            [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "เงินทอน",
-                  "size"=> "xs",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "65.00",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
-            ]
-          ]
-        ],
-        [
-          "type"=> "text",
-          "text"=> "Text",
-          "size"=> "xxs",
-          "color"=> "#FFFFFF"
-        ],
-        [
-          "type"=> "separator"
-        ]
-      ]
-    ],
-    "footer"=> [
-      "type"=> "box",
-      "layout"=> "horizontal",
-      "contents"=> [
-        [
-          "type"=> "box",
-          "layout"=> "vertical",
-          "contents"=> [
-            [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "พนักงานขาย",
-                  "size"=> "xs",
-                  "align"=> "start",
-                  "weight"=> "bold",
-                  "color"=> "#7B7B7B"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "นัทคำเดียว",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#7B7B7B"
-                ]
-              ]
-            ]
-          ]
-        ]
-      ]
-    ]
-  ]
-
-];
-
-
-$ord=[
-  "type"=> "template",
-  "altText"=> "this is a image carousel template",
-  "template"=> [
-      "type"=> "image_carousel",
-      "columns"=> [
-         
-          [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
-            "action"=> [
-              "type"=> "message",
-              "label"=> "Code : P102",
-              "text"=> " "
-            ]
-          ],
-          [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
-            "action"=> [
-             "type"=> "message",
-              "label"=> "Code : P103",
-              "text"=> " "
-            ]
-          ],
-          [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/4.jpg",
-            "action"=> [
-              "type"=> "message",
-              "label"=> "Code : P104",
-               "text"=> " "
-            ]
-          ]
-      ]
-  ]
-
-  
-];
-
-
-  
-  $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
-  $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
-  $replyJson["replyToken"] = $replyToken;
-
-  if($text=="รายการของฉัน"){
-    $replyJson["messages"][0] = $order;
-  }elseif($text=="ยืนยันการสั่ง"){
-    $replyJson["messages"][0] = $re1;
-  }elseif($text=="แสดงใบเสร็จรับเงินเพิ่มเติม"){
-    $replyJson["messages"][0] = $re2;
-  }elseif($text=="เมนูแนะนำ"){
-    $replyJson["messages"][0] = $ord;
+  function Hotmenu()
+  {
+    $replyJson["type"] = "text";
+    $replyJson["messages"][0] = "Hotmenu";
   }
   
   
 
    
-  
+  //ส่งค่าทั้งหมดกลับไปหา Line
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
