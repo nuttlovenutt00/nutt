@@ -312,7 +312,7 @@ $re2=[
                   "size"=> "xs",
                   "align"=> "end",
                   "weight"=> "bold",
-                  "color"=> "#905C44"
+                  "color"=> "#6E422D"
                 ]
               ]
             ]
