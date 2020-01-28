@@ -55,27 +55,41 @@
 
   if($text=="เมนูแนะนำ"){
 
+    $numl_ProHot=0;  
+    $sql_ProHot = "SELECT * FROM ProductHot as a
+        left join Product as b  on a.PHPId = b.PId
+        where PHStatus= 'เปิดใช้งาน'";
+    $result_ProHot = $mysql->query($sql_ProHot);
+    if( $result_ProHot -> $num_rows() > 0)
+    {
+        while($row_ProHot = $result_ProHot->fetch_assoc()) 
+          {
+
+            $ProHot[$numl_ProHot]=[
+
+                "thumbnailImageUrl"=> $row_ProHot["PHPic"],
+                "title"=> $row_ProHot["PName"],
+                "text"=> "วิธีการสั่ง พิมพ์ ".$row_ProHot["PId"]."@จำนวนที่ต้องการ",
+                "actions"=> [
+                  [
+                    "type"=> "message",
+                    "label"=> "Code : ".$row_ProHot["PId"],
+                    "text"=> " "
+                  ]
+                ]
+              
+            ];
+             $numl_ProHot++;
+          }
+    }
+
     $ord=[
           "type"=> "template",
           "altText"=> "this is a carousel template",
           "template"=> [
             "type"=> "carousel",
             "actions"=> [],
-            "columns"=> [
-              [
-                "thumbnailImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/3.jpg",
-                "title"=> "มอคค่า",
-                "text"=> "วิธีการสั่ง พิมพ์ P101@จำนวนที่ต้องการ",
-                "actions"=> [
-                  [
-                    "type"=> "message",
-                    "label"=> "Code : P100",
-                    "text"=> " "
-                  ]
-                ]
-              ],
-              
-            ]
+            "columns"=> $ProHot
           ]
         ];
         $replyJson["messages"][0] = $ord;
