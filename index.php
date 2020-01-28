@@ -496,14 +496,7 @@ $ord=[
   "template"=> [
       "type"=> "image_carousel",
       "columns"=> [
-          [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/1.jpg",
-            "action"=> [
-              "type"=> "message",
-              "label"=> "Code : P101",
-              "text"=> " "
-            ]
-          ],
+          
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
             "action"=> [
@@ -527,14 +520,7 @@ $ord=[
               "label"=> "Code : P104",
                "text"=> " "
             ]
-          ],
-          [
-            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
-            "action"=> [
-              "type"=> "message",
-              "label"=> "Code : P105",
-               "text"=> " "
-            ]
+          ]
           ]
       ]
   ]
