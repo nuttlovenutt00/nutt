@@ -40,7 +40,7 @@
   $datetime=date("Y-m-d");
   $time=date("H:i:s");
 
-   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$date','$time')");
+   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
 
 
@@ -496,7 +496,7 @@ $ord=[
   "template"=> [
       "type"=> "image_carousel",
       "columns"=> [
-          
+         
           [
             "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/2.jpg",
             "action"=> [
@@ -520,7 +520,6 @@ $ord=[
               "label"=> "Code : P104",
                "text"=> " "
             ]
-          ]
           ]
       ]
   ]
