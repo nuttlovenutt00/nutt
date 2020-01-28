@@ -56,7 +56,7 @@
   if($text=="เมนูแนะนำ"){
 
     $numl_ProHot=0;  
-    $sql_ProHot = "SELECT * FROM ProductHot as a
+    $sql_ProHot = "SELECT PHPic,PName,PId FROM ProductHot as a
         left join Product as b  on a.PHPId = b.PId
         where PHStatus= 'เปิดใช้งาน'";
     $result_ProHot = $mysql->query($sql_ProHot);
