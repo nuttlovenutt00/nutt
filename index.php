@@ -278,7 +278,7 @@ $re2=[
               "contents"=> [
                 [
                   "type"=> "text",
-                  "text"=> "P1=>เอสเพรชโซ่(ร้อน)",
+                  "text"=> "P1:เอสเพรชโซ่(ร้อน)",
                   "margin"=> "xxl",
                   "size"=> "xs",
                   "weight"=> "bold",
@@ -301,7 +301,7 @@ $re2=[
               "contents"=> [
                 [
                   "type"=> "text",
-                  "text"=> "P2=>มอคค่า(ร้อน)",
+                  "text"=> "P2:มอคค่า(ร้อน)",
                   "size"=> "xs",
                   "weight"=> "bold",
                   "color"=> "#000000"
