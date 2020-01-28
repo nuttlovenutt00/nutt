@@ -95,6 +95,13 @@
       $replyText_ProHot["type"] = "text";
       $replyText_ProHot["text"] = "ตอนนี้ไม่มีเมนูแนะนำค่ะ";
       $replyJson["messages"][0] = $replyText_ProHot;
+
+      $replySticker_ProHot=[
+        "type"=> "sticker",
+        "packageId"=> "52002755",
+        "stickerId"=> "52002755"
+      ];
+      $replyJson["messages"][1] = $replySticker_ProHot;
     }
 
     
