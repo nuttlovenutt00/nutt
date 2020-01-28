@@ -491,36 +491,33 @@ $re2=[
 
 
 $ord=[
-"type"=> "template",
-  "altText"=> "this is a image carousel template",
-  "template"=> [
-      "type"=> "image_carousel",
-      "columns"=> [
-          [
-            "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
-             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
-            ]
-          ],
-          [
-           "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
-             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
-            ]
-          ],
-          [
-           "imageUrl"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-%E0%B8%8A%E0%B8%B8%E0%B8%94-22%E0%B9%84%E0%B8%81%E0%B9%88%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B8%E0%B8%A222-.jpg",
-             "action"=> [
-              "type"=> "uri",
-              "label"=> "View detail",
-              "uri"=> "http://example.com/page/222"
-            ]
-          ]
+
+  "type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "carousel",
+    "contents"=> [
+      [
+        "type"=> "bubble",
+        "hero"=> [
+          "type"=> "image",
+          "url"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-ชุด-22ไก่พร้อมลุย22-.jpg",
+          "size"=> "full",
+          "aspectRatio"=> "20:13",
+          "aspectMode"=> "cover"
+        ]
+      ],
+      [
+        "type"=> "bubble",
+        "hero"=> [
+          "type"=> "image",
+          "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+          "size"=> "full",
+          "aspectRatio"=> "20:13",
+          "aspectMode"=> "cover"
+        ]
       ]
+    ]
   ]
 ];
 
