@@ -491,34 +491,39 @@ $re2=[
 
 
 $ord=[
-
-  "type"=> "flex",
-  "altText"=> "Flex Message",
-  "contents"=> [
-    "type"=> "carousel",
-    "contents"=> [
-      [
-        "type"=> "bubble",
-        "hero"=> [
-          "type"=> "image",
-          "url"=> "https://www.thpromotion.com/wp-content/uploads/2019/02/KFC-ชุด-22ไก่พร้อมลุย22-.jpg",
-          "size"=> "full",
-          "aspectRatio"=> "20:13",
-          "aspectMode"=> "cover"
-        ]
-      ],
-      [
-        "type"=> "bubble",
-        "hero"=> [
-          "type"=> "image",
-          "url"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
-          "size"=> "full",
-          "aspectRatio"=> "20:13",
-          "aspectMode"=> "cover"
-        ]
+  "type"=> "template",
+  "altText"=> "this is a image carousel template",
+  "template"=> [
+      "type"=> "image_carousel",
+      "columns"=> [
+          [
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
+            "action"=> [
+              "type"=> "postback",
+              "label"=> "Buy",
+              "data"=> "action=buy&itemid=111"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
+            "action"=> [
+              "type"=> "message",
+              "label"=> "Yes",
+              "text"=> "yes"
+            ]
+          ],
+          [
+            "imageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/5.jpg",
+            "action"=> [
+              "type"=> "uri",
+              "label"=> "View detail",
+              "uri"=> "http://example.com/page/222"
+            ]
+          ]
       ]
-    ]
   ]
+
+  
 ];
 
 
