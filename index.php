@@ -93,7 +93,7 @@
         $replyJson["messages"][0] = $ord;
     }else{
       $replyText_ProHot["type"] = "text";
-      $replyText_ProHot["text"] = "ตอนนี้ไม่มีเมนูแนะนำค่ะ";
+      $replyText_ProHot["text"] = "ตอนนี้ยังไม่มีเมนูแนะนำค่ะ รบกวนดูในริชเมนูไปก่อนนะคะ";
       $replyJson["messages"][0] = $replyText_ProHot;
 
       $replySticker_ProHot=[
