@@ -44,7 +44,7 @@
 
 
 
-$replyText=[ 
+$order=[ 
   "type"=> "flex",
   "altText"=> "Flex Message",
   "contents"=> [
@@ -132,11 +132,101 @@ $replyText=[
 ];
 
 
+$re1=[
+  "type"=> "flex",
+  "altText"=> "Flex Message",
+  "contents"=> [
+    "type"=> "bubble",
+    "direction"=> "ltr",
+    "header"=> [
+      "type"=> "box",
+      "layout"=> "vertical",
+      "contents"=> [
+        [
+          "type"=> "text",
+          "text"=> "ใบเสร็จรับเงิน",
+          "size"=> "sm",
+          "align"=> "start",
+          "weight"=> "bold",
+          "color"=> "#6E422D"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "฿ 500.00",
+          "size"=> "xxl",
+          "weight"=> "bold",
+          "color"=> "#000000"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "#ORD202001-1",
+          "size"=> "sm",
+          "weight"=> "bold",
+          "color"=> "#000000"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "2020-01-28  10:18",
+          "size"=> "xs",
+          "color"=> "#929292"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "การชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ",
+          "size"=> "xs",
+          "weight"=> "bold",
+          "color"=> "#000000"
+        ],
+        [
+          "type"=> "text",
+          "text"=> "Text",
+          "color"=> "#FFFFFF"
+        ],
+        [
+          "type"=> "separator"
+        ]
+      ]
+    ],
+    "footer"=> [
+      "type"=> "box",
+      "layout"=> "horizontal",
+      "contents"=> [
+        [
+          "type"=> "button",
+          "action"=> [
+            "type"=> "message",
+            "label"=> "ดูเพิ่มเติม",
+            "text"=> "ดูรายละเอียดเพิ่มเติม"
+          ],
+          "color"=> "#6E422D",
+          "height"=> "sm",
+          "style"=> "primary"
+       ]
+      ]
+    ]
+  ]
+
+];
+
+
   
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
-  $replyJson["messages"][0] = $replyText;
+
+  if($text=="รายการของฉัน"){
+    $replyJson["messages"][0] = $replyText;
+  }elseif($text=="ยืนยันการสั่ง"){
+    $replyJson["messages"][0] = $re1;
+  }elseif($text=="แสดงใบเสร็จรับเงินเพิ่มเติม"){
+    $replyJson["messages"][0] = $re1;
+  }
+  
   
 
    
