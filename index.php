@@ -98,8 +98,8 @@
 
       $replySticker_ProHot=[
         "type"=> "sticker",
-        "packageId"=> "52002755",
-        "stickerId"=> "52002755"
+        "packageId"=> "1",
+        "stickerId"=> "1"
       ];
       $replyJson["messages"][1] = $replySticker_ProHot;
     }
