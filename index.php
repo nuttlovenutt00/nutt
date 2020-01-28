@@ -501,7 +501,7 @@ $ord=[
             "action"=> [
               "type"=> "message",
               "label"=> "Code : P101",
-              "text"=> "พิมพ์รหัส P101@ แล้วใส่จำนวนที่ต้องการได้เลยค่ะ"
+              "text"=> " "
             ]
           ],
           [
@@ -509,7 +509,7 @@ $ord=[
             "action"=> [
               "type"=> "message",
               "label"=> "Code : P102",
-              "text"=> ""
+              "text"=> " "
             ]
           ],
           [
@@ -517,7 +517,7 @@ $ord=[
             "action"=> [
              "type"=> "message",
               "label"=> "Code : P103",
-              "text"=> ""
+              "text"=> " "
             ]
           ],
           [
@@ -525,7 +525,7 @@ $ord=[
             "action"=> [
               "type"=> "message",
               "label"=> "Code : P104",
-               "text"=> ""
+               "text"=> " "
             ]
           ],
           [
@@ -533,7 +533,7 @@ $ord=[
             "action"=> [
               "type"=> "message",
               "label"=> "Code : P105",
-               "text"=> ""
+               "text"=> " "
             ]
           ]
       ]
