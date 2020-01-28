@@ -81,9 +81,7 @@
             ];
              $numl_ProHot++;
           }
-    }
-
-    $ord=[
+          $ord=[
           "type"=> "template",
           "altText"=> "this is a carousel template",
           "template"=> [
@@ -93,6 +91,13 @@
           ]
         ];
         $replyJson["messages"][0] = $ord;
+    }else{
+      $replyText_ProHot["type"] = "text";
+      $replyText_ProHot["text"] = "ตอนนี้ไม่มีเมนูแนะนำค่ะ";
+      $replyJson["messages"][0] = $replyText_ProHot;
+    }
+
+    
   }
 
   
