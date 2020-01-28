@@ -225,8 +225,7 @@ $re1=[
 
 ];
 
-$re2=[
-  "type"=> "flex",
+$re2=["type"=> "flex",
   "altText"=> "Flex Message",
   "contents"=> [
     "type"=> "bubble",
@@ -284,49 +283,18 @@ $re2=[
           "spacing"=> "sm",
           "contents"=> [
             [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "spacing"=> "sm",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "P1:เอสเพรชโซ่(ร้อน)",
-                  "margin"=> "xxl",
-                  "size"=> "xs",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "45.00 (2)",
-                  "margin"=> "xs",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
+              "type"=> "text",
+              "text"=> "เอสเพรชโซ่(ร้อน) [2] x ฿45.00",
+              "size"=> "xs",
+              "weight"=> "bold",
+              "color"=> "#000000"
             ],
             [
-              "type"=> "box",
-              "layout"=> "baseline",
-              "contents"=> [
-                [
-                  "type"=> "text",
-                  "text"=> "P2:มอคค่า(ร้อน)",
-                  "size"=> "xs",
-                  "weight"=> "bold",
-                  "color"=> "#000000"
-                ],
-                [
-                  "type"=> "text",
-                  "text"=> "45.00 (1)",
-                  "size"=> "xs",
-                  "align"=> "end",
-                  "weight"=> "bold",
-                  "color"=> "#6E422D"
-                ]
-              ]
+              "type"=> "text",
+              "text"=> "เอสเพรชโซ่(ปั่น) [1] x ฿55.00",
+              "size"=> "xs",
+              "weight"=> "bold",
+              "color"=> "#000000"
             ]
           ]
         ],
