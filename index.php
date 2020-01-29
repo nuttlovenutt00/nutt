@@ -86,9 +86,92 @@
 
 
       if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="yes"){
-          $replyText_sp["type"] = "text";
-          $replyText_sp["text"] = "ลูกค้าพิมพ์ ".$message."\n"."รหัสสินค้า ".$c."\n"."จำนวน ".$f."\n"."เพิ่มเติม ".$e."\n";
+
+
+          $replyText_sp=[
+              "type"=> "flex",
+              "altText"=> "Flex Message",
+              "contents"=> [
+                "type"=> "bubble",
+                "direction"=> "ltr",
+                "header"=> [
+                  "type"=> "box",
+                  "layout"=> "vertical",
+                  "contents"=> [
+                    [
+                      "type"=> "text",
+                      "text"=> "รับออเดอร์ลูกค้า เรียบร้อย",
+                      "size"=> "sm",
+                      "align"=> "start",
+                      "weight"=> "bold",
+                      "color"=> "#6E422D"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "Text",
+                      "size"=> "xxs",
+                      "color"=> "#FFFFFF"
+                    ],
+                    [
+                      "type"=> "separator"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "Text",
+                      "size"=> "xxs",
+                      "color"=> "#FFFFFF"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "รหัสสินค้า : ".$c,
+                      "size"=> "sm",
+                      "weight"=> "bold",
+                      "color"=> "#000000"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "ชื่อสินค้า :",
+                      "size"=> "sm",
+                      "weight"=> "bold",
+                      "color"=> "#000000"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "จำนวน : ".$f,
+                      "size"=> "sm",
+                      "weight"=> "bold",
+                      "color"=> "#000000"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "ข้อความเพิ่มเติม :".$e,
+                      "size"=> "sm",
+                      "weight"=> "bold",
+                      "color"=> "#000000"
+                    ]
+                  ]
+                ],
+                "footer"=> [
+                  "type"=> "box",
+                  "layout"=> "horizontal",
+                  "contents"=> [
+                    [
+                      "type"=> "button",
+                      "action"=> [
+                        "type"=> "message",
+                        "label"=> "ดูรายการทั้งหมด",
+                        "text"=> "รายการของฉัน"
+                      ],
+                      "color"=> "#6E422D",
+                      "height"=> "sm",
+                      "style"=> "primary"
+                    ]
+                  ]
+                ]
+              ]
+          ];
           $replyJson["messages"][0] = $replyText_sp;
+
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
       {
           $replyText_sp["type"] = "text";
