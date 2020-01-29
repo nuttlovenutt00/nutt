@@ -15,10 +15,7 @@
   $dbname = "Z01XVlWSlA";
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
-  if ($mysql->connect_error){
-  $errorcode = $mysql->connect_error;
-  print("MySQL(Connection)> ".$errorcode);
-  }
+  
 
 
   //ฟังก์ชั่นการส่งข้อมูลไปหา Line
@@ -53,7 +50,44 @@
 
 
 
-  if($text=="เมนูแนะนำ"){
+  if($text!="" && $text!="เมนูแนะนำ" || $text!="" && $text!="รายการของฉัน" || $text!="" && $text!="ช่วยเหลือ")
+  {
+
+     $message = strtoupper($text);//แปลงเป็นตัวพิมพ์ใหญ่
+
+      $a= strpos( $message, "@" );
+        $b =substr($message,$a+1);
+
+        //หาข้อความเพิ่มเติม
+       if(strpos( $b, "@" ) != FALSE){
+          //หาข้อความเพิ่มเติม
+          $d=strpos( $b, "@" );
+          $e =substr($b,$d+1);
+           //หาจำนวน
+          $f =iconv_substr($b,0,$d,"UTF-8");
+       }else{
+          //หาจำนวน
+          $e="ไม่มี";
+          $f = $b;
+       }
+        $c =iconv_substr($message,0,$a,"UTF-8");
+
+
+
+      if(strpos( $message, "P" )== 0 && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f)){
+          $replyText_sp["type"] = "text";
+          $replyText_sp["text"] = "ลูกค้าพิมพ์ ".$message."\n"."รหัสสินค้า ".$c."\n"."จำนวน ".$f."\n"."เพิ่มเติม ".$e."\n";
+          $replyJson["messages"][0] = $replyText_sp;
+      }else{
+         $replyText_sp["type"] = "text";
+          $replyText_sp["text"] = "ไม่ผ่าน";
+          $replyJson["messages"][0] = $replyText_sp;
+      }
+
+
+
+
+  }elseif($text=="เมนูแนะนำ"){
 
     $numl_ProHot=0;  
     $sql_ProHot = "SELECT PHPic,PName,PId FROM ProductHot as a
