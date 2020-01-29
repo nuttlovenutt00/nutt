@@ -74,8 +74,8 @@
 
         $chkpro="";
         //ตรวจสอบรหัสสินค้าในฐานข้อมูล
-        $sql_ProHot = "SELECT PId FROM  Product 
-          where PId= $c";
+        $sql_ProHot = "SELECT PAutoId FROM  Product 
+          where PId= 'P1' ";
         $result_ProHot = $mysql->query($sql_ProHot);
          if( $result_ProHot->num_rows > 0)
         {
