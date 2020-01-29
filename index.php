@@ -153,16 +153,33 @@
                 ],
                 "footer"=> [
                   "type"=> "box",
-                  "layout"=> "horizontal",
+                  "layout"=> "vertical",
                   "contents"=> [
                     [
                       "type"=> "button",
                       "action"=> [
                         "type"=> "message",
-                        "label"=> "ดูรายการทั้งหมด",
+                        "label"=> "แสดงรายการทั้งหมด",
                         "text"=> "รายการของฉัน"
                       ],
                       "color"=> "#6E422D",
+                      "height"=> "sm",
+                      "style"=> "primary"
+                    ],
+                    [
+                      "type"=> "text",
+                      "text"=> "Text",
+                      "size"=> "xxs",
+                      "color"=> "#FFFFFF"
+                    ],
+                    [
+                      "type"=> "button",
+                      "action"=> [
+                        "type"=> "message",
+                        "label"=> "ยืนยันการสั่ง",
+                        "text"=> "ยืนยันการสั่ง"
+                      ],
+                      "color"=> "#11B000",
                       "height"=> "sm",
                       "style"=> "primary"
                     ]
