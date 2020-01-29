@@ -285,7 +285,7 @@
               ];
               $replyJson["messages"][0] = $replyText_sp;
 
-      }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
+      }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
               $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
@@ -298,7 +298,7 @@
               ];
               $replyJson["messages"][1] = $replySticker_sp;
 
-      }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
+      }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
               $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
@@ -462,6 +462,10 @@
     }
 
     
+  }elseif($text=="รายการของฉัน")
+  {
+
+
   }elseif($text=="ช่วยเหลือ")
   {
       //แสดงหน้าต่าง ช่วยเหลือ
