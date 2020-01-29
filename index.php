@@ -77,7 +77,7 @@
         $sql_ProHot = "SELECT PAutoId FROM  Product 
           where PId= '$c' ";
         $result_ProHot = $mysql->query($sql_ProHot);
-         if($result_ProHot)
+         if($result_ProHot->num_rows > 0)
         {
           $chkpro="yes";
         }else{
