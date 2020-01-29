@@ -129,28 +129,24 @@
                       "type"=> "text",
                       "text"=> "รหัสสินค้า : ".$c,
                       "size"=> "sm",
-                      "weight"=> "bold",
                       "color"=> "#000000"
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "ชื่อสินค้า :".$namePro,
+                      "text"=> "ชื่อสินค้า : ".$namePro,
                       "size"=> "sm",
-                      "weight"=> "bold",
                       "color"=> "#000000"
                     ],
                     [
                       "type"=> "text",
                       "text"=> "จำนวน : ".$f." ".$nameProUnit,
                       "size"=> "sm",
-                      "weight"=> "bold",
                       "color"=> "#000000"
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "ข้อความเพิ่มเติม :".$e,
+                      "text"=> "ข้อความเพิ่มเติม : ".$e,
                       "size"=> "sm",
-                      "weight"=> "bold",
                       "color"=> "#000000"
                     ]
                   ]
