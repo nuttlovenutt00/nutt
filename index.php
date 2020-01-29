@@ -79,8 +79,92 @@
           $replyText_sp["text"] = "ลูกค้าพิมพ์ ".$message."\n"."รหัสสินค้า ".$c."\n"."จำนวน ".$f."\n"."เพิ่มเติม ".$e."\n";
           $replyJson["messages"][0] = $replyText_sp;
       }else{
-         $replyText_sp["type"] = "text";
-          $replyText_sp["text"] = "คุณพิมพ์รูปแบบการสั่งเมนูไม่ถูกต้องค่ะ\nวิธีสั่งเมนู\nพิมพ์ รหัสสินค้า@จำนวนที่ต้องการ เช่น P123@2\nหรือ ถ้าต้องการพิมพ์ข้อความเพิ่มเติม\nพิมพ์ รหัสสินค้า@จำนวนที่ต้องการ@ข้อความที่ต้องการ\nเช่น P123@2@หวานน้อย";
+         $replyText_sp=[
+            "type"=> "flex",
+            "altText"=> "Flex Message",
+            "contents"=> [
+              "type"=> "bubble",
+              "direction"=> "ltr",
+              "header"=> [
+                "type"=> "box",
+                "layout"=> "vertical",
+                "contents"=> [
+                  [
+                    "type"=> "text",
+                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
+                    "size"=> "sm",
+                    "align"=> "center",
+                    "weight"=> "bold",
+                    "color"=> "#FF0000"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "separator"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "วิธีสั่งเมนู",
+                    "size"=> "sm",
+                    "weight"=> "bold",
+                    "color"=> "#000000"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "เช่น P123@2",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "separator"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
+                    "size"=> "sm",
+                    "weight"=> "bold",
+                    "color"=> "#000000"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "เช่น P123@2@หวานน้อย",
+                    "size"=> "sm"
+                  ]
+                ]
+              ]
+            ]
+          ];
           $replyJson["messages"][0] = $replyText_sp;
       }
 
