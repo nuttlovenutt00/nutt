@@ -100,7 +100,7 @@
                 "direction"=> "ltr",
                 "header"=> [
                   "type"=> "box",
-                  "layout"=> "vertical",ฝฝ
+                  "layout"=> "vertical",
                   "contents"=> [
                     [
                       "type"=> "text",
@@ -185,7 +185,7 @@
                     ]
                   ]
                 ]
-              ]//แสดงหน้าต่างรับออเดอร์ลูกค้า
+              ]
           ];
           $replyJson["messages"][0] = $replyText_sp;
 
@@ -300,7 +300,7 @@
                   ]
                 ]
               ]
-            ]//แสดงหน้าต่างเมื่อพิมพ์รูปแบบไม่ถูกต้อง
+            ]
           ];
           $replyJson["messages"][0] = $replyText_sp;
       }
