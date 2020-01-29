@@ -176,7 +176,7 @@
                           $sql_sordt = "Select ordtId from  OrderDetailTemp  where ordtMId='$idPro_fromtext' and ordtOrId='$cid' ";
                           $result_sordt = $mysql->query($sql_sordt);
                           if($result_sordt->num_rows >0){
-                              $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='cid'");
+                              $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                             
                           }else{
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
