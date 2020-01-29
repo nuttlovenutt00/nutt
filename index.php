@@ -74,10 +74,11 @@
 
         $chkpro="";
         //ตรวจสอบรหัสสินค้าในฐานข้อมูล
-        $sql_ProHot = "SELECT PAutoId FROM  Product 
+        $sql_SPro = "SELECT PAutoId,PName,UName FROM  Product as a
+          left join Unit as b on a.PUnit = b.UId
           where PId= '$c' ";
-        $result_ProHot = $mysql->query($sql_ProHot);
-         if($result_ProHot->num_rows > 0)
+        $result_SPro = $mysql->query($sql_SPro);
+         if($result_SPro->num_rows > 0)
         {
           $chkpro="yes";
         }else{
@@ -87,6 +88,9 @@
 
       if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="yes"){
 
+          $array_SPro=$result_SPro->fetch_assoc();
+          $namePro=$array_SPro["PName"];
+          $nameProUnit=$array_SPro["UName"];
 
           $replyText_sp=[
               "type"=> "flex",
@@ -130,14 +134,14 @@
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "ชื่อสินค้า :",
+                      "text"=> "ชื่อสินค้า :".$namePro,
                       "size"=> "sm",
                       "weight"=> "bold",
                       "color"=> "#000000"
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "จำนวน : ".$f,
+                      "text"=> "จำนวน : ".$f." ".$nameProUnit,
                       "size"=> "sm",
                       "weight"=> "bold",
                       "color"=> "#000000"
