@@ -95,11 +95,25 @@
           $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
           $replyJson["messages"][0] = $replyText_sp;
 
+          $replySticker_sp=[
+            "type"=> "sticker",
+            "packageId"=> "11539",
+            "stickerId"=> "52114145"
+          ];
+          $replyJson["messages"][1] = $replySticker_sp;
+
       }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
       {
           $replyText_sp["type"] = "text";
           $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
           $replyJson["messages"][0] = $replyText_sp;
+
+          $replySticker_sp=[
+            "type"=> "sticker",
+            "packageId"=> "11539",
+            "stickerId"=> "52114145"
+          ];
+          $replyJson["messages"][1] = $replySticker_sp;
 
       }else{
          $replyText_sp=[
