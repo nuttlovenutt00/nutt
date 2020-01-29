@@ -288,7 +288,7 @@
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
-              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$idPro_fromtext." นี้ในฐานข้อมูลค่ะ";
               $replyJson["messages"][0] = $replyText_sp;
 
               $replySticker_sp=[
@@ -301,7 +301,7 @@
       }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
-              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$idPro_fromtext." นี้ในฐานข้อมูลค่ะ";
               $replyJson["messages"][0] = $replyText_sp;
 
               $replySticker_sp=[
