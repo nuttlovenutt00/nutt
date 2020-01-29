@@ -21,7 +21,7 @@
   //ฟังก์ชั่นการส่งข้อมูลไปหา Line
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
   $lineData['AccessToken'] = "0EhBTTseT51jUDZTB2ExoXM+4VM59TybE8WoW6GdG7I9ugLQyQssBVyKuWw18GgvhVOXYLtJCbAwnamRdP10iFyFkpSIdlgskfDHONLWlJ/f9MB9IitlaOHZzIyGxDZgrDLiX+XXp/BOq+4SjJZe7AdB04t89/1O/w1cDnyilFU=";
-  $replyJson["replyToken"] = $replyToken;
+  $replyJson["replyToken"] = "5198f75b58d042f2b922760f0b3c4045";
 
   function sendMessage($replyJson, $sendInfo){
           $ch = curl_init($sendInfo["URL"]);
@@ -50,7 +50,7 @@
 
 
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ")
+  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง")
   {
 
      $message = strtoupper($text);//แปลงเป็นตัวพิมพ์ใหญ่
@@ -100,7 +100,7 @@
                 "direction"=> "ltr",
                 "header"=> [
                   "type"=> "box",
-                  "layout"=> "vertical",
+                  "layout"=> "vertical",ฝฝ
                   "contents"=> [
                     [
                       "type"=> "text",
@@ -185,7 +185,7 @@
                     ]
                   ]
                 ]
-              ]
+              ]//แสดงหน้าต่างรับออเดอร์ลูกค้า
           ];
           $replyJson["messages"][0] = $replyText_sp;
 
@@ -300,7 +300,7 @@
                   ]
                 ]
               ]
-            ]
+            ]//แสดงหน้าต่างเมื่อพิมพ์รูปแบบไม่ถูกต้อง
           ];
           $replyJson["messages"][0] = $replyText_sp;
       }
