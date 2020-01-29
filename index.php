@@ -72,12 +72,35 @@
        }
         $c =iconv_substr($message,0,$a,"UTF-8");
 
+        $chkpro="";
+        //ตรวจสอบรหัสสินค้าในฐานข้อมูล
+        $sql_ProHot = "SELECT PId FROM  Product 
+          where PId= $c";
+        $result_ProHot = $mysql->query($sql_ProHot);
+         if( $result_ProHot->num_rows > 0)
+        {
+          $chkpro="yes";
+        }else{
+           $chkpro="no";
+        }
 
 
-      if(strpos( $message, "P" )== 0 && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f)){
+      if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="yes"){
           $replyText_sp["type"] = "text";
           $replyText_sp["text"] = "ลูกค้าพิมพ์ ".$message."\n"."รหัสสินค้า ".$c."\n"."จำนวน ".$f."\n"."เพิ่มเติม ".$e."\n";
           $replyJson["messages"][0] = $replyText_sp;
+      }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
+      {
+          $replyText_sp["type"] = "text";
+          $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+          $replyJson["messages"][0] = $replyText_sp;
+
+      }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
+      {
+          $replyText_sp["type"] = "text";
+          $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+          $replyJson["messages"][0] = $replyText_sp;
+
       }else{
          $replyText_sp=[
             "type"=> "flex",
