@@ -55,257 +55,342 @@
 
      $message = strtoupper($text);//แปลงเป็นตัวพิมพ์ใหญ่
 
-      $a= strpos( $message, "@" );
+        $a= strpos( $message, "@" );
         $b =substr($message,$a+1);
 
         //หาข้อความเพิ่มเติม
        if(strpos( $b, "@" ) != FALSE){
-          //หาข้อความเพิ่มเติม
-          $d=strpos( $b, "@" );
-          $morePro_fromtext =substr($b,$d+1);
-           //หาจำนวน
-          $numberPro_fromtext =iconv_substr($b,0,$d,"UTF-8");
+
+              //หาข้อความเพิ่มเติม
+              $d=strpos( $b, "@" );
+              $morePro_fromtext =substr($b,$d+1);
+               //หาจำนวน
+              $numberPro_fromtext =iconv_substr($b,0,$d,"UTF-8");
        }else{
-          //หาจำนวน
-          $morePro_fromtext="ไม่มี";
-          $numberPro_fromtext = $b;
+
+              //หาจำนวน
+              $morePro_fromtext="ไม่มี";
+              $numberPro_fromtext = $b;
        }
-        $idPro_fromtext =iconv_substr($message,0,$a,"UTF-8");
+
+
+        $idPro_fromtext =iconv_substr($message,0,$a,"UTF-8");//คัดเอาแต่รหัสสินค้า
 
         $chkpro="";
-        //ตรวจสอบรหัสสินค้าในฐานข้อมูล
+        //ตรวจสอบรหัสสินค้าในฐานข้อมูลว่ามีหรือไม่
         $sql_SPro = "SELECT PAutoId,PName,UName FROM  Product as a
           left join Unit as b on a.PUnit = b.UId
           where PId= '$idPro_fromtext' ";
         $result_SPro = $mysql->query($sql_SPro);
          if($result_SPro->num_rows > 0)
         {
-          $chkpro="yes";
+            $chkpro="yes";
         }else{
-           $chkpro="no";
+            $chkpro="no";
         }
 
 
       if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="yes"){
 
-          $array_SPro=$result_SPro->fetch_assoc();
-          $namePro=$array_SPro["PName"];
-          $nameProUnit=$array_SPro["UName"];
+              //ค้นหาข้อมูลในฐานข้อมูล
+              $sql_sdrt = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $result_sdrt = $mysql->query($sql_sdrt);
+              $objResult_sdrt = $result_sdrt->fetch_assoc(); 
 
+              //ประกาศตัวแปรเอาไว้เก็บค่า
+              $cid =$objResult_sdrt['orId'];
+              $cdate =$objResult_sdrt['ortDate'];
+              $ctime =$objResult_sdrt['ortTime'];
 
-          //แสดงหน้าต่างรับออเดอร์ลูกค้า
-          $replyText_sp=[
-              "type"=> "flex",
-              "altText"=> "Flex Message",
-              "contents"=> [
-                "type"=> "bubble",
-                "direction"=> "ltr",
-                "header"=> [
-                  "type"=> "box",
-                  "layout"=> "vertical",
+              //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
+              if($cid=="")
+               {
+                $noid ="yes";
+               }else{
+                $noid ="no";
+               }
+
+              //เอาเวลามารวมกับวันที่
+              $datetime_ort=$cdate." ".$ctime;
+              $datetime_now=$datetime." ".$time;
+
+              //ฟังก์ชั่น คำนวนหาความห่างของเวลา
+               function DateTimeDiff($strDateTime1,$strDateTime2)
+               {
+                    return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+               }
+
+              //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
+              if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
+              {
+                                //คำนวนรหัสของ Order
+                                $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                                $result_sirt = $mysql->query($sql_sirt);
+                                $objResult = $result_sirt->fetch_assoc();
+                                if($objResult["MaxID"]=="")
+                                  {
+                                    $idfull=date("Ym");
+                                     $id_temp= "ORD".$idfull."-1";                                  
+                                   }else{
+                                  $memidyearold1=substr($objResult["MaxID"],0,7);
+                                  $memidyearold=substr($memidyearold1,3);
+                                  $memidnewyear=date("Y");
+                                  $memidnew=$memidnewyear-$memidyearold;
+                                  
+                                  $memidmonthold1=substr($objResult["MaxID"],0,9);
+                                  $memidmonthold=substr($memidmonthold1,7);
+                                  $memidnewmonth=date("m");
+                                  $memidmonthnew=$memidnewmonth-$memidmonthold;
+                                  
+
+                                  if($memidnew==0 && $memidmonthnew==0)
+                                  {
+                                    $tmpidold=substr($objResult["MaxID"],0,9);      
+                                    $tmpidnumold=substr($objResult["MaxID"],10); 
+                                    $tmpidnumnew=$tmpidnumold+1;
+                                  
+                                    
+                                    $tmpnewyearfull=date("Ym");     
+                                    $id_temp= "ORD".$tmpnewyearfull."-".$tmpidnumnew;
+                                  
+                                    
+                                  }elseif($memidnew>=1 || $memidmonthnew>=1)
+                                  {
+                                    
+                                    $tmpnewyearfull=date("Ym");
+                                    $id_temp= "ORD".$tmpnewyearfull."-1";
+                                  }
+                                }
+                                //สิ้นสุดคำนวนรหัสของ Order
+
+                        //เก็บข้อมูลลงฐานข้อมูล      
+                        $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+
+                        $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
+              }else{
+                        //เก็บข้อมูลลงฐานข้อมูล      
+                        $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
+
+                        $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
+
+              }
+
+              $array_SPro=$result_SPro->fetch_assoc();
+              $namePro=$array_SPro["PName"];
+              $nameProUnit=$array_SPro["UName"];
+              //แสดงหน้าต่างรับออเดอร์ลูกค้า
+              $replyText_sp=[
+                  "type"=> "flex",
+                  "altText"=> "Flex Message",
                   "contents"=> [
-                    [
-                      "type"=> "text",
-                      "text"=> "รับออเดอร์ลูกค้า เรียบร้อย",
-                      "size"=> "sm",
-                      "align"=> "start",
-                      "weight"=> "bold",
-                      "color"=> "#6E422D"
+                    "type"=> "bubble",
+                    "direction"=> "ltr",
+                    "header"=> [
+                      "type"=> "box",
+                      "layout"=> "vertical",
+                      "contents"=> [
+                        [
+                          "type"=> "text",
+                          "text"=> "รับออเดอร์ลูกค้า เรียบร้อย",
+                          "size"=> "sm",
+                          "align"=> "start",
+                          "weight"=> "bold",
+                          "color"=> "#6E422D"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "Text",
+                          "size"=> "xxs",
+                          "color"=> "#FFFFFF"
+                        ],
+                        [
+                          "type"=> "separator"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "Text",
+                          "size"=> "xxs",
+                          "color"=> "#FFFFFF"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "รหัสสินค้า : ".$idPro_fromtext,
+                          "size"=> "sm",
+                          "color"=> "#000000"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "ชื่อสินค้า : ".$namePro,
+                          "size"=> "sm",
+                          "color"=> "#000000"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "จำนวน : ".$numberPro_fromtext." ".$nameProUnit,
+                          "size"=> "sm",
+                          "color"=> "#000000"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "ข้อความเพิ่มเติม : ".$morePro_fromtext,
+                          "size"=> "sm",
+                          "color"=> "#000000"
+                        ]
+                      ]
                     ],
-                    [
-                      "type"=> "text",
-                      "text"=> "Text",
-                      "size"=> "xxs",
-                      "color"=> "#FFFFFF"
-                    ],
-                    [
-                      "type"=> "separator"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "Text",
-                      "size"=> "xxs",
-                      "color"=> "#FFFFFF"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "รหัสสินค้า : ".$idPro_fromtext,
-                      "size"=> "sm",
-                      "color"=> "#000000"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "ชื่อสินค้า : ".$namePro,
-                      "size"=> "sm",
-                      "color"=> "#000000"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "จำนวน : ".$numberPro_fromtext." ".$nameProUnit,
-                      "size"=> "sm",
-                      "color"=> "#000000"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "ข้อความเพิ่มเติม : ".$morePro_fromtext,
-                      "size"=> "sm",
-                      "color"=> "#000000"
+                    "footer"=> [
+                      "type"=> "box",
+                      "layout"=> "vertical",
+                      "contents"=> [
+                        [
+                          "type"=> "button",
+                          "action"=> [
+                            "type"=> "message",
+                            "label"=> "แสดงรายการของฉัน",
+                            "text"=> "รายการของฉัน"
+                          ],
+                          "color"=> "#6E422D",
+                          "height"=> "sm",
+                          "style"=> "primary"
+                        ],
+                        [
+                          "type"=> "text",
+                          "text"=> "Text",
+                          "size"=> "xxs",
+                          "color"=> "#FFFFFF"
+                        ],
+                        [
+                          "type"=> "button",
+                          "action"=> [
+                            "type"=> "message",
+                            "label"=> "ยืนยันการสั่งทั้งหมด",
+                            "text"=> "ยืนยันการสั่ง"
+                          ],
+                          "color"=> "#11B000",
+                          "height"=> "sm",
+                          "style"=> "primary"
+                        ]
+                      ]
                     ]
                   ]
-                ],
-                "footer"=> [
-                  "type"=> "box",
-                  "layout"=> "vertical",
-                  "contents"=> [
-                    [
-                      "type"=> "button",
-                      "action"=> [
-                        "type"=> "message",
-                        "label"=> "แสดงรายการทั้งหมด",
-                        "text"=> "รายการของฉัน"
-                      ],
-                      "color"=> "#6E422D",
-                      "height"=> "sm",
-                      "style"=> "primary"
-                    ],
-                    [
-                      "type"=> "text",
-                      "text"=> "Text",
-                      "size"=> "xxs",
-                      "color"=> "#FFFFFF"
-                    ],
-                    [
-                      "type"=> "button",
-                      "action"=> [
-                        "type"=> "message",
-                        "label"=> "ยืนยันการสั่ง",
-                        "text"=> "ยืนยันการสั่ง"
-                      ],
-                      "color"=> "#11B000",
-                      "height"=> "sm",
-                      "style"=> "primary"
-                    ]
-                  ]
-                ]
-              ]
-          ];
-          $replyJson["messages"][0] = $replyText_sp;
+              ];
+              $replyJson["messages"][0] = $replyText_sp;
 
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
       {
-          $replyText_sp["type"] = "text";
-          $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
-          $replyJson["messages"][0] = $replyText_sp;
+              $replyText_sp["type"] = "text";
+              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+              $replyJson["messages"][0] = $replyText_sp;
 
-          $replySticker_sp=[
-            "type"=> "sticker",
-            "packageId"=> "11538",
-            "stickerId"=> "51626522"
-          ];
-          $replyJson["messages"][1] = $replySticker_sp;
+              $replySticker_sp=[
+                "type"=> "sticker",
+                "packageId"=> "11538",
+                "stickerId"=> "51626522"
+              ];
+              $replyJson["messages"][1] = $replySticker_sp;
 
       }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="no")
       {
-          $replyText_sp["type"] = "text";
-          $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
-          $replyJson["messages"][0] = $replyText_sp;
+              $replyText_sp["type"] = "text";
+              $replyText_sp["text"] = "ไม่พบรหัสสินค้า : ".$c." นี้ในฐานข้อมูลค่ะ";
+              $replyJson["messages"][0] = $replyText_sp;
 
-          $replySticker_sp=[
-            "type"=> "sticker",
-            "packageId"=> "11538",
-            "stickerId"=> "51626522"
-          ];
-          $replyJson["messages"][1] = $replySticker_sp;
+              $replySticker_sp=[
+                "type"=> "sticker",
+                "packageId"=> "11538",
+                "stickerId"=> "51626522"
+              ];
+              $replyJson["messages"][1] = $replySticker_sp;
 
       }else{
-          //แสดงหน้าต่าง คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ
-         $replyText_sp=[
-            "type"=> "flex",
-            "altText"=> "Flex Message",
-            "contents"=> [
-              "type"=> "bubble",
-              "direction"=> "ltr",
-              "header"=> [
-                "type"=> "box",
-                "layout"=> "vertical",
+              //แสดงหน้าต่าง คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ
+             $replyText_sp=[
+                "type"=> "flex",
+                "altText"=> "Flex Message",
                 "contents"=> [
-                  [
-                    "type"=> "text",
-                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
-                    "size"=> "sm",
-                    "align"=> "center",
-                    "weight"=> "bold",
-                    "color"=> "#FF0000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "วิธีสั่งเมนู",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
-                    "size"=> "sm"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "เช่น P123@2",
-                    "size"=> "sm"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
-                    "size"=> "sm"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "เช่น P123@2@หวานน้อย",
-                    "size"=> "sm"
+                  "type"=> "bubble",
+                  "direction"=> "ltr",
+                  "header"=> [
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
+                        "size"=> "sm",
+                        "align"=> "center",
+                        "weight"=> "bold",
+                        "color"=> "#FF0000"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "separator"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "วิธีสั่งเมนู",
+                        "size"=> "sm",
+                        "weight"=> "bold",
+                        "color"=> "#000000"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "เช่น P123@2",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "separator"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
+                        "size"=> "sm",
+                        "weight"=> "bold",
+                        "color"=> "#000000"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "เช่น P123@2@หวานน้อย",
+                        "size"=> "sm"
+                      ]
+                    ]
                   ]
                 ]
-              ]
-            ]
-          ];
-          $replyJson["messages"][0] = $replyText_sp;
+              ];
+              $replyJson["messages"][0] = $replyText_sp;
       }//เมื่อพิมพ์ไม่เข้าเงื่อนไข
 
 
@@ -314,6 +399,7 @@
   }elseif($text=="เมนูแนะนำ"){
 
     $numl_ProHot=0;  
+    //ค้นหาเมนูแนะนำ
     $sql_ProHot = "SELECT PHPic,PName,PId FROM ProductHot as a
         left join Product as b  on a.PHPId = b.PId
         where PHStatus= 'เปิดใช้งาน'";
@@ -323,22 +409,23 @@
         while($row_ProHot = $result_ProHot->fetch_assoc()) 
           {
 
-            $ProHot[$numl_ProHot]=[
+                $ProHot[$numl_ProHot]=[
 
-                "thumbnailImageUrl"=> $row_ProHot["PHPic"],
-                "title"=> $row_ProHot["PName"],
-                "text"=> "วิธีการสั่ง พิมพ์ ".$row_ProHot["PId"]."@จำนวนที่ต้องการ",
-                "actions"=> [
-                  [
-                    "type"=> "message",
-                    "label"=> "Code : ".$row_ProHot["PId"],
-                    "text"=> " "
-                  ]
-                ]
-              
-            ];
-             $numl_ProHot++;
+                    "thumbnailImageUrl"=> $row_ProHot["PHPic"],
+                    "title"=> $row_ProHot["PName"],
+                    "text"=> "วิธีการสั่ง พิมพ์ ".$row_ProHot["PId"]."@จำนวนที่ต้องการ",
+                    "actions"=> [
+                      [
+                        "type"=> "message",
+                        "label"=> "Code : ".$row_ProHot["PId"],
+                        "text"=> " "
+                      ]
+                    ]
+                  
+                ];
+                 $numl_ProHot++;
           }
+          //แสดงผล
           $ord=[
           "type"=> "template",
           "altText"=> "this is a carousel template",
@@ -348,7 +435,10 @@
             "columns"=> $ProHot
           ]
         ];
+
+
         $replyJson["messages"][0] = $ord;
+
     }else{
       $replyText_ProHot["type"] = "text";
       $replyText_ProHot["text"] = "ตอนนี้ทางร้านยังไม่มีเมนูแนะนำค่ะ รบกวนดูในริชเมนูไปก่อนนะคะ";
