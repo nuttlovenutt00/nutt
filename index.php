@@ -97,8 +97,8 @@
 
           $replySticker_sp=[
             "type"=> "sticker",
-            "packageId"=> "11539",
-            "stickerId"=> "52114145"
+            "packageId"=> "11538",
+            "stickerId"=> "51626522"
           ];
           $replyJson["messages"][1] = $replySticker_sp;
 
@@ -110,8 +110,8 @@
 
           $replySticker_sp=[
             "type"=> "sticker",
-            "packageId"=> "11539",
-            "stickerId"=> "52114145"
+            "packageId"=> "11538",
+            "stickerId"=> "51626522"
           ];
           $replyJson["messages"][1] = $replySticker_sp;
 
