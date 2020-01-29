@@ -62,21 +62,21 @@
        if(strpos( $b, "@" ) != FALSE){
           //หาข้อความเพิ่มเติม
           $d=strpos( $b, "@" );
-          $e =substr($b,$d+1);
+          $morePro_fromtext =substr($b,$d+1);
            //หาจำนวน
-          $f =iconv_substr($b,0,$d,"UTF-8");
+          $numberPro_fromtext =iconv_substr($b,0,$d,"UTF-8");
        }else{
           //หาจำนวน
-          $e="ไม่มี";
-          $f = $b;
+          $morePro_fromtext="ไม่มี";
+          $numberPro_fromtext = $b;
        }
-        $c =iconv_substr($message,0,$a,"UTF-8");
+        $idPro_fromtext =iconv_substr($message,0,$a,"UTF-8");
 
         $chkpro="";
         //ตรวจสอบรหัสสินค้าในฐานข้อมูล
         $sql_SPro = "SELECT PAutoId,PName,UName FROM  Product as a
           left join Unit as b on a.PUnit = b.UId
-          where PId= '$c' ";
+          where PId= '$idPro_fromtext' ";
         $result_SPro = $mysql->query($sql_SPro);
          if($result_SPro->num_rows > 0)
         {
@@ -86,12 +86,14 @@
         }
 
 
-      if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($f) && $chkpro=="yes"){
+      if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="yes"){
 
           $array_SPro=$result_SPro->fetch_assoc();
           $namePro=$array_SPro["PName"];
           $nameProUnit=$array_SPro["UName"];
 
+
+          //แสดงหน้าต่างรับออเดอร์ลูกค้า
           $replyText_sp=[
               "type"=> "flex",
               "altText"=> "Flex Message",
@@ -127,7 +129,7 @@
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "รหัสสินค้า : ".$c,
+                      "text"=> "รหัสสินค้า : ".$idPro_fromtext,
                       "size"=> "sm",
                       "color"=> "#000000"
                     ],
@@ -139,13 +141,13 @@
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "จำนวน : ".$f." ".$nameProUnit,
+                      "text"=> "จำนวน : ".$numberPro_fromtext." ".$nameProUnit,
                       "size"=> "sm",
                       "color"=> "#000000"
                     ],
                     [
                       "type"=> "text",
-                      "text"=> "ข้อความเพิ่มเติม : ".$e,
+                      "text"=> "ข้อความเพิ่มเติม : ".$morePro_fromtext,
                       "size"=> "sm",
                       "color"=> "#000000"
                     ]
@@ -216,6 +218,7 @@
           $replyJson["messages"][1] = $replySticker_sp;
 
       }else{
+          //แสดงหน้าต่าง คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ
          $replyText_sp=[
             "type"=> "flex",
             "altText"=> "Flex Message",
@@ -303,7 +306,7 @@
             ]
           ];
           $replyJson["messages"][0] = $replyText_sp;
-      }
+      }//เมื่อพิมพ์ไม่เข้าเงื่อนไข
 
 
 
@@ -362,7 +365,7 @@
     
   }elseif($text=="ช่วยเหลือ")
   {
-
+      //แสดงหน้าต่าง ช่วยเหลือ
      $reply_help=[
         "type"=> "flex",
         "altText"=> "Flex Message",
