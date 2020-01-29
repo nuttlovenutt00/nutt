@@ -80,7 +80,7 @@
           $replyJson["messages"][0] = $replyText_sp;
       }else{
          $replyText_sp["type"] = "text";
-          $replyText_sp["text"] = "ไม่ผ่าน";
+          $replyText_sp["text"] = "คุณพิมพ์รูปแบบการสั่งเมนูไม่ถูกต้องค่ะ";
           $replyJson["messages"][0] = $replyText_sp;
       }
 
