@@ -600,10 +600,7 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        
-                      }
-
-                      $showorderme_detaik=[
+                        $showorderme_detaik=[
                                       [
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
@@ -618,6 +615,9 @@
                                         "color"=> "#000000"
                                       ]
                               ];
+                      }
+
+                      
 
                       $showorderme=[
                             "type"=> "flex",
