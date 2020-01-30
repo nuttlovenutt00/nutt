@@ -602,6 +602,12 @@
                       {
 
                         $showorderme_detail[$num_showorderme_detail]=[
+                                      "type"=> "box",
+                                    "layout"=> "vertical",
+                                    "spacing"=> "sm",
+                                    "margin"=> "lg",
+                                    "contents"=> [
+                                  
                                       [
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
@@ -615,6 +621,7 @@
                                         "size"=> "xxs",
                                         "color"=> "#000000"
                                       ]
+                                    ]
                               ];
                         $num_showorderme_detail++;
                       }
@@ -640,14 +647,8 @@
                                   ],
                                   [
                                     "type"=> "separator"
-                                  ],
-                                  [
-                                    "type"=> "box",
-                                    "layout"=> "vertical",
-                                    "spacing"=> "sm",
-                                    "margin"=> "lg",
-                                    "contents"=> $showorderme_detail
-                                  ],
+                                  ],$showorderme_detail
+                                  ,
                                   [
                                     "type"=> "separator"
                                   ],
