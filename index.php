@@ -123,8 +123,6 @@
 
                //ตัวแปรตรวจสอบว่าลูกค้าสั่งใหม่ แก้ไข หรือยกเลิก
                $action_SPro="";
-               //ตัวแปรตรวจสอบว่าลูกค้า ยกเลิกซ้ำ2รอบเลยมั้ย
-               $action0_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
@@ -172,7 +170,6 @@
                         if($numberPro_fromtext == "0"){
 
                           $action_SPro="errororder";
-                          $action0_SPro="0";
                         }else{
 
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -181,7 +178,6 @@
                         $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
                           $action_SPro="neworder";
-                          $action0_SPro="1";
                         }
                      
               }else{
@@ -203,7 +199,6 @@
                               }else{ //ถ้าลูกค้าเปลี่ยนแค่จำนวน
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="uporder";
-                                $action0_SPro="1";
                               }
                               
                           //ถ้าไม่มีข้อมูลซ้ำและลูกค้าใส่จำนวนจริงๆ ให้บันทึกข้อมูลใหม่
@@ -214,7 +209,6 @@
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
                             //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
                               $action_SPro="errororder";
-                               $action0_SPro="0";
                           }
 
               }
