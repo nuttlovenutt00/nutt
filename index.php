@@ -331,7 +331,7 @@
                             ]
                           ],
                           
-                          
+                          $replyText_sp_button
                         ]
                     ];
 
