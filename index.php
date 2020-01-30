@@ -600,7 +600,7 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        $showorderme_detail[$num_showorderme_detail]=[
+                        $showorderme_detail[]=[
                                       [
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
