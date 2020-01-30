@@ -602,26 +602,13 @@
                       {
 
                         $showorderme_detail[$num]=[
-                                    "type"=> "box",
-                                    "layout"=> "vertical",
-                                    "spacing"=> "sm",
-                                    "margin"=> "lg",
-                                    "contents"=> [
-                                  
-                                      [
+                                    
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
                                         "size"=> "sm",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "-หวานน้อย",
-                                        "size"=> "xxs",
-                                        "color"=> "#000000"
-                                      ]
-                                    ]
+                                      
                               ];
                         $num++;
                       }
@@ -647,8 +634,14 @@
                                   ],
                                   [
                                     "type"=> "separator"
-                                  ],$showorderme_detail
-                                  ,
+                                  ],
+                                  [
+                                    "type"=> "box",
+                                    "layout"=> "vertical",
+                                    "spacing"=> "sm",
+                                    "margin"=> "lg",
+                                    "contents"=> $showorderme_detail
+                                  ],
                                   [
                                     "type"=> "separator"
                                   ],
