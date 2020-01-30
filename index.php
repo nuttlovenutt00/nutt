@@ -643,7 +643,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> $showorderme_detail
+                                    "contents"=> $showorderme_detail1
                                   ],
                                   [
                                     "type"=> "separator"
