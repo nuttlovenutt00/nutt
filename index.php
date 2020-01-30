@@ -124,7 +124,7 @@
                //ตัวแปรตรวจสอบว่าลูกค้าสั่งใหม่ แก้ไข หรือยกเลิก
                $action_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
-              if(DateTimeDiff($datetime_ort,$datetime_now)>0.001 || $noid == "yes")
+              if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
                                 //คำนวนรหัสของ Order
                                 $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
