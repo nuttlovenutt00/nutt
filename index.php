@@ -602,26 +602,19 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        $showorderme_detail[$num]=[
-                                    
-                                        "type"=> "text",
-                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
-                                        "size"=> "sm",
-                                        "weight"=> "bold",
-                                        "color"=> "#000000"
-                                      
-                              ];
                         $showorderme_detail1[$num]=[
                                     
                                         "type"=> "text",
-                                        "text"=> "-หวานน้อย",
-                                        "size"=> "xxs",
+                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว\nหวานน้อย",
+                                        "size"=> "sm",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
                                       
                               ];
                         $num++;
                       }
+
+                     
 
 
 
@@ -650,7 +643,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> $showorderme_detail.$showorderme_detail1
+                                    "contents"=> $showorderme_detail
                                   ],
                                   [
                                     "type"=> "separator"
