@@ -90,7 +90,8 @@
         }
 
 
-      if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="yes"){
+      if(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="yes")
+      {
 
               //ค้นหาข้อมูลในฐานข้อมูล
               $sql_sdrt = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
@@ -129,7 +130,7 @@
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
-                                //คำนวนรหัสของ Order
+                                //คำนวนรหัส Temp ของ Order
                                $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
@@ -279,6 +280,7 @@
                 ];
               }
 
+              //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ซ้ำหรือป่าว 
               if($action0_SPro=="1")
               {
 
@@ -346,7 +348,7 @@
                           "footer"=> $replyText_sp_button
                         ]
                     ];
-
+              //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ซ้ำหรือป่าว ถ้าใช่
               }elseif($action0_SPro=="0"){
                  $replyText_sp=[
                     "type" => "text",
