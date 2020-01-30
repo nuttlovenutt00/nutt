@@ -593,8 +593,7 @@
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
                       $num=0;
                       $showorderme_detail=[];
-                      $showorderme_detail1=[];
-                      //ค้นหาข้อมูลในฐานข้อมูล
+                      //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
                       $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
                         left join Product as b on a.ordtMId = b.PId
                         left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
@@ -605,11 +604,13 @@
                         $PName=$objResult_slorderme["PName"];
                         $ordtUnit=$objResult_slorderme["ordtUnit"];
                         $ordtComment=$objResult_slorderme["ordtComment"];
+
                         if($objResult_slorderme["ordtComment"]=="ไม่มี"){
                           $ordtComment="";
                         }else{
                           $ordtComment="  *".$objResult_slorderme["ordtComment"];
                         }
+
                         $showorderme_detail[$num]=[
                                     
                                         "type"=> "text",
@@ -620,11 +621,6 @@
                               ];
                         $num++;
                       }
-
-                     
-
-
-
                       $showorderme=[
                             "type"=> "flex",
                             "altText"=> "Flex Message",
@@ -987,6 +983,17 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
+  }elseif ($text=="ยืนยันการสั่ง") {
+    $replyText_orderme["type"] = "text";
+                      $replyText_orderme["text"] = "ใจเย็นค่ะ";
+                      $replyJson["messages"][0] = $replyText_orderme;
+
+                      $replySticker_orderme=[
+                        "type"=> "sticker",
+                        "packageId"=> "11538",
+                        "stickerId"=> "51626517"
+                      ];
+                      $replyJson["messages"][1] = $replySticker_orderme;
   }
 
   
