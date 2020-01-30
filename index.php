@@ -601,7 +601,7 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        $showorderme_detail[]=[
+                        $showorderme_detail=[
                                     "type"=> "box",
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
