@@ -130,44 +130,19 @@
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
                                 //คำนวนรหัสของ Order
-                                $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                               $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
                                 if($objResult["MaxID"]=="")
                                   {
-                                    $idfull=date("Ym");
-                                     $id_temp= "ORD".$idfull."-1";                                  
+                                    $id_temp= "1";                                  
                                    }else{
-                                  $memidyearold1=substr($objResult["MaxID"],0,7);
-                                  $memidyearold=substr($memidyearold1,3);
-                                  $memidnewyear=date("Y");
-                                  $memidnew=$memidnewyear-$memidyearold;
-                                  
-                                  $memidmonthold1=substr($objResult["MaxID"],0,9);
-                                  $memidmonthold=substr($memidmonthold1,7);
-                                  $memidnewmonth=date("m");
-                                  $memidmonthnew=$memidnewmonth-$memidmonthold;
-                                  
 
-                                  if($memidnew==0 && $memidmonthnew==0)
-                                  {
-                                    $tmpidold=substr($objResult["MaxID"],0,9);      
-                                    $tmpidnumold=substr($objResult["MaxID"],10); 
-                                    $tmpidnumnew=$tmpidnumold+1;
-                                  
-                                    
-                                    $tmpnewyearfull=date("Ym");     
-                                    $id_temp= "ORD".$tmpnewyearfull."-".$tmpidnumnew;
-                                  
-                                    
-                                  }elseif($memidnew>=1 || $memidmonthnew>=1)
-                                  {
-                                    
-                                    $tmpnewyearfull=date("Ym");
-                                    $id_temp= "ORD".$tmpnewyearfull."-1";
-                                  }
+                                    $id_temp = $objResult["MaxID"]+1;
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
+
+                         //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ตั้งแต่แรกเลยมั้ย       
                         if($numberPro_fromtext=="0"){
 
                             $action0_SPro="0";
@@ -188,13 +163,14 @@
                           $sql_sordt = "Select ordtId from  OrderDetailTemp  where ordtMId='$idPro_fromtext' and ordtOrId='$cid' ";
                           $result_sordt = $mysql->query($sql_sordt);
 
-
-
+                          //ถ้ามีอยู่แล้ว
                           if($result_sordt->num_rows >0){
 
+                              //ลูกค้าพิมพ์ยกเลิกออเดอร์
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
 
+                                //เช็คว่าเมื่อยกเลิกสินค้าแล้ว ในตาราง temp มีรายการเหลืออยู่มั้ย ถ้าลบออกหมดให้ลบข้อมูลในตาราง order หลักด้วย
                                 $sql_sordt_num = "Select ordtId from  OrderDetailTemp  where ordtOrId='$cid'";
                                  $result_sordt_num = $mysql->query($sql_sordt_num);
                                  if($result_sordt_num->num_rows == 0){
@@ -203,7 +179,7 @@
 
                                 $action_SPro="delorder";
                                 $action0_SPro="1";
-                              }else{
+                              }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="uporder";
                                 $action0_SPro="1";
