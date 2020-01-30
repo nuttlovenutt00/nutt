@@ -166,9 +166,8 @@
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
 
-                        //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
                         if($numberPro_fromtext == "0"){
-
+                          
                           $action_SPro="errororder";
                         }else{
 
@@ -189,25 +188,22 @@
                           $result_sordt = $mysql->query($sql_sordt);
 
 
-                          //ตรวจสอบว่ามีข้อมูลในฐานข้อมูลว่าเพิ่มซ้ำกันมั้ย ถ้าใช่ให้เปลี่ยนแค่จำนวน
+
                           if($result_sordt->num_rows >0){
-                              //ภ้าลูกค้าใส่จำนวนสินค้าเป็น 0
+
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="delorder";
-                                $action0_SPro="1";
-                              }else{ //ถ้าลูกค้าเปลี่ยนแค่จำนวน
+                              }else{
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="uporder";
                               }
                               
-                          //ถ้าไม่มีข้อมูลซ้ำและลูกค้าใส่จำนวนจริงๆ ให้บันทึกข้อมูลใหม่
+                            
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext !== "0") {
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
-                               $action0_SPro="1";
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
-                            //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
                               $action_SPro="errororder";
                           }
 
