@@ -170,6 +170,8 @@
 
                         //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
                         if($numberPro_fromtext == "0"){
+
+                          $action_SPro="errororder";
                           $action0_SPro="0";
                         }else{
 
@@ -211,8 +213,8 @@
                                $action0_SPro="1";
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
                             //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
-                              $action_SPro="uporder";
-                               $action0_SPro="1";
+                              $action_SPro="errororder";
+                               $action0_SPro="0";
                           }
 
               }
@@ -225,7 +227,7 @@
               //สร้างตัวแปรไว้เก็บข้อความตามการกระทำของลูกค้า
               if($action_SPro == "neworder")
               {
-                  $replyText_sp_title="ระบบได้รับออร์เดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title="ระบบได้รับออเดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -254,7 +256,7 @@
 
               }elseif($action_SPro == "uporder")
               {
-                  $replyText_sp_title=$numberPro_fromtext;
+                  $replyText_sp_title="ระบบได้แก้ไขออเดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -283,7 +285,22 @@
 
               }elseif($action_SPro == "delorder")
               {
-                $replyText_sp_title="ระบบได้ลบออร์เดอร์เรียบร้อยแล้วค่ะ";
+                $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
+                $replyText_sp_color_title="#FF0000";
+                $replyText_sp_button=[
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ]
+                    ]             
+                ];
+              }else{
+                $replyText_sp_title="error";
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
                     "type"=> "box",
@@ -298,10 +315,6 @@
                     ]             
                 ];
               }
-
-              //ตัวแปรตรวจสอบว่าลูกค้า ยกเลิกซ้ำ2รอบเลยมั้ย
-              if($action0_SPro=="1")
-              {
                    //แสดงหน้าต่างรับออเดอร์ลูกค้า
                     $replyText_sp=[
                         "type"=> "flex",
@@ -367,15 +380,9 @@
                         ]
                     ];
 
-              }else{
-                $replyText_sp=[
-                    "type"=> "text",
-                    "text"=> "คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ"
-                ];
-                   
-              }
+              
 
-              //แสดงผล
+
               $replyJson["messages"][0] = $replyText_sp;
 
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
