@@ -209,7 +209,7 @@
               //สร้างตัวแปรไว้เก็บข้อความตามการกระทำของลูกค้า
               if($action_SPro == "neworder")
               {
-                  $replyText_sp_title="ระบบได้รับออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title=$numberPro_fromtext;
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -238,7 +238,7 @@
 
               }elseif($action_SPro == "uporder")
               {
-                  $replyText_sp_title="ระบบได้แก้ไขออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title=$numberPro_fromtext;
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -267,7 +267,7 @@
 
               }elseif($action_SPro == "delorder")
               {
-                $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
+                $replyText_sp_title=$numberPro_fromtext;
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
                     "type"=> "box",
