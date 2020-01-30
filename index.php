@@ -287,7 +287,7 @@
                                 "size"=> "sm",
                                 "align"=> "start",
                                 "weight"=> "bold",
-                                "color"=> "#FFFFFF"
+                                "color"=> "#6E422D"
                               ],
                               [
                                 "type"=> "text",
@@ -331,29 +331,7 @@
                             ]
                           ],
                           
-                          "footer"=> [
-                            "type"=> "box",
-                            "layout"=> "vertical",
-                            "contents"=> [
-                              [
-                                "type"=> "button",
-                                "action"=> [
-                                  "type"=> "message",
-                                  "label"=> "แสดงรายการทั้งหมดในตะกร้า",
-                                  "text"=> "รายการของฉัน"
-                                ],
-                                "color"=> "#6E422D",
-                                "height"=> "sm",
-                                "style"=> "primary"
-                              ],
-                              [
-                                "type"=> "text",
-                                "text"=> "Text",
-                                "size"=> "xxs",
-                                "color"=> "#FFFFFF"
-                              ]
-                            ]
-                          ]
+                          
                         ]
                     ];
 
