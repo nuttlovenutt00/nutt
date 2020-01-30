@@ -554,7 +554,7 @@
                {
                 
                   $replyText_orderme["type"] = "text";
-                  $replyText_orderme["text"] = "คุณยังไม่ได้สั่งเมนูค่ะ";
+                  $replyText_orderme["text"] = "คุณยังไม่ได้";
                   $replyJson["messages"][0] = $replyText_orderme;
 
                   $replySticker_orderme=[
