@@ -605,10 +605,15 @@
                         $PName=$objResult_slorderme["PName"];
                         $ordtUnit=$objResult_slorderme["ordtUnit"];
                         $ordtComment=$objResult_slorderme["ordtComment"];
+                        if($objResult_slorderme["ordtComment"]=="ไม่มี"){
+                          $ordtComment="";
+                        }else{
+                          $ordtComment="  *".$objResult_slorderme["ordtComment"];
+                        }
                         $showorderme_detail[$num]=[
                                     
                                         "type"=> "text",
-                                        "text"=> $ordtMId.":".$PName." x".$ordtUnit." *".$ordtComment,
+                                        "text"=> $ordtMId.":".$PName." x".$ordtUnit.$ordtComment,
                                         "size"=> "sm",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
