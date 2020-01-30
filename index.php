@@ -254,7 +254,7 @@
 
               }elseif($action_SPro == "uporder")
               {
-                  $replyText_sp_title="ระบบได้แก้ไขออร์เดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title=$numberPro_fromtext;
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
