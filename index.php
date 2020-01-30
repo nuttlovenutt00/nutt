@@ -287,7 +287,7 @@
                                 "size"=> "sm",
                                 "align"=> "start",
                                 "weight"=> "bold",
-                                "color"=> $replyText_sp_color_title
+                                "color"=> "#FFFFFF"
                               ],
                               [
                                 "type"=> "text",
@@ -331,7 +331,29 @@
                             ]
                           ],
                           
-                          $replyText_sp_button
+                          "footer"=> [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> [
+                              [
+                                "type"=> "button",
+                                "action"=> [
+                                  "type"=> "message",
+                                  "label"=> "แสดงรายการทั้งหมดในตะกร้า",
+                                  "text"=> "รายการของฉัน"
+                                ],
+                                "color"=> "#6E422D",
+                                "height"=> "sm",
+                                "style"=> "primary"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "Text",
+                                "size"=> "xxs",
+                                "color"=> "#FFFFFF"
+                              ]
+                            ]
+                          ]
                         ]
                     ];
 
