@@ -592,6 +592,7 @@
 
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
                       $num_showorderme_detail=0;
+                      $showorderme_detail=[];
                       //ค้นหาข้อมูลในฐานข้อมูล
                       $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
                         left join Product as b on a.ordtMId = b.PId
@@ -600,7 +601,7 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        $showorderme_detail=[
+                        $showorderme_detail[$num_showorderme_detail]=[
                                       [
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
