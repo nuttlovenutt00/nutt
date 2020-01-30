@@ -267,11 +267,18 @@
                 $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
-                    "type"=> "text",
-                    "text"=> "text",
-                    "color"=> "#FFFFFF"               
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ]
+                    ]             
                 ];
-              }
+              
                    //แสดงหน้าต่างรับออเดอร์ลูกค้า
                     $replyText_sp=[
                         "type"=> "flex",
