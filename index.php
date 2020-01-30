@@ -356,12 +356,9 @@
                  ];
               }
 
+          $replyJson["messages"][0] = $replyText_sp;
 
-              
-
-
-              $replyJson["messages"][0] = $replyText_sp;
-
+      //เมื่อลูกค้าพิมพ์ข้อความมารูปแบบถูก แต่ไม่มีรหัสสินค้าในฐานข้อมูล
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
@@ -374,7 +371,7 @@
                 "stickerId"=> "51626522"
               ];
               $replyJson["messages"][1] = $replySticker_sp;
-
+      //เมื่อลูกค้าพิมพ์ข้อความมารูปแบบถูก แต่ไม่มีรหัสสินค้าในฐานข้อมูล
       }elseif(strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
       {
               $replyText_sp["type"] = "text";
@@ -387,7 +384,7 @@
                 "stickerId"=> "51626522"
               ];
               $replyJson["messages"][1] = $replySticker_sp;
-
+      //เมื่อพิมพ์ไม่ถูกรูปแบบ       
       }else{
               //แสดงหน้าต่าง คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ
              $replyText_sp=[
@@ -477,7 +474,7 @@
                 ]
               ];
               $replyJson["messages"][0] = $replyText_sp;
-      }//เมื่อพิมพ์ไม่เข้าเงื่อนไข
+      }
 
 
 
@@ -542,7 +539,70 @@
   }elseif($text=="รายการของฉัน")
   {
 
+              //ค้นหาข้อมูลในฐานข้อมูล
+              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $result_sorderme = $mysql->query($sql_sorderme);
+              $objResult_sorderme = $result_sorderme->fetch_assoc(); 
 
+              //ประกาศตัวแปรเอาไว้เก็บค่า
+              $cid =$objResult_sorderme['orId'];
+              $cdate =$objResult_sorderme['ortDate'];
+              $ctime =$objResult_sorderme['ortTime'];
+
+              //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
+              if($objResult_sorderme->num_rows == 0)
+               {
+                
+                  $replyText_orderme["type"] = "text";
+                  $replyText_orderme["text"] = "คุณยังไม่ได้สั่งเมนูค่ะ";
+                  $replyJson["messages"][0] = $replyText_orderme;
+
+                  $replySticker_orderme=[
+                    "type"=> "sticker",
+                    "packageId"=> "11537",
+                    "stickerId"=> "52002755"
+                  ];
+                  $replyJson["messages"][1] = $replySticker_orderme;
+
+               }else{
+                  //เอาเวลามารวมกับวันที่
+                  $datetime_ort=$cdate." ".$ctime;
+                  $datetime_now=$datetime." ".$time;
+
+                  //ฟังก์ชั่น คำนวนหาความห่างของเวลา
+                   function DateTimeDiff($strDateTime1,$strDateTime2)
+                   {
+                        return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+                   }
+
+                  //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
+                  if(DateTimeDiff($datetime_ort,$datetime_now)>0.083)
+                  {
+
+                      $replyText_orderme["type"] = "text";
+                      $replyText_orderme["text"] = "คุณยังไม่ได้สั่งเมนูค่ะ";
+                      $replyJson["messages"][0] = $replyText_orderme;
+
+                      $replySticker_orderme=[
+                        "type"=> "sticker",
+                        "packageId"=> "11537",
+                        "stickerId"=> "52002755"
+                      ];
+                      $replyJson["messages"][1] = $replySticker_orderme;
+
+                  }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
+
+                      $replyText_orderme["type"] = "text";
+                      $replyText_orderme["text"] = "แปปค่ะ";
+                      $replyJson["messages"][0] = $replyText_orderme;
+
+
+
+                  }
+
+               }
+
+              
   }elseif($text=="ช่วยเหลือ")
   {
       //แสดงหน้าต่าง ช่วยเหลือ
