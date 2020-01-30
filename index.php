@@ -209,7 +209,6 @@
                   $replyText_sp_title="ระบบได้รับออเดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
-                    "footer"=> [
                             "type"=> "box",
                             "layout"=> "vertical",
                             "contents"=> [
@@ -231,7 +230,7 @@
                                 "color"=> "#FFFFFF"
                               ]
                             ]
-                          ]
+                          
                   ];
 
               }elseif($action_SPro == "uporder")
@@ -239,7 +238,6 @@
                   $replyText_sp_title="ระบบได้แก้ไขออเดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
-                    "footer"=> [
                             "type"=> "box",
                             "layout"=> "vertical",
                             "contents"=> [
@@ -261,7 +259,7 @@
                                 "color"=> "#FFFFFF"
                               ]
                             ]
-                          ]
+                          
                   ];
 
               }elseif($action_SPro == "delorder")
@@ -331,7 +329,7 @@
                             ]
                           ],
                           
-                          $replyText_sp_button
+                          "footer"=> $replyText_sp_button
                         ]
                     ];
 
