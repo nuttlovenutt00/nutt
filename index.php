@@ -104,7 +104,7 @@
               $ctime =$objResult_sdrt['ortTime'];
 
               //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
-              if($cid=="")
+              if($result_sdrt->num_rows==0)
                {
                 $noid ="yes";
                }else{
@@ -550,11 +550,11 @@
               $ctime =$objResult_sorderme['ortTime'];
 
               //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
-              if($objResult_sorderme->num_rows == 0)
+              if($result_sorderme->num_rows == 0)
                {
                 
                   $replyText_orderme["type"] = "text";
-                  $replyText_orderme["text"] = "คุณยังไม่ได้";
+                  $replyText_orderme["text"] = "คุณยังไม่ได้สั่งเมนูค่ะ";
                   $replyJson["messages"][0] = $replyText_orderme;
 
                   $replySticker_orderme=[
