@@ -166,12 +166,18 @@
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
 
+                        if($numberPro_fromtext == "0"){
+                          
+                          $action_SPro="errororder";
+                        }else{
+
                         //เก็บข้อมูลลงฐานข้อมูล      
                         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
                         $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
-                        $action_SPro="neworder";
+                          $action_SPro="neworder";
+                        }
                      
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -180,6 +186,9 @@
                         //ค้นหาข้อมูลในฐานข้อมูลว่าเพิ่มซ้ำกันมั้ย ถ้าใช่ให้เปลี่ยนแค่จำนวน
                           $sql_sordt = "Select ordtId from  OrderDetailTemp  where ordtMId='$idPro_fromtext' and ordtOrId='$cid' ";
                           $result_sordt = $mysql->query($sql_sordt);
+
+
+
                           if($result_sordt->num_rows >0){
 
                               if($numberPro_fromtext==0){
@@ -191,9 +200,11 @@
                               }
                               
                             
-                          }else{
+                          }elseif($result_sordt->num_rows >0 && $numberPro_fromtext !== "0") {
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
+                          }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
+                              $action_SPro="errororder";
                           }
 
               }
@@ -265,6 +276,21 @@
               }elseif($action_SPro == "delorder")
               {
                 $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
+                $replyText_sp_color_title="#FF0000";
+                $replyText_sp_button=[
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ]
+                    ]             
+                ];
+              }else{
+                $replyText_sp_title="error";
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
                     "type"=> "box",
