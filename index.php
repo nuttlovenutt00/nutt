@@ -601,11 +601,14 @@
                       $result_slorderme = $mysql->query($sql_slorderme);
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
-
-                        $showorderme_detail1[$num]=[
+                        $ordtMId=$objResult_slorderme["ordtMId"];
+                        $PName=$objResult_slorderme["PName"];
+                        $ordtUnit=$objResult_slorderme["ordtUnit"];
+                        $ordtComment=$objResult_slorderme["ordtComment"];
+                        $showorderme_detail[$num]=[
                                     
                                         "type"=> "text",
-                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว\nหวานน้อย",
+                                        "text"=> $ordtMId.":".$PName." x".$ordtUnit." *".$ordtComment,
                                         "size"=> "sm",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
@@ -643,7 +646,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> $showorderme_detail1
+                                    "contents"=> $showorderme_detail
                                   ],
                                   [
                                     "type"=> "separator"
