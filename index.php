@@ -120,6 +120,9 @@
                     return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
                }
 
+
+               //ตัวแปรตรวจสอบว่าลูกค้าสั่งใหม่ แก้ไข หรือยกเลิก
+               $action_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
@@ -167,6 +170,8 @@
                         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
                         $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
+
+                        $action_SPro="neworder";
                      
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -179,13 +184,16 @@
 
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
+                                $action_SPro="delorder";
                               }else{
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
+                                $action_SPro="uporder";
                               }
                               
                             
                           }else{
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
+                               $action_SPro="neworder";
                           }
 
               }
@@ -193,91 +201,143 @@
               $array_SPro=$result_SPro->fetch_assoc();
               $namePro=$array_SPro["PName"];
               $nameProUnit=$array_SPro["UName"];
-              //แสดงหน้าต่างรับออเดอร์ลูกค้า
-              $replyText_sp=[
-                  "type"=> "flex",
-                  "altText"=> "Flex Message",
-                  "contents"=> [
-                    "type"=> "bubble",
-                    "direction"=> "ltr",
-                    "header"=> [
-                      "type"=> "box",
-                      "layout"=> "vertical",
-                      "contents"=> [
-                        [
-                          "type"=> "text",
-                          "text"=> "รับออเดอร์ลูกค้า เรียบร้อย",
-                          "size"=> "sm",
-                          "align"=> "start",
-                          "weight"=> "bold",
-                          "color"=> "#6E422D"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "Text",
-                          "size"=> "xxs",
-                          "color"=> "#FFFFFF"
-                        ],
-                        [
-                          "type"=> "separator"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "Text",
-                          "size"=> "xxs",
-                          "color"=> "#FFFFFF"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "รหัสสินค้า : ".$idPro_fromtext,
-                          "size"=> "sm",
-                          "color"=> "#000000"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "ชื่อสินค้า : ".$namePro,
-                          "size"=> "sm",
-                          "color"=> "#000000"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "จำนวน : ".$numberPro_fromtext." ".$nameProUnit,
-                          "size"=> "sm",
-                          "color"=> "#000000"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "ข้อความเพิ่มเติม : ".$morePro_fromtext,
-                          "size"=> "sm",
-                          "color"=> "#000000"
-                        ]
-                      ]
-                    ],
+             
+
+              //สร้างตัวแปรไว้เก็บข้อความตามการกระทำของลูกค้า
+              if($action_SPro == "neworder")
+              {
+                  $replyText_sp_title="ระบบได้รับออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_color_title="#6E422D";
+                  $replyText_sp_button=[
                     "footer"=> [
-                      "type"=> "box",
-                      "layout"=> "vertical",
-                      "contents"=> [
-                        [
-                          "type"=> "button",
-                          "action"=> [
-                            "type"=> "message",
-                            "label"=> "แสดงรายการทั้งหมดในตะกร้า",
-                            "text"=> "รายการของฉัน"
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> [
+                              [
+                                "type"=> "button",
+                                "action"=> [
+                                  "type"=> "message",
+                                  "label"=> "แสดงรายการทั้งหมดในตะกร้า",
+                                  "text"=> "รายการของฉัน"
+                                ],
+                                "color"=> "#6E422D",
+                                "height"=> "sm",
+                                "style"=> "primary"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "Text",
+                                "size"=> "xxs",
+                                "color"=> "#FFFFFF"
+                              ]
+                            ]
+                          ]
+                  ];
+
+              }elseif($action_SPro == "uporder")
+              {
+                  $replyText_sp_title="ระบบได้แก้ไขออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_color_title="#6E422D";
+                  $replyText_sp_button=[
+                    "footer"=> [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> [
+                              [
+                                "type"=> "button",
+                                "action"=> [
+                                  "type"=> "message",
+                                  "label"=> "แสดงรายการทั้งหมดในตะกร้า",
+                                  "text"=> "รายการของฉัน"
+                                ],
+                                "color"=> "#6E422D",
+                                "height"=> "sm",
+                                "style"=> "primary"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "Text",
+                                "size"=> "xxs",
+                                "color"=> "#FFFFFF"
+                              ]
+                            ]
+                          ]
+                  ];
+
+              }elseif($action_SPro == "delorder")
+              {
+                $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
+                $replyText_sp_color_title="#FF0000";
+                $replyText_sp_button=[];
+              }
+                   //แสดงหน้าต่างรับออเดอร์ลูกค้า
+                    $replyText_sp=[
+                        "type"=> "flex",
+                        "altText"=> "Flex Message",
+                        "contents"=> [
+                          "type"=> "bubble",
+                          "direction"=> "ltr",
+                          "header"=> [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> [
+                              [
+                                "type"=> "text",
+                                "text"=>  $replyText_sp_title,
+                                "size"=> "sm",
+                                "align"=> "start",
+                                "weight"=> "bold",
+                                "color"=> $replyText_sp_color_title
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "Text",
+                                "size"=> "xxs",
+                                "color"=> "#FFFFFF"
+                              ],
+                              [
+                                "type"=> "separator"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "Text",
+                                "size"=> "xxs",
+                                "color"=> "#FFFFFF"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "รหัสสินค้า : ".$idPro_fromtext,
+                                "size"=> "sm",
+                                "color"=> "#000000"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "ชื่อสินค้า : ".$namePro,
+                                "size"=> "sm",
+                                "color"=> "#000000"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "จำนวน : ".$numberPro_fromtext." ".$nameProUnit,
+                                "size"=> "sm",
+                                "color"=> "#000000"
+                              ],
+                              [
+                                "type"=> "text",
+                                "text"=> "ข้อความเพิ่มเติม : ".$morePro_fromtext,
+                                "size"=> "sm",
+                                "color"=> "#000000"
+                              ]
+                            ]
                           ],
-                          "color"=> "#6E422D",
-                          "height"=> "sm",
-                          "style"=> "primary"
-                        ],
-                        [
-                          "type"=> "text",
-                          "text"=> "Text",
-                          "size"=> "xxs",
-                          "color"=> "#FFFFFF"
+                          
+                          $replyText_sp_button
                         ]
-                      ]
-                    ]
-                  ]
-              ];
+                    ];
+
+              
+
+
               $replyJson["messages"][0] = $replyText_sp;
 
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
