@@ -261,7 +261,7 @@
                           "type"=> "button",
                           "action"=> [
                             "type"=> "message",
-                            "label"=> "แสดงรายการของฉัน",
+                            "label"=> "แสดงรายการในตะกร้า",
                             "text"=> "รายการของฉัน"
                           ],
                           "color"=> "#6E422D",
@@ -273,17 +273,6 @@
                           "text"=> "Text",
                           "size"=> "xxs",
                           "color"=> "#FFFFFF"
-                        ],
-                        [
-                          "type"=> "button",
-                          "action"=> [
-                            "type"=> "message",
-                            "label"=> "ยืนยันการสั่งทั้งหมด",
-                            "text"=> "ยืนยันการสั่ง"
-                          ],
-                          "color"=> "#11B000",
-                          "height"=> "sm",
-                          "style"=> "primary"
                         ]
                       ]
                     ]
