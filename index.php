@@ -178,6 +178,7 @@
                             $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
                               $action_SPro="neworder";
+                              $action0_SPro="1";
                         }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
