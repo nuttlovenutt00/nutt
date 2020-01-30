@@ -194,7 +194,7 @@
                               }
                               
                             
-                          }elseif($result_sordt->num_rows >0 ) {
+                          }else{
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
                           }
