@@ -536,7 +536,7 @@
     }
 
     
-  }elseif($text=="รายการของฉัน")
+  }elseif($text=="รายการของฉัน" || $text=="ยืนยันการสั่ง")//เอา 2 คำสั่งนี้มารวมกันเพราะ code บางอย่างเหมือนกัน
   {
 
               //ค้นหาข้อมูลในฐานข้อมูล
@@ -580,7 +580,7 @@
                   {
 
                       $replyText_orderme["type"] = "text";
-                      $replyText_orderme["text"] = "คุณยังไม่ได้สั่งเมนูค่ะ";
+                      $replyText_orderme["text"] = "คุณพักการสั่งไป เกิน 5 นาทีแล้วค่ะ กรุณาสั่งรายการใหม่ค่ะ";
                       $replyJson["messages"][0] = $replyText_orderme;
 
                       $replySticker_orderme=[
@@ -591,115 +591,131 @@
                       $replyJson["messages"][1] = $replySticker_orderme;
 
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
-                      $num=0;
-                      $showorderme_detail=[];
-                      //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                      $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
-                        left join Product as b on a.ordtMId = b.PId
-                        left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
-                      $result_slorderme = $mysql->query($sql_slorderme);
-                      while($objResult_slorderme = $result_slorderme->fetch_assoc())
+
+                      if($text=="รายการของฉัน")
                       {
-                        $ordtMId=$objResult_slorderme["ordtMId"];
-                        $PName=$objResult_slorderme["PName"];
-                        $ordtUnit=$objResult_slorderme["ordtUnit"];
-                        $ordtComment=$objResult_slorderme["ordtComment"];
+                            $num=0;
+                            $showorderme_detail=[];
+                            //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
+                            $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
+                              left join Product as b on a.ordtMId = b.PId
+                              left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
+                            $result_slorderme = $mysql->query($sql_slorderme);
+                            while($objResult_slorderme = $result_slorderme->fetch_assoc())
+                            {
+                              $ordtMId=$objResult_slorderme["ordtMId"];
+                              $PName=$objResult_slorderme["PName"];
+                              $ordtUnit=$objResult_slorderme["ordtUnit"];
+                              $ordtComment=$objResult_slorderme["ordtComment"];
 
-                        if($objResult_slorderme["ordtComment"]=="ไม่มี"){
-                          $ordtComment="";
-                        }else{
-                          $ordtComment="  *".$objResult_slorderme["ordtComment"];
-                        }
+                              if($objResult_slorderme["ordtComment"]=="ไม่มี"){
+                                $ordtComment="";
+                              }else{
+                                $ordtComment="  *".$objResult_slorderme["ordtComment"];
+                              }
 
-                        $showorderme_detail[$num]=[
-                                    
-                                        "type"=> "text",
-                                        "text"=> $ordtMId.":".$PName." x".$ordtUnit.$ordtComment,
-                                        "size"=> "sm",
-                                        "color"=> "#000000"
-                                      
-                              ];
-                        $num++;
-                      }
-                      $showorderme=[
-                            "type"=> "flex",
-                            "altText"=> "Flex Message",
-                            "contents"=> [
-                              "type"=> "bubble",
-                              "body"=> [
-                                "type"=> "box",
-                                "layout"=> "vertical",
-                                "contents"=> [
-                                  [
-                                    "type"=> "text",
-                                    "text"=> "รายการของฉัน",
-                                    "size"=> "md",
-                                    "align"=> "start",
-                                    "weight"=> "bold",
-                                    "color"=> "#6E422D"
-                                  ],
-                                  [
-                                    "type"=> "separator"
-                                  ],
-                                  [
-                                    "type"=> "box",
-                                    "layout"=> "vertical",
-                                    "spacing"=> "sm",
-                                    "margin"=> "lg",
-                                    "contents"=> $showorderme_detail
-                                  ],
-                                  [
-                                    "type"=> "text",
-                                    "text"=> "Text",
-                                    "size"=> "xxs",
-                                    "color"=> "#FFFFFF"
-                                  ],
-                                  [
-                                    "type"=> "separator"
-                                  ],
-                                  [
-                                    "type"=> "text",
-                                    "text"=> "Text",
-                                    "size"=> "xxs",
-                                    "color"=> "#FFFFFF"
-                                  ],
-                                  [
-                                    "type"=> "text",
-                                    "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า@0 เช่น P1@0",
-                                    "size"=> "xxs",
-                                    "color"=> "#000000"
-                                  ],
-                                  [
-                                    "type"=> "text",
-                                    "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ",
-                                    "size"=> "xxs",
-                                    "color"=> "#000000"
-                                  ]
-                                ]
-                              ],
-                              "footer"=> [
-                                "type"=> "box",
-                                "layout"=> "vertical",
-                                "spacing"=> "sm",
-                                "contents"=> [
-                                  [
-                                    "type"=> "button",
-                                    "action"=> [
-                                      "type"=> "message",
-                                      "label"=> "ยืนยันการสั่ง",
-                                      "text"=> "ยืนยันการสั่ง"
+                              $showorderme_detail[$num]=[
+                                          
+                                              "type"=> "text",
+                                              "text"=> $ordtMId.":".$PName." x".$ordtUnit.$ordtComment,
+                                              "size"=> "sm",
+                                              "color"=> "#000000"
+                                            
+                                    ];
+                              $num++;
+                            }
+                            $showorderme=[
+                                  "type"=> "flex",
+                                  "altText"=> "Flex Message",
+                                  "contents"=> [
+                                    "type"=> "bubble",
+                                    "body"=> [
+                                      "type"=> "box",
+                                      "layout"=> "vertical",
+                                      "contents"=> [
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "รายการของฉัน",
+                                          "size"=> "md",
+                                          "align"=> "start",
+                                          "weight"=> "bold",
+                                          "color"=> "#6E422D"
+                                        ],
+                                        [
+                                          "type"=> "separator"
+                                        ],
+                                        [
+                                          "type"=> "box",
+                                          "layout"=> "vertical",
+                                          "spacing"=> "sm",
+                                          "margin"=> "lg",
+                                          "contents"=> $showorderme_detail
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "Text",
+                                          "size"=> "xxs",
+                                          "color"=> "#FFFFFF"
+                                        ],
+                                        [
+                                          "type"=> "separator"
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "Text",
+                                          "size"=> "xxs",
+                                          "color"=> "#FFFFFF"
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า@0 เช่น P1@0",
+                                          "size"=> "xxs",
+                                          "color"=> "#000000"
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ",
+                                          "size"=> "xxs",
+                                          "color"=> "#000000"
+                                        ]
+                                      ]
                                     ],
-                                    "color"=> "#11B000",
-                                    "height"=> "sm",
-                                    "style"=> "primary"
+                                    "footer"=> [
+                                      "type"=> "box",
+                                      "layout"=> "vertical",
+                                      "spacing"=> "sm",
+                                      "contents"=> [
+                                        [
+                                          "type"=> "button",
+                                          "action"=> [
+                                            "type"=> "message",
+                                            "label"=> "ยืนยันการสั่ง",
+                                            "text"=> "ยืนยันการสั่ง"
+                                          ],
+                                          "color"=> "#11B000",
+                                          "height"=> "sm",
+                                          "style"=> "primary"
+                                        ]
+                                      ]
+                                    ]
                                   ]
-                                ]
-                              ]
-                            ]
-                        ];
-                        $replyJson["messages"][0] = $showorderme;
+                              ];
+                              $replyJson["messages"][0] = $showorderme;
         
+                      }elseif($text=="ยืนยันการสั่ง"){
 
+                          $replyText_orderme["type"] = "text";
+                      $replyText_orderme["text"] = "คุณพักการสั่งไป เกิน 5 นาทีแล้วค่ะ กรุณาสั่งรายการใหม่ค่ะ 55555";
+                      $replyJson["messages"][0] = $replyText_orderme;
+
+                      $replySticker_orderme=[
+                        "type"=> "sticker",
+                        "packageId"=> "11538",
+                        "stickerId"=> "51626517"
+                      ];
+                      $replyJson["messages"][1] = $replySticker_orderme;
+
+                      }
 
                   }
 
@@ -983,17 +999,6 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
-  }elseif ($text=="ยืนยันการสั่ง") {
-    $replyText_orderme["type"] = "text";
-                      $replyText_orderme["text"] = "ใจเย็นค่ะ";
-                      $replyJson["messages"][0] = $replyText_orderme;
-
-                      $replySticker_orderme=[
-                        "type"=> "sticker",
-                        "packageId"=> "11538",
-                        "stickerId"=> "51626517"
-                      ];
-                      $replyJson["messages"][1] = $replySticker_orderme;
   }
 
   
