@@ -605,7 +605,7 @@
                         $showorderme_detail1[$num]=[
                                     
                                         "type"=> "text",
-                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว\nหวานน้อย",
+                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
                                         "size"=> "sm",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
