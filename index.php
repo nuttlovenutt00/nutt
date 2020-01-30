@@ -586,7 +586,7 @@
                       $replySticker_orderme=[
                         "type"=> "sticker",
                         "packageId"=> "11538",
-                        "stickerId"=> "51626517"
+                        "stickerId"=> "51626511"
                       ];
                       $replyJson["messages"][1] = $replySticker_orderme;
 
@@ -704,16 +704,7 @@
         
                       }elseif($text=="ยืนยันการสั่ง"){
 
-                          $replyText_orderme["type"] = "text";
-                      $replyText_orderme["text"] = "คุณพักการสั่งไป เกิน 5 นาทีแล้วค่ะ กรุณาสั่งรายการใหม่ค่ะ 55555";
-                      $replyJson["messages"][0] = $replyText_orderme;
-
-                      $replySticker_orderme=[
-                        "type"=> "sticker",
-                        "packageId"=> "11538",
-                        "stickerId"=> "51626517"
-                      ];
-                      $replyJson["messages"][1] = $replySticker_orderme;
+                          
 
                       }
 
