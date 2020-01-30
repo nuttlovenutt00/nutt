@@ -123,6 +123,8 @@
 
                //ตัวแปรตรวจสอบว่าลูกค้าสั่งใหม่ แก้ไข หรือยกเลิก
                $action_SPro="";
+               //ตัวแปรตรวจสอบว่าลูกค้า ยกเลิกซ้ำ2รอบเลยมั้ย
+               $action0_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
@@ -166,9 +168,11 @@
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
 
+                        //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
                         if($numberPro_fromtext == "0"){
 
-                          $action_SPro="errororder";
+                          
+                          $action0_SPro="0";
                         }else{
 
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -177,6 +181,7 @@
                         $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
                           $action_SPro="neworder";
+                          $action0_SPro="1";
                         }
                      
               }else{
@@ -188,23 +193,28 @@
                           $result_sordt = $mysql->query($sql_sordt);
 
 
-
+                          //ตรวจสอบว่ามีข้อมูลในฐานข้อมูลว่าเพิ่มซ้ำกันมั้ย ถ้าใช่ให้เปลี่ยนแค่จำนวน
                           if($result_sordt->num_rows >0){
-
+                              //ภ้าลูกค้าใส่จำนวนสินค้าเป็น 0
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="delorder";
-                              }else{
+                                $action0_SPro="1";
+                              }else{ //ถ้าลูกค้าเปลี่ยนแค่จำนวน
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="uporder";
+                                $action0_SPro="1";
                               }
                               
-                            
+                          //ถ้าไม่มีข้อมูลซ้ำและลูกค้าใส่จำนวนจริงๆ ให้บันทึกข้อมูลใหม่
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext !== "0") {
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
+                               $action0_SPro="1";
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
-                              $action_SPro="errororder";
+                            //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
+                              
+                               $action0_SPro="0";
                           }
 
               }
@@ -217,7 +227,7 @@
               //สร้างตัวแปรไว้เก็บข้อความตามการกระทำของลูกค้า
               if($action_SPro == "neworder")
               {
-                  $replyText_sp_title="ระบบได้รับออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title="ระบบได้รับออร์เดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -246,7 +256,7 @@
 
               }elseif($action_SPro == "uporder")
               {
-                  $replyText_sp_title="ระบบได้แก้ไขออเดอร์เรียบร้อยแล้วค่ะ";
+                  $replyText_sp_title="ระบบได้แก้ไขออร์เดอร์เรียบร้อยแล้วค่ะ";
                   $replyText_sp_color_title="#6E422D";
                   $replyText_sp_button=[
                             "type"=> "box",
@@ -275,22 +285,7 @@
 
               }elseif($action_SPro == "delorder")
               {
-                $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
-                $replyText_sp_color_title="#FF0000";
-                $replyText_sp_button=[
-                    "type"=> "box",
-                    "layout"=> "vertical",
-                    "contents"=> [
-                      [
-                        "type"=> "text",
-                        "text"=> "Text",
-                        "size"=> "xxs",
-                        "color"=> "#FFFFFF"
-                      ]
-                    ]             
-                ];
-              }else{
-                $replyText_sp_title="error";
+                $replyText_sp_title="ระบบได้ลบออร์เดอร์เรียบร้อยแล้วค่ะ";
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
                     "type"=> "box",
@@ -305,6 +300,10 @@
                     ]             
                 ];
               }
+
+              //ตัวแปรตรวจสอบว่าลูกค้า ยกเลิกซ้ำ2รอบเลยมั้ย
+              if($action0_SPro=="1")
+              {
                    //แสดงหน้าต่างรับออเดอร์ลูกค้า
                     $replyText_sp=[
                         "type"=> "flex",
@@ -370,9 +369,15 @@
                         ]
                     ];
 
-              
+              }else{
+                $replyText_sp=[
+                    "type": "text",
+                    "text": "คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ"
+                ];
+                   
+              }
 
-
+              //แสดงผล
               $replyJson["messages"][0] = $replyText_sp;
 
       }elseif(strpos( $message, "P" )== 0  && strpos( $message, "P" ) !== FALSE && strpos( $message, "@" ) !== FALSE &&  is_numeric($numberPro_fromtext) && $chkpro=="no")
