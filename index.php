@@ -615,7 +615,6 @@
                                         "type"=> "text",
                                         "text"=> $ordtMId.":".$PName." x".$ordtUnit.$ordtComment,
                                         "size"=> "sm",
-                                        "weight"=> "bold",
                                         "color"=> "#000000"
                                       
                               ];
@@ -852,7 +851,12 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@4",
+                    "text"=> "เช่น P123@4 ระบบจะนับจำนวนตามครั้งที่สั่งล่าสุด",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "*ระบบจะนับจำนวนตามครั้งที่สั่งล่าสุด",
                     "size"=> "sm"
                   ],
                   [
