@@ -211,8 +211,8 @@
                                $action0_SPro="1";
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
                             //เช็คว่าเมื่อสั่งตอนแรกลูกค้าใส่จำนวนออเดอร์ 0 เลยหรือป่าว ถ้าใส่ 0 ไม่ให้บันทึก
-                              
-                               $action0_SPro="0";
+                              $action_SPro="uporder";
+                               $action0_SPro="1";
                           }
 
               }
