@@ -593,6 +593,7 @@
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
                       $num=0;
                       $showorderme_detail=[];
+                      $showorderme_detail1=[];
                       //ค้นหาข้อมูลในฐานข้อมูล
                       $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
                         left join Product as b on a.ordtMId = b.PId
@@ -606,6 +607,15 @@
                                         "type"=> "text",
                                         "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
                                         "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      
+                              ];
+                        $showorderme_detail1[$num]=[
+                                    
+                                        "type"=> "text",
+                                        "text"=> "-หวานน้อย",
+                                        "size"=> "xxs",
                                         "weight"=> "bold",
                                         "color"=> "#000000"
                                       
@@ -640,7 +650,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> $showorderme_detail
+                                    "contents"=> $showorderme_detail.$showorderme_detail1
                                   ],
                                   [
                                     "type"=> "separator"
