@@ -194,6 +194,13 @@
 
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
+
+                                $sql_sordt_num = "Select ordtId from  OrderDetailTemp  where ordtOrId='$cid'";
+                                 $result_sordt_num = $mysql->query($sql_sordt_num);
+                                 if($result_sordt_num->num_rows == 0){
+                                      $mysql->query("DELETE FROM  OrderTemp where orId='$cid'");
+                                 }
+
                                 $action_SPro="delorder";
                                 $action0_SPro="1";
                               }else{
@@ -208,6 +215,7 @@
                                $action_SPro="neworder";
                                $action0_SPro="1";
                           }elseif($result_sordt->num_rows ==0 && $numberPro_fromtext=="0"){
+
                               $action0_SPro="0";
                           }
 
