@@ -123,6 +123,9 @@
 
                //ตัวแปรตรวจสอบว่าลูกค้าสั่งใหม่ แก้ไข หรือยกเลิก
                $action_SPro="";
+
+               //ตัวแปรตรวจสอบว่าลูกค้ายกเลิกออเดดอร์ซ้ำหรือป่าว
+               $action0_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
               {
@@ -165,14 +168,17 @@
                                   }
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
+                        if($numberPro_fromtext=="0"){
 
-                        //เก็บข้อมูลลงฐานข้อมูล      
-                        $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+                            $action0_SPro="0";
+                        }else{
+                            //เก็บข้อมูลลงฐานข้อมูล      
+                            $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
-                        $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
+                            $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
-                          $action_SPro="neworder";
-                     
+                              $action_SPro="neworder";
+                        }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
                         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
@@ -188,15 +194,20 @@
                               if($numberPro_fromtext==0){
                                 $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="delorder";
+                                $action0_SPro="1";
                               }else{
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numberPro_fromtext',ordtComment='$morePro_fromtext' where ordtMId='$idPro_fromtext' and ordtOrId='$cid'");
                                 $action_SPro="uporder";
+                                $action0_SPro="1";
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numberPro_fromtext!=="0"){
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
+                               $action0_SPro="1";
+                          }elseif($result_sordt->num_rows ==0 && $numberPro_fromtext=="0"){
+                              $action0_SPro="0";
                           }
 
               }
@@ -282,7 +293,11 @@
                     ]             
                 ];
               }
-                   //แสดงหน้าต่างรับออเดอร์ลูกค้า
+
+              if($action0_SPro=="1")
+              {
+
+                  //แสดงหน้าต่างรับออเดอร์ลูกค้า
                     $replyText_sp=[
                         "type"=> "flex",
                         "altText"=> "Flex Message",
@@ -346,6 +361,14 @@
                           "footer"=> $replyText_sp_button
                         ]
                     ];
+
+              }elseif($action0_SPro=="0"){
+                 $replyText_sp=[
+                    "type" => "text",
+                    "text" => "คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ"
+                 ];
+              }
+
 
               
 
