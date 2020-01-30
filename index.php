@@ -738,11 +738,11 @@
                 "contents"=> [
                   [
                     "type"=> "text",
-                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
-                    "size"=> "sm",
+                    "text"=> "เมนูแนะนำ วิธีสั่งเมนู",
+                    "size"=> "md",
                     "align"=> "center",
                     "weight"=> "bold",
-                    "color"=> "#FF0000"
+                    "color"=> "#6E422D"
                   ],
                   [
                     "type"=> "text",
@@ -807,6 +807,9 @@
                     "type"=> "text",
                     "text"=> "เช่น P123@2@หวานน้อย",
                     "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "spacer"
                   ]
                 ]
               ]
@@ -820,75 +823,97 @@
                 "contents"=> [
                   [
                     "type"=> "text",
-                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
-                    "size"=> "sm",
+                    "text"=> "เมนูแนะนำ วิธีเปลี่ยนแปลงรายการ",
+                    "size"=> "md",
                     "align"=> "center",
+                    "weight"=> "bold",
+                    "color"=> "#6E422D"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "separator"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "วิธี "แก้ไข" จำนวนรายการ",
+                    "weight"=> "bold",
+                    "color"=> "#D86E28"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "เมื่อคุณลูกค้าต้องการที่จะเปลี่ยนจำนวน",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "รายการของท่าน ให้พิมพ์ ",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "รหัสสินค้า@จำนวนที่ต้องการแก้ไข",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "เช่น P123@4",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "separator"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "วิธี "ลบ" รายการ",
+                    "size"=> "md",
                     "weight"=> "bold",
                     "color"=> "#FF0000"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "วิธีสั่งเมนู",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                    "text"=> "เมื่อลูกค้าต้องการที่จะลบรายการ",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2",
+                    "text"=> "ที่ไม่ต้องการ ให้พิมพ์",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                    "text"=> "รหัสสินค้า@ตามด้วยเลข 0",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2@หวานน้อย",
+                    "text"=> "เช่น P123@0",
                     "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "spacer"
                   ]
                 ]
               ]
@@ -902,11 +927,11 @@
                 "contents"=> [
                   [
                     "type"=> "text",
-                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
-                    "size"=> "sm",
+                    "text"=> "เมนูแนะนำ การยืนยันการสั่งเมนู",
+                    "size"=> "md",
                     "align"=> "center",
                     "weight"=> "bold",
-                    "color"=> "#FF0000"
+                    "color"=> "#11B000"
                   ],
                   [
                     "type"=> "text",
@@ -925,133 +950,37 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "วิธีสั่งเมนู",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                    "text"=> "=> เมื่อลูกค้าสั่งรายการจนครบแล้ว",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2",
+                    "text"=> "=> ให้กดเมนู "รายการของฉัน" หรือ",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                    "text"=> "ปุ่ม "แสดงรายการทั้งหมดในตะกร้า"",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2@หวานน้อย",
-                    "size"=> "sm"
-                  ]
-                ]
-              ]
-            ],
-            [
-              "type"=> "bubble",
-              "direction"=> "ltr",
-              "header"=> [
-                "type"=> "box",
-                "layout"=> "vertical",
-                "contents"=> [
-                  [
-                    "type"=> "text",
-                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
-                    "size"=> "sm",
-                    "align"=> "center",
-                    "weight"=> "bold",
-                    "color"=> "#FF0000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "วิธีสั่งเมนู",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                    "text"=> "=> จะปรากฏหน้ารายการของฉันขึ้นมา",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2",
+                    "text"=> "=>  ให้กด ปุ่ม "ยืนยันการสั่ง"",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "separator"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "Text",
-                    "size"=> "xxs",
-                    "color"=> "#FFFFFF"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
-                    "size"=> "sm",
-                    "weight"=> "bold",
-                    "color"=> "#000000"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                    "text"=> "=> ระบบจะแสดง ลำดับคิวของท่าน",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@2@หวานน้อย",
+                    "text"=> "เพื่อรอการชำระเงินต่อไป",
                     "size"=> "sm"
                   ]
                 ]
@@ -1059,6 +988,8 @@
             ]
           ]
         ]
+
+        
   ];
       $replyJson["messages"][0] = $reply_help;
   }
