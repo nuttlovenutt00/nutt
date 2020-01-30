@@ -166,18 +166,12 @@
                                 }
                                 //สิ้นสุดคำนวนรหัสของ Order
 
-                        if($numberPro_fromtext == "0"){
-                          
-                          $action_SPro="errororder";
-                        }else{
-
                         //เก็บข้อมูลลงฐานข้อมูล      
                         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
                         $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
 
                           $action_SPro="neworder";
-                        }
                      
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -203,8 +197,6 @@
                           }elseif($result_sordt->num_rows >0 && $numberPro_fromtext !== "0") {
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idPro_fromtext','$numberPro_fromtext','$morePro_fromtext')");
                                $action_SPro="neworder";
-                          }elseif($result_sordt->num_rows >0 && $numberPro_fromtext == "0") {
-                              $action_SPro="errororder";
                           }
 
               }
@@ -276,21 +268,6 @@
               }elseif($action_SPro == "delorder")
               {
                 $replyText_sp_title="ระบบได้ลบออเดอร์เรียบร้อยแล้วค่ะ";
-                $replyText_sp_color_title="#FF0000";
-                $replyText_sp_button=[
-                    "type"=> "box",
-                    "layout"=> "vertical",
-                    "contents"=> [
-                      [
-                        "type"=> "text",
-                        "text"=> "Text",
-                        "size"=> "xxs",
-                        "color"=> "#FFFFFF"
-                      ]
-                    ]             
-                ];
-              }else{
-                $replyText_sp_title="error";
                 $replyText_sp_color_title="#FF0000";
                 $replyText_sp_button=[
                     "type"=> "box",
