@@ -613,7 +613,7 @@
                                         "text"=> "-หวานน้อย",
                                         "size"=> "xxs",
                                         "color"=> "#000000"
-                                      ]
+                                      ],
                               ];
                         $num_showorderme_detail++;
                       }
