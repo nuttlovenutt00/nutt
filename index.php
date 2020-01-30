@@ -613,7 +613,7 @@
                                         "text"=> "-หวานน้อย",
                                         "size"=> "xxs",
                                         "color"=> "#000000"
-                                      ],
+                                      ]
                               ];
                         $num_showorderme_detail++;
                       }
@@ -645,7 +645,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> $showorderme_detaik
+                                    "contents"=> $showorderme_detail
                                   ],
                                   [
                                     "type"=> "separator"
