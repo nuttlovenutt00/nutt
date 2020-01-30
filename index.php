@@ -559,8 +559,8 @@
 
                   $replySticker_orderme=[
                     "type"=> "sticker",
-                    "packageId"=> "11537",
-                    "stickerId"=> "52002755"
+                    "packageId"=> "11539",
+                    "stickerId"=> "52114141"
                   ];
                   $replyJson["messages"][1] = $replySticker_orderme;
 
@@ -585,17 +585,134 @@
 
                       $replySticker_orderme=[
                         "type"=> "sticker",
-                        "packageId"=> "11537",
-                        "stickerId"=> "52002755"
+                        "packageId"=> "11539",
+                        "stickerId"=> "52114141"
                       ];
                       $replyJson["messages"][1] = $replySticker_orderme;
 
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
 
-                      $replyText_orderme["type"] = "text";
-                      $replyText_orderme["text"] = "แปปค่ะ";
-                      $replyJson["messages"][0] = $replyText_orderme;
+                      //ค้นหาข้อมูลในฐานข้อมูล
+                      $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
+                        left join Product as b on a.ordtMId = b.PId
+                        left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
+                      $result_slorderme = $mysql->query($sql_slorderme);
+                      while($objResult_slorderme = $result_slorderme->fetch_assoc())
+                      {
 
+
+                      }
+
+                      $showorderme=[
+                            "type"=> "flex",
+                            "altText"=> "Flex Message",
+                            "contents"=> [
+                              "type"=> "bubble",
+                              "body"=> [
+                                "type"=> "box",
+                                "layout"=> "vertical",
+                                "contents"=> [
+                                  [
+                                    "type"=> "text",
+                                    "text"=> "รายการของฉัน",
+                                    "size"=> "md",
+                                    "align"=> "start",
+                                    "weight"=> "bold",
+                                    "color"=> "#6E422D"
+                                  ],
+                                  [
+                                    "type"=> "separator"
+                                  ],
+                                  [
+                                    "type"=> "box",
+                                    "layout"=> "vertical",
+                                    "spacing"=> "sm",
+                                    "margin"=> "lg",
+                                    "contents"=> [
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
+                                        "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "หวานน้อย",
+                                        "size"=> "xs",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "P2:มอคค่า(ร้อน) x3",
+                                        "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "P3:เอสเพรชโซ่(ปั่น) x1",
+                                        "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "P4:ขนมเค้กช็อกโกแล็ต x2",
+                                        "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "spacer"
+                                      ]
+                                    ]
+                                  ],
+                                  [
+                                    "type"=> "separator"
+                                  ],
+                                  [
+                                    "type"=> "text",
+                                    "text"=> "Text",
+                                    "size"=> "xxs",
+                                    "color"=> "#FFFFFF"
+                                  ],
+                                  [
+                                    "type"=> "text",
+                                    "text"=> "ยกเลิกเมนู พิมพ์ รหัสสินค้า+0 เช่น P1+0",
+                                    "size"=> "xxs",
+                                    "color"=> "#000000"
+                                  ],
+                                  [
+                                    "type"=> "text",
+                                    "text"=> "แก้ไขจำนวน พิมพ์ รหัสสินค้า+จำนวนที่ต้องการ",
+                                    "size"=> "xxs",
+                                    "color"=> "#000000"
+                                  ]
+                                ]
+                              ],
+                              "footer"=> [
+                                "type"=> "box",
+                                "layout"=> "vertical",
+                                "spacing"=> "sm",
+                                "contents"=> [
+                                  [
+                                    "type"=> "button",
+                                    "action"=> [
+                                      "type"=> "message",
+                                      "label"=> "ยืนยันการสั่ง",
+                                      "text"=> "ยืนยันการสั่ง"
+                                    ],
+                                    "color"=> "#6E422D",
+                                    "height"=> "sm",
+                                    "style"=> "primary"
+                                  ]
+                                ]
+                              ]
+                            ]
+                        ];
+
+        
 
 
                   }
