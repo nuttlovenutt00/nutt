@@ -600,8 +600,24 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-
+                        
                       }
+
+                      $showorderme_detaik=[
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
+                                        "size"=> "sm",
+                                        "weight"=> "bold",
+                                        "color"=> "#000000"
+                                      ],
+                                      [
+                                        "type"=> "text",
+                                        "text"=> "-หวานน้อย",
+                                        "size"=> "xxs",
+                                        "color"=> "#000000"
+                                      ]
+                              ];
 
                       $showorderme=[
                             "type"=> "flex",
@@ -628,45 +644,7 @@
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
                                     "margin"=> "lg",
-                                    "contents"=> [
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "P1:เอสเพรชโซ่(ร้อน) x1 แก้ว",
-                                        "size"=> "sm",
-                                        "weight"=> "bold",
-                                        "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "-หวานน้อย",
-                                        "size"=> "xxs",
-                                        "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "P2:มอคค่า(ร้อน) x3",
-                                        "size"=> "sm",
-                                        "weight"=> "bold",
-                                        "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "P3:เอสเพรชโซ่(ปั่น) x1",
-                                        "size"=> "sm",
-                                        "weight"=> "bold",
-                                        "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "text",
-                                        "text"=> "P4:ขนมเค้กช็อกโกแล็ต x2",
-                                        "size"=> "sm",
-                                        "weight"=> "bold",
-                                        "color"=> "#000000"
-                                      ],
-                                      [
-                                        "type"=> "spacer"
-                                      ]
-                                    ]
+                                    "contents"=> $showorderme_detaik
                                   ],
                                   [
                                     "type"=> "separator"
