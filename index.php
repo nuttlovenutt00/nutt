@@ -704,7 +704,80 @@
         
                       }elseif($text=="ยืนยันการสั่ง"){
 
-                          
+                                $sql_sirt = "Select Max(orId) as MaxID from  OrderMenu";
+                                $result_sirt = $mysql->query($sql_sirt);
+                                $objResult = $result_sirt->fetch_assoc();
+                                if($objResult["MaxID"]=="")
+                                  {
+                                    $idfull=date("Ym");
+                                     $id_temp= "ORD".$idfull."-0001";                                  
+                                   }else{
+                                  $memidyearold1=substr($objResult["MaxID"],0,7);
+                                  $memidyearold=substr($memidyearold1,3);
+                                  $memidnewyear=date("Y");
+                                  $memidnew=$memidnewyear-$memidyearold;
+                                  
+                                  $memidmonthold1=substr($objResult["MaxID"],0,9);
+                                  $memidmonthold=substr($memidmonthold1,7);
+                                  $memidnewmonth=date("m");
+                                  $memidmonthnew=$memidnewmonth-$memidmonthold;
+                                  
+
+                                  if($memidnew==0 && $memidmonthnew==0)
+                                  {
+                                    $tmpidold=substr($objResult["MaxID"],0,9);      
+                                    $tmpidnumold=substr($objResult["MaxID"],10); 
+                                    $tmpidnumnew=$tmpidnumold+1;
+                                  
+                                    if($tmpidnumnew<=9)
+                                    {
+                                      $tmpidzero="000"; 
+                                    }elseif($tmpidnumnew > 9 && $tmpidnumnew <= 99 )
+                                      {
+                                        $tmpidzero="00";
+                                      }
+                                      elseif($tmpidnumnew >=100 && $tmpidnumnew <= 999 )
+                                      {
+                                        $tmpidzero="0";
+                                      }
+                                      elseif($tmpidnumnew >=1000 && $tmpidnumnew <= 9999 )
+                                      {
+                                        $tmpidzero="";
+                                      }
+                                    $tmpnewyearfull=date("Ym");     
+                                    $id_temp= "ORD".$tmpnewyearfull."-".$tmpidzero.$tmpidnumnew;
+                                  
+                                    
+                                  }elseif($memidnew>=1 || $memidmonthnew>=1)
+                                  {
+                                    
+                                    $tmpnewyearfull=date("Ym");
+                                    $id_temp= "ORD".$tmpnewyearfull."-0001";
+                                  }
+                                }
+
+
+                                //ตัวแปร
+                                $id_temp=$id_temp;
+                                $ordtMId="";
+                                $ordtUnit="";
+                                $UName="";
+                                $ordtComment="";
+
+                                //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
+                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment from  OrderDetailTemp ";
+                                $result_slorderme = $mysql->query($sql_slorderme);
+                                while($objResult_slorderme = $result_slorderme->fetch_assoc())
+                                {
+                                  $ordtMId=$objResult_slorderme["ordtMId"];
+                                  $ordtUnit=$objResult_slorderme["ordtUnit"];
+                                  $ordtComment=$objResult_slorderme["ordtComment"];
+                                  $mysql->query("INSERT INTO OrderDetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
+                                }
+
+                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
+
+
 
                       }
 
