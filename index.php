@@ -591,7 +591,7 @@
                       $replyJson["messages"][1] = $replySticker_orderme;
 
                   }elseif(DateTimeDiff($datetime_ort,$datetime_now)<=0.083){
-                      $num_showorderme_detail=0;
+                      $num=0;
                       $showorderme_detail=[];
                       //ค้นหาข้อมูลในฐานข้อมูล
                       $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
@@ -601,7 +601,7 @@
                       while($objResult_slorderme = $result_slorderme->fetch_assoc())
                       {
 
-                        $showorderme_detail=[
+                        $showorderme_detail[$num]=[
                                     "type"=> "box",
                                     "layout"=> "vertical",
                                     "spacing"=> "sm",
@@ -623,7 +623,7 @@
                                       ]
                                     ]
                               ];
-                        $num_showorderme_detail++;
+                        $num++;
                       }
 
 
