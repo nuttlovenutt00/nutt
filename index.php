@@ -783,7 +783,7 @@
                                 $ordtUnit="";
                                 $UName="";
                                 $ordtComment="";
-                                $chknumpro=0;
+                                $numpro=0;
                                 $PricePro=0;
 
                                 $timee=date("H:i");
@@ -798,8 +798,8 @@
                                   $ordtComment=$objResult_slorderme["ordtComment"];
                                   $PPrice=$objResult_slorderme["PPrice"];
                                   $mysql->query("INSERT INTO OrderDetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
-                                  $chknumpro++;
-                                  $PricePro=$PricePro+$PPrice;
+                                  $numpro=$numpro+$ordtUnit;
+                                  $PricePro=$PricePro+($PPrice*$ordtUnit);
                                 }
 
                                 $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$chknumpro','$PricePro')");
