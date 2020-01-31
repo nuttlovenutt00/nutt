@@ -540,7 +540,7 @@
   {
 
               //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID'  order by orAutoId DESC";
+              $sql_sorderme = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID'  order by orAutoId DESC";
               $result_sorderme = $mysql->query($sql_sorderme);
               $objResult_sorderme = $result_sorderme->fetch_assoc(); 
 
