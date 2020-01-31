@@ -540,7 +540,7 @@
   {
 
               //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' and ortStatus is NULL order by orAutoId DESC";
               $result_sorderme = $mysql->query($sql_sorderme);
               $objResult_sorderme = $result_sorderme->fetch_assoc(); 
 
@@ -758,7 +758,7 @@
                                 $timee=date("H:i");
 
                                 //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment from  OrderDetailTemp where ordtOrId='$cid'";
+                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment from  OrderDetailTemp where ordtOrId='$cid' ";
                                 $result_slorderme = $mysql->query($sql_slorderme);
                                 while($objResult_slorderme = $result_slorderme->fetch_assoc())
                                 {
@@ -770,6 +770,7 @@
 
                                 $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','1','รอชำระเงิน','$userID','1','1')");
 
+                                 $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
                                 
 
 
