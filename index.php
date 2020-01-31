@@ -748,6 +748,31 @@
                                 //สิ้นสุดค้นหารหัส order ก่อนหน้านี้และสร้างใหม่
 
 
+                                //ค้นหารหัส Q ก่อนหน้านี้และสร้างใหม่
+                                $sql_Q = "Select Max(orQ) as MaxQ,orDate from  OrderMenu";
+                                $result_Q = $mysql->query($sql_Q);
+                                $objResult_Q = $result_Q->fetch_assoc();
+
+                                //เอาเวลามารวมกับวันที่
+                                $datetime_ort=$objResult_Q["orDate"];
+                                $datetime_now=$datetime;
+
+                                //ฟังก์ชั่น คำนวนหาความห่างของเวลา
+                                 function DateDiff($strDate1,$strDate2)
+                                 {
+                                      return (strtotime($strDate2) - strtotime($strDate1))/  ( 60 * 60 * 24 );  // 1 day = 60*60*24
+                                 }
+
+                                 if(DateDiff($datetime_ort,$datetime_now)>0 || $objResult_Q["MaxQ"]==""){
+                                    $id_Q= "1";
+                                 }else{
+
+                                    $id_Q = $objResult_Q["MaxQ"]+1;
+                                }
+                                
+                                //สิ้นสุดค้นหารหัส Q ก่อนหน้านี้และสร้างใหม่
+
+
                                 
 
                                 //ตัวแปร
@@ -770,7 +795,7 @@
                                   $mysql->query("INSERT INTO OrderDetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
                                 }
 
-                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','1','รอชำระเงิน','$userID','1','1')");
+                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','1','1')");
 
                                  $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
                                 
