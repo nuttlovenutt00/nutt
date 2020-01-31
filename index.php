@@ -551,7 +551,7 @@
               $ortStatus=$objResult_sorderme['ortStatus'];
 
               //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
-              if($result_sorderme->num_rows == 0 || $ortStatus == "")
+              if($result_sorderme->num_rows == 0 || $ortStatus == "complete")
                {
                 
                   $replyText_orderme["type"] = "text";
