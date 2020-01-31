@@ -94,7 +94,7 @@
       {
 
               //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sdrt = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $sql_sdrt = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
               $result_sdrt = $mysql->query($sql_sdrt);
               $objResult_sdrt = $result_sdrt->fetch_assoc(); 
 
@@ -102,6 +102,7 @@
               $cid =$objResult_sdrt['orId'];
               $cdate =$objResult_sdrt['ortDate'];
               $ctime =$objResult_sdrt['ortTime'];
+              $ortStatus=$objResult_sdrt['ortStatus'];
 
               //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
               if($result_sdrt->num_rows==0)
@@ -128,7 +129,7 @@
                //ตัวแปรตรวจสอบว่าลูกค้ายกเลิกออเดดอร์ซ้ำหรือป่าว
                $action0_SPro="";
               //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
-              if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes")
+              if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes" || $ortStatus=="complete")
               {
                                 //คำนวนรหัส Temp ของ Order
                                $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
