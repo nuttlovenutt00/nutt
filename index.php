@@ -772,7 +772,7 @@
                                 $timee=date("H:i");
 
                                 //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment from  OrderDetailTemp ";
+                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment from  OrderDetailTemp where ordtOrId='cid'";
                                 $result_slorderme = $mysql->query($sql_slorderme);
                                 while($objResult_slorderme = $result_slorderme->fetch_assoc())
                                 {
