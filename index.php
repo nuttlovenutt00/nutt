@@ -802,7 +802,7 @@
                                   $PricePro=$PricePro+($PPrice*$ordtUnit);
                                 }
 
-                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$chknumpro','$PricePro')");
+                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$numpro','$PricePro')");
 
                                  $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
                                 
