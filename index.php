@@ -540,7 +540,7 @@
   {
 
               //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID' and ortStatus is NULL order by orAutoId DESC";
+              $sql_sorderme = "Select orId,ortDate,ortTime from  OrderTemp  where ortUserId='$userID'  order by orAutoId DESC";
               $result_sorderme = $mysql->query($sql_sorderme);
               $objResult_sorderme = $result_sorderme->fetch_assoc(); 
 
@@ -548,9 +548,10 @@
               $cid =$objResult_sorderme['orId'];
               $cdate =$objResult_sorderme['ortDate'];
               $ctime =$objResult_sorderme['ortTime'];
+              $ortStatus=$objResult_sorderme['ortStatus'];
 
               //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
-              if($result_sorderme->num_rows == 0)
+              if($result_sorderme->num_rows == 0 || $ortStatus == "")
                {
                 
                   $replyText_orderme["type"] = "text";
