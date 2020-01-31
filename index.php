@@ -712,7 +712,7 @@
                                 if($objResult["MaxID"]=="")
                                   {
                                     $idfull=date("Ym");
-                                     $id_temp= "ORD".$idfull."-0001";                                  
+                                     $id_temp= "ORD".$idfull."-1";                                  
                                    }else{
                                   $memidyearold1=substr($objResult["MaxID"],0,7);
                                   $memidyearold=substr($memidyearold1,3);
@@ -731,21 +731,7 @@
                                     $tmpidnumold=substr($objResult["MaxID"],10); 
                                     $tmpidnumnew=$tmpidnumold+1;
                                   
-                                    if($tmpidnumnew<=9)
-                                    {
-                                      $tmpidzero="000"; 
-                                    }elseif($tmpidnumnew > 9 && $tmpidnumnew <= 99 )
-                                      {
-                                        $tmpidzero="00";
-                                      }
-                                      elseif($tmpidnumnew >=100 && $tmpidnumnew <= 999 )
-                                      {
-                                        $tmpidzero="0";
-                                      }
-                                      elseif($tmpidnumnew >=1000 && $tmpidnumnew <= 9999 )
-                                      {
-                                        $tmpidzero="";
-                                      }
+                                    
                                     $tmpnewyearfull=date("Ym");     
                                     $id_temp= "ORD".$tmpnewyearfull."-".$tmpidzero.$tmpidnumnew;
                                   
@@ -754,7 +740,7 @@
                                   {
                                     
                                     $tmpnewyearfull=date("Ym");
-                                    $id_temp= "ORD".$tmpnewyearfull."-0001";
+                                    $id_temp= "ORD".$tmpnewyearfull."-1";
                                   }
                                 }
                                 //สิ้นสุดค้นหารหัส order ก่อนหน้านี้และสร้างใหม่
