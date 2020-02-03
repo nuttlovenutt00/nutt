@@ -599,6 +599,7 @@
                       {
                             $num=0;
                             $showorderme_detail=[];
+                            $totalpriceorder=0;
                             //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
                             $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment,PPrice from  OrderDetailTemp as a
                               left join Product as b on a.ordtMId = b.PId
@@ -612,11 +613,16 @@
                               $ordtComment=$objResult_slorderme["ordtComment"];
                               $ordtPPrice=$objResult_slorderme["PPrice"];
 
+                              $totalpriceorder=( $ordtUnit*$ordtPPrice)+$totalpriceorder
+
                               if($objResult_slorderme["ordtComment"]=="ไม่มี"){
                                 $ordtComment="";
                               }else{
                                 $ordtComment="  *".$objResult_slorderme["ordtComment"];
                               }
+
+
+
 
                               $showorderme_detail[$num]=[
                                           
@@ -654,6 +660,11 @@
                                           "spacing"=> "sm",
                                           "margin"=> "lg",
                                           "contents"=> $showorderme_detail
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "ราคารวม ฿". $totalpriceorder,
+                                          "size"=> "sm"
                                         ],
                                         [
                                           "type"=> "text",
