@@ -53,15 +53,15 @@
   if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง")
   {
 
-      $replyText_ProHot["type"] = "text";
-      $replyText_ProHot["text"] = "ตอนนี้ทางร้านยังไม่มีเมนูแนะนำค่ะ รบกวนดูในริชเมนูไปก่อนนะคะ";
+      $replyText_order_text["type"] = "text";
+      $replyText_order_text["text"] = "ตอนนี้ทางร้านยังไม่มีเมนูแนะนำค่ะ รบกวนดูในริชเมนูไปก่อนนะคะ";
 
       $order_text = explode("\n", $text);
       $countArrayorder_text = count($order_text);
       for($i=0;$i<$countArrayorder_text;$i++){
-         $replyText_ProHot["text"].=$order_text[$i]."\n";
+         $replyText_order_text["text"].=$order_text[$i]."\n";
      }
-          $replyJson["messages"][0] = $replyText_ProHot;
+          $replyJson["messages"][0] = $replyText_order_text;
 
 
 
