@@ -663,8 +663,15 @@
                                         ],
                                         [
                                           "type"=> "text",
-                                          "text"=> "ราคารวม ฿". $totalpriceorder,
-                                          "size"=> "sm"
+                                          "text"=> "text",
+                                          "size"=> "xxs",
+                                          "color"=> "#FFFFFF"
+                                        ],
+                                        [
+                                          "type"=> "text",
+                                          "text"=> "ราคารวม ฿".number_format($totalpriceorder,2),
+                                          "size"=> "sm",
+                                          "color"=> "#000000"
                                         ],
                                         [
                                           "type"=> "text",
