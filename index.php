@@ -78,7 +78,7 @@
 
         $chkpro="";
         //ตรวจสอบรหัสสินค้าในฐานข้อมูลว่ามีหรือไม่
-        $sql_SPro = "SELECT PAutoId,PName,UName FROM  Product as a
+        $sql_SPro = "SELECT PAutoId,PName,UName,PPrice FROM  Product as a
           left join Unit as b on a.PUnit = b.UId
           where PId= '$idPro_fromtext' ";
         $result_SPro = $mysql->query($sql_SPro);
@@ -202,6 +202,7 @@
               $array_SPro=$result_SPro->fetch_assoc();
               $namePro=$array_SPro["PName"];
               $nameProUnit=$array_SPro["UName"];
+              $priceproorder=$array_SPro["PPrice"];
              
 
               //สร้างตัวแปรไว้เก็บข้อความตามการกระทำของลูกค้า
@@ -327,7 +328,7 @@
                               ],
                               [
                                 "type"=> "text",
-                                "text"=> "ชื่อสินค้า : ".$namePro,
+                                "text"=> "ชื่อสินค้า : ".$namePro." ฿".number_format($priceproorder, 2),
                                 "size"=> "sm",
                                 "color"=> "#000000"
                               ],
