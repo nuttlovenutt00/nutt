@@ -793,6 +793,18 @@
                                 }
                                 
                                 //สิ้นสุดค้นหารหัส Q ก่อนหน้านี้และสร้างใหม่
+
+
+                                //คำนวน Q 
+                                $sql_cQ = "Select orQ from  OrderMenu where orDate='$datetime' and orStatus='รอชำระเงิน' order by orAutoId ASC";
+                                $result_cQ = $mysql->query($sql_cQ);
+                                $objResult_cQ = $result_Q->fetch_assoc();
+
+                                $cQ=$objResult_cQ["orQ"];
+
+                                $ccQ=$id_Q-$cQ;
+                                //สิ้นสุดคำนวน Q 
+
                                
 
                                 //ตัวแปร
@@ -825,7 +837,6 @@
                                 $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$numpro','$PricePro')");
 
                                 //แก้ไขข้อมูลในตาราง Temp ว่ายืนยันการสั่งแล้ว
-
                                  $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
                                 
                                 //แสดงคิว
@@ -874,7 +885,7 @@
                                           ],
                                           [
                                             "type"=> "text",
-                                            "text"=> "จำนวนที่รอ 2 คิว",
+                                            "text"=> "จำนวนที่รอ ".(String)$ccQ." คิว",
                                             "size"=> "lg",
                                             "weight"=> "bold",
                                             "color"=> "#000000"
