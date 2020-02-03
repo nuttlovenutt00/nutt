@@ -735,7 +735,7 @@
                                   
                                     
                                     $tmpnewyearfull=date("Ym");     
-                                    $id_temp= "ORD".$tmpnewyearfull."-".$tmpidzero.$tmpidnumnew;
+                                    $id_temp= "ORD".$tmpnewyearfull."-".$tmpidnumnew;
                                   
                                     
                                   }elseif($memidnew>=1 || $memidmonthnew>=1)
