@@ -54,8 +54,6 @@
   {
 
       $replyText_order_text["type"] = "text";
-      $replyText_order_text["text"] = "ตอนนี้ทางร้านยังไม่มีเมนูแนะนำค่ะ รบกวนดูในริชเมนูไปก่อนนะคะ";
-
       $order_text = explode("\n", $text);
       $countArrayorder_text = count($order_text);
       for($i=0;$i<$countArrayorder_text;$i++){
