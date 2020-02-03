@@ -60,7 +60,7 @@
       $countArrayorder_text = count($order_text);
       for($i=0;$i<$countArrayorder_text;$i++){
          $replyText_ProHot["text"].=$order_text[$i]."\n";
-     
+     }
           $replyJson["messages"][0] = $replyText_ProHot;
 
 
