@@ -835,7 +835,7 @@
                                           ],
                                           [
                                             "type"=> "text",
-                                            "text"=> "nn",
+                                            "text"=> $id_Q,
                                             "size"=> "4xl",
                                             "align"=> "center",
                                             "weight"=> "bold",
