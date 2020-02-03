@@ -54,12 +54,15 @@
   {
 
       $replyText_order_text["type"] = "text";
+
       $order_text = explode("\n", $text);
       $countArrayorder_text = count($order_text);
-      for($i=0;$i<$countArrayorder_text;$i++){
-         $replyText_order_text["text"].=$order_text[$i]."\n";
-     }
-          $replyJson["messages"][0] = $replyText_order_text;
+      for($i=0;$i<$countArrayorder_text;$i++)
+      {
+         $order_list_text[$i] = explode("@", $order_text[$i]);
+
+      }
+          $replyJson["messages"][0] = $order_list_text[0][1];
 
 
 
