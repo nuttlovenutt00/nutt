@@ -835,7 +835,7 @@
                                           ],
                                           [
                                             "type"=> "text",
-                                            "text"=> $id_Q,
+                                            "text"=> (String)$id_Q,
                                             "size"=> "4xl",
                                             "align"=> "center",
                                             "weight"=> "bold",
