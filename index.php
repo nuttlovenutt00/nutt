@@ -600,7 +600,7 @@
                             $num=0;
                             $showorderme_detail=[];
                             //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                            $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment from  OrderDetailTemp as a
+                            $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment,PPrice from  OrderDetailTemp as a
                               left join Product as b on a.ordtMId = b.PId
                               left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
                             $result_slorderme = $mysql->query($sql_slorderme);
@@ -610,6 +610,7 @@
                               $PName=$objResult_slorderme["PName"];
                               $ordtUnit=$objResult_slorderme["ordtUnit"];
                               $ordtComment=$objResult_slorderme["ordtComment"];
+                              $ordtPPrice=$objResult_slorderme["PPrice"];
 
                               if($objResult_slorderme["ordtComment"]=="ไม่มี"){
                                 $ordtComment="";
@@ -620,7 +621,7 @@
                               $showorderme_detail[$num]=[
                                           
                                               "type"=> "text",
-                                              "text"=> $ordtMId.":".$PName." x".$ordtUnit.$ordtComment,
+                                              "text"=> $ordtMId.":".$PName.." ฿".number_format($ordtPPrice,2)." x".$ordtUnit.$ordtComment,
                                               "size"=> "sm",
                                               "color"=> "#000000"
                                             
