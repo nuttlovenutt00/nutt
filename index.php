@@ -773,9 +773,7 @@
                                 }
                                 
                                 //สิ้นสุดค้นหารหัส Q ก่อนหน้านี้และสร้างใหม่
-
-
-                                
+                               
 
                                 //ตัวแปร
                                 $id_temp=$id_temp;
@@ -793,20 +791,96 @@
                                 $result_slorderme = $mysql->query($sql_slorderme);
                                 while($objResult_slorderme = $result_slorderme->fetch_assoc())
                                 {
+                                  //ริชข้อมูลจากตางราง temp แล้วมาเก็บในตัวแปร และบันทึกลงตารางจริง
                                   $ordtMId=$objResult_slorderme["ordtMId"];
                                   $ordtUnit=$objResult_slorderme["ordtUnit"];
                                   $ordtComment=$objResult_slorderme["ordtComment"];
                                   $PPrice=$objResult_slorderme["PPrice"];
                                   $mysql->query("INSERT INTO OrderDetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
-                                  $numpro=$numpro+$ordtUnit;
-                                  $PricePro=$PricePro+($PPrice*$ordtUnit);
+                                  $numpro=$numpro+$ordtUnit; //รวมจำนวนสินค้า
+                                  $PricePro=$PricePro+($PPrice*$ordtUnit);//รวมราคาสินค้า
                                 }
 
+                                //บันทึกข้อมูลลงตาราง OrderMenu
                                 $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$numpro','$PricePro')");
+
+                                //แก้ไขข้อมูลในตาราง Temp ว่ายืนยันการสั่งแล้ว
 
                                  $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
                                 
+                                //แสดงคิว
+                                  $showQ=[
+                                    "type"=> "flex",
+                                    "altText"=> "Flex Message",
+                                    "contents"=> [
+                                      "type"=> "bubble",
+                                      "direction"=> "ltr",
+                                      "header"=> [
+                                        "type"=> "box",
+                                        "layout"=> "vertical",
+                                        "contents"=> [
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "ลำดับคิวของท่าน",
+                                            "size"=> "sm",
+                                            "align"=> "start",
+                                            "weight"=> "bold",
+                                            "color"=> "#6E422D"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "Text",
+                                            "size"=> "xxs",
+                                            "color"=> "#FFFFFF"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> $id_Q,
+                                            "size"=> "4xl",
+                                            "align"=> "center",
+                                            "weight"=> "bold",
+                                            "color"=> "#000000"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "Text",
+                                            "size"=> "xxs",
+                                            "color"=> "#FFFFFF"
+                                          ], 
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "#".$id_temp,
+                                            "size"=> "xs"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "จำนวนที่รอ 2 คิว",
+                                            "size"=> "lg",
+                                            "weight"=> "bold",
+                                            "color"=> "#000000"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "*กรณีลูกค้าไม่อยู่รับบริการในช่วงเวลาที่",
+                                            "size"=> "xs",
+                                            "weight"=> "bold",
+                                            "color"=> "#FF0000"
+                                          ],
+                                          [
+                                            "type"=> "text",
+                                            "text"=> "เรียกคิว ทางร้านของสงวนสิทธิในการข้ามคิว",
+                                            "size"=> "xs",
+                                            "weight"=> "bold",
+                                            "color"=> "#FF0000"
+                                          ]
+                                        ]
+                                      ]
+                                    ]
 
+                                ];
+
+                                 $replyJson["messages"][0] = $showQ;
+                                
 
 
                       }
