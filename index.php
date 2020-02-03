@@ -613,7 +613,7 @@
                               $ordtComment=$objResult_slorderme["ordtComment"];
                               $ordtPPrice=$objResult_slorderme["PPrice"];
 
-                              $totalpriceorder=( $ordtUnit*$ordtPPrice)+$totalpriceorder
+                              $totalpriceorder=($ordtUnit * $ordtPPrice) + $totalpriceorder;
 
                               if($objResult_slorderme["ordtComment"]=="ไม่มี"){
                                 $ordtComment="";
