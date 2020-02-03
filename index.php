@@ -621,7 +621,7 @@
                               $showorderme_detail[$num]=[
                                           
                                               "type"=> "text",
-                                              "text"=> $ordtMId.":".$PName." ฿".number_format($ordtPPrice,2)."x".$ordtUnit.$ordtComment,
+                                              "text"=> $ordtMId.":".$PName." ฿".number_format($ordtPPrice,2)." x".$ordtUnit.$ordtComment,
                                               "size"=> "sm",
                                               "color"=> "#000000"
                                             
