@@ -849,7 +849,7 @@
                                           ], 
                                           [
                                             "type"=> "text",
-                                            "text"=> "#".$id_temp,
+                                            "text"=> "#",
                                             "size"=> "xs"
                                           ],
                                           [
