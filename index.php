@@ -802,7 +802,12 @@
 
                                 $cQ=$objResult_cQ["orQ"];
 
-                                $ccQ=$id_Q-$cQ;
+                                
+                                if($id_Q==1){
+                                  $ccQ=0;
+                                }else{
+                                  $ccQ=$id_Q-$cQ;
+                                }
                                 //สิ้นสุดคำนวน Q 
 
                                
