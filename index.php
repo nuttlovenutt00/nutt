@@ -798,7 +798,7 @@
                                 //คำนวน Q 
                                 $sql_cQ = "Select orQ from  OrderMenu where orDate='$datetime' and orStatus='รอชำระเงิน' order by orAutoId ASC";
                                 $result_cQ = $mysql->query($sql_cQ);
-                                $objResult_cQ = $result_Q->fetch_assoc();
+                                $objResult_cQ = $result_cQ->fetch_assoc();
 
                                 $cQ=$objResult_cQ["orQ"];
 
