@@ -289,7 +289,15 @@
                       [
                         "type"=> "box",
                         "layout"=> "vertical",
-                        "contents"=> $textpro_pass
+                        "contents"=> [
+                          [
+                        "type"=> "text",
+                        "text"=> count($idpro_pass),
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ]
+
+                        ]
                       ],
                       [
                         "type"=> "box",
@@ -320,7 +328,15 @@
                           [
                             "type"=> "box",
                             "layout"=> "vertical",
-                            "contents"=> $textpro_error
+                            "contents"=> [
+                          [
+                        "type"=> "text",
+                        "text"=> count($idpro_error),
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ]
+
+                        ]
                           ]
                         ]
                       ]
