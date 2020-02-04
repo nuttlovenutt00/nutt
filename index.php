@@ -236,7 +236,7 @@
         }
 
        
-          for($zz=0;$zz<=1;$zz++)
+          for($zz=0;$zz<1;$zz++)
           {
             $textpro_pass[$zz]=[
                   "type"=> "text",
@@ -248,7 +248,7 @@
         
 
         
-          for($zzz=0;$zzz<=1;$zzz++)
+          for($zzz=0;$zzz<1;$zzz++)
           {
             $textpro_error[$zzz]=[
                   "type"=> "text",
