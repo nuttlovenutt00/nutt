@@ -239,9 +239,10 @@
         {
           for($zz=0;$zz<count($idpro_pass);$zz++)
           {
+            $textt=$idpro_pass[$zz];
             $textpro_pass[$zz]=[
                   "type"=> "text",
-                              "text"=> "xs",
+                              "text"=> $textt,
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
@@ -259,9 +260,10 @@
         {
           for($zzz=0;$zzz<count($idpro_error);$zzz++)
           {
+            $textt=$idpro_error[$zzz];
             $textpro_error[$zzz]=[
                   "type"=> "text",
-                              "text"=> "xs",
+                              "text"=> $textt,
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
