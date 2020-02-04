@@ -279,7 +279,7 @@
 
               $showstatusorder=[
                 "type"=> "text",
-                "text"=> "Flex Message",
+                "altText"=> "Flex Message",
                 "contents"=> [
                   "type"=> "bubble",
                   "direction"=> "ltr",
