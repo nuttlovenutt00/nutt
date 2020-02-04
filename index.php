@@ -256,26 +256,16 @@
                 ];
         }
 
-        if(isset($idpro_error))
-        {
-          for($zzz=0;$zzz<count($idpro_error);$zzz++)
-          {
-            $textt=$idpro_error[$zzz];
-            $textpro_error[$zzz]=[
+        
+            $textt=$idpro_error[0];
+            $textpro_error[0]=[
                   "type"=> "text",
                               "text"=> $textt,
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
-          }
-        }else{
-          $textpro_error[0]=[
-                  "type"=> "text",
-                              "text"=> "ไม่มี",
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
-        }
+          
+
 
         
 
