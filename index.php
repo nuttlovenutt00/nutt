@@ -53,16 +53,314 @@
   if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง")
   {
 
-      $replyText_order_text["type"] = "text";
-
-      $order_text = explode("\n", $text);
-      $countArrayorder_text = count($order_text);
-      for($i=0;$i<$countArrayorder_text;$i++)
+      $order_text = explode("\n", $text);//ตัดคำ
+      $countArrayorder_text = count($order_text);//นับว่าลูกค้าพิมมากี่บรรทัด
+      for($i=0;$i<$countArrayorder_text;$i++)//ลูปว่าลูกค้าพิมมาตามจำนวนบรรทัด
       {
-         $order_list_text[$i] = explode("@", $order_text[$i]);
+         $order_list_text[$i] = explode("@", $order_text[$i]);//เอาค่าที่ได้มาตัดคำ @ ออกจากกัน แล้วเก็บไว้ในตัวแปร
 
       }
-          $replyJson["messages"][0] = $order_list_text[0][1];
+      /*เช่น
+        $pizza  = "P1@1@หวานน้อย
+                  P2@1@หวานน้อย";
+
+        เป็น $a[0] = P1@1@หวานน้อย
+            $a[1] = P1@1@หวานน้อย
+        
+        และ $b[0]=P1
+            $b[1]=1
+            $b[2]=หวานน้อย
+
+      */
+
+ //ฟังก์ชั่น คำนวนหาความห่างของเวลา
+               function DateTimeDiff($strDateTime1,$strDateTime2)
+               {
+                    return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+               }
+
+      $countArrayorder_text1 = count($order_list_text);//นับจำนวนข้อมูลที่แยกออกมาจาก @ ว่ามีกี่คำ
+      for($a=0;$a<$countArrayorder_text1;$a++)
+      {
+
+            $countArrayorder_text2 = count($order_list_text[$a]);         
+            for($b=0;$b<$countArrayorder_text2;$b++)//
+            {
+              $id[$b]= $order_list_text[$a][$b];
+            }
+
+            //เก็บค่าตัวแปร
+            $idpro=$id[0];
+            $numpro=$id[1];
+
+            //ตรวจสอบว่าลูกค้าพิมพ์ข้อความเพิ่มเติมหรือป่าว
+            if(isset($id[2]) && $id[2]!==""){
+              $more=$id[2];
+            }else{
+              $more="ไม่มี";
+            }
+
+            //ตรวจสอบรหัสสินค้าในฐานข้อมูลว่ามีหรือไม่
+            $sql_SPro = "SELECT PAutoId,PName,UName,PPrice FROM  Product as a
+              left join Unit as b on a.PUnit = b.UId
+              where PId= '$idpro' ";
+            $result_SPro = $mysql->query($sql_SPro);
+             if($result_SPro->num_rows > 0)
+            {
+                $chkpro="yes";
+            }else{
+                $chkpro="no";
+            }
+
+
+            //ตรวจสอบว่าลูกค้าใส่จำนวนมาเป็นตัวเลขหรือไม่
+            if(is_numeric($numpro))
+            {
+              $chkpronum="yes";
+            }else{
+                $chkpronum="no";
+            }
+
+
+
+          if($chkpro=="yes" && $chkpronum=="yes")
+          {
+            //ค้นหาข้อมูลในฐานข้อมูล
+              $sql_sdrt = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $result_sdrt = $mysql->query($sql_sdrt);
+              $objResult_sdrt = $result_sdrt->fetch_assoc(); 
+
+              //ประกาศตัวแปรเอาไว้เก็บค่า
+              $cid =$objResult_sdrt['orId'];
+              $cdate =$objResult_sdrt['ortDate'];
+              $ctime =$objResult_sdrt['ortTime'];
+              $ortStatus=$objResult_sdrt['ortStatus'];
+
+              //ตรวจสอบว่าในฐานข้อมูลมีข้อมูลอยู่หรือป่าว
+              if($result_sdrt->num_rows==0)
+               {
+                $noid ="yes";
+               }else{
+                $noid ="no";
+               }
+
+              //เอาเวลามารวมกับวันที่
+              $datetime_ort=$cdate." ".$ctime;
+              $datetime_now=$datetime." ".$time;
+
+
+              //ถ้าสั่งออเดอร์ครั้งล่าสุดกับปัจจุบันมีความห่างกันเกิน 5 นาทีหรือยัง
+              if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes" || $ortStatus=="complete")
+              {
+                                //คำนวนรหัส Temp ของ Order
+                               $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                                $result_sirt = $mysql->query($sql_sirt);
+                                $objResult = $result_sirt->fetch_assoc();
+                                if($objResult["MaxID"]=="")
+                                  {
+                                    $id_temp= "1";                                  
+                                   }else{
+
+                                    $id_temp = $objResult["MaxID"]+1;
+                                }
+                                //สิ้นสุดคำนวนรหัสของ Order
+
+                         //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ตั้งแต่แรกเลยมั้ย       
+                        if($numpro==0){
+
+                            $idpro_error[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                        }else{
+                            //เก็บข้อมูลลงฐานข้อมูล      
+                            $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+
+                            $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
+
+                              $idpro_pass[$a]=$idpro." รับออเด้อเรียบร้อย";
+                        }
+              }else{
+                        //เก็บข้อมูลลงฐานข้อมูล      
+                        $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
+
+                        //ค้นหาข้อมูลในฐานข้อมูลว่าเพิ่มซ้ำกันมั้ย ถ้าใช่ให้เปลี่ยนแค่จำนวน
+                          $sql_sordt = "Select ordtId from  OrderDetailTemp  where ordtMId='$idpro' and ordtOrId='$cid' ";
+                          $result_sordt = $mysql->query($sql_sordt);
+
+                          //ถ้ามีอยู่แล้ว
+                          if($result_sordt->num_rows >0){
+
+                              //ลูกค้าพิมพ์ยกเลิกออเดอร์
+                              if($numpro==0){
+                                $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idpro' and ordtOrId='$cid'");
+
+                                //เช็คว่าเมื่อยกเลิกสินค้าแล้ว ในตาราง temp มีรายการเหลืออยู่มั้ย ถ้าลบออกหมดให้ลบข้อมูลในตาราง order หลักด้วย
+                                $sql_sordt_num = "Select ordtId from  OrderDetailTemp  where ordtOrId='$cid'";
+                                 $result_sordt_num = $mysql->query($sql_sordt_num);
+                                 if($result_sordt_num->num_rows == 0){
+                                      $mysql->query("DELETE FROM  OrderTemp where orId='$cid'");
+                                 }
+
+                                $idpro_pass[$a]=$idpro." ลบออเด้อเรียบร้อย";
+                              }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
+                                $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
+                                $idpro_pass[$a]=$idpro." แก้ไขออเด้อเรียบร้อย";
+                              }
+                              
+                            
+                          }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
+                              $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
+                               $idpro_pass[$a]=$idpro." รับออเด้อเรียบร้อย";
+                          }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
+
+                              $idpro_error[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                          }
+
+              }
+
+          }elseif($chkpro=="no" && $chkpronum=="yes"){
+            $idpro_error[$a]=$idpro." ไม่มีรหัสสินค้านี้";
+          }elseif($chkpro=="no" && $chkpronum=="no"){
+             $idpro_error[$a]=$idpro." ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
+          }elseif($chkpronum=="no"){
+             $idpro_error[$a]=$idpro." พิมพ์จำนวนผิด";
+          }
+
+
+              $array_SPro=$result_SPro->fetch_assoc();
+              $namePro=$array_SPro["PName"];
+              $nameProUnit=$array_SPro["UName"];
+              $priceproorder=$array_SPro["PPrice"];
+
+              
+
+        }
+
+        if(isset($idpro_pass))
+        {
+          for($zz=0;$zz<count($idpro_pass);$zz++)
+          {
+            $textpro_pass[$a]=[
+                  "type"=> "text",
+                              "text"=> $idpro_pass[$zz],
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+          }
+        }else{
+          $textpro_pass[$a]=[
+                  "type"=> "text",
+                              "text"=> "ไม่มี",
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+        }
+
+        if(isset($idpro_error))
+        {
+          for($zzz=0;$zzz<count($idpro_error);$zzz++)
+          {
+            $textpro_error[$a]=[
+                  "type"=> "text",
+                              "text"=> $idpro_error[$zzz],
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+          }
+        }else{
+          $textpro_error[$a]=[
+                  "type"=> "text",
+                              "text"=> "ไม่มี",
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+        }
+
+        
+
+              $showstatusorder=[
+                "type"=> "flex",
+                "altText"=> "Flex Message",
+                "contents"=> [
+                  "type"=> "bubble",
+                  "direction"=> "ltr",
+                  "header"=> [
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "สำเร็จ",
+                        "align"=> "start",
+                        "weight"=> "bold",
+                        "color"=> "#11B000"
+                      ],
+                      [
+                        "type"=> "separator"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "box",
+                        "layout"=> "vertical",
+                        "contents"=> $textpro_pass
+                      ],
+                      [
+                        "type"=> "box",
+                        "layout"=> "vertical",
+                        "contents"=> [
+                          [
+                            "type"=> "text",
+                            "text"=> "Text",
+                            "size"=> "xxs",
+                            "color"=> "#FFFFFF"
+                          ],
+                          [
+                            "type"=> "text",
+                            "text"=> "แจ้งเตือนผิดพลาด",
+                            "size"=> "sm",
+                            "weight"=> "bold",
+                            "color"=> "#FF0000"
+                          ],
+                          [
+                            "type"=> "separator"
+                          ],
+                          [
+                            "type"=> "text",
+                            "text"=> "Text",
+                            "size"=> "xxs",
+                            "color"=> "#FFFFFF"
+                          ],
+                          [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> $textpro_error
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "footer"=> [
+                    "type"=> "box",
+                    "layout"=> "horizontal",
+                    "contents"=> [
+                      [
+                        "type"=> "button",
+                        "action"=> [
+                          "type"=> "message",
+                          "label"=> "แสดงรายการทั้งหมดในต",
+                          "text"=> "รายการของฉัน"
+                        ],
+                        "color"=> "#6E422D",
+                        "height"=> "sm",
+                        "style"=> "primary"
+                      ]
+                    ]
+                  ]
+                ]
+              ];
 
 
 
