@@ -284,7 +284,7 @@
                       [
                         "type"=> "box",
                         "layout"=> "vertical",
-                        "contents"=> $textpro_pass
+                        "contents"=> [$textpro_pass]
                       ],
                       [
                         "type"=> "box",
@@ -315,7 +315,7 @@
                           [
                             "type"=> "box",
                             "layout"=> "vertical",
-                            "contents"=> $textpro_error
+                            "contents"=> [$textpro_error]
                           ]
                         ]
                       ]
