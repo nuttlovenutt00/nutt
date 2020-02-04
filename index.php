@@ -278,7 +278,7 @@
         
 
               $showstatusorder=[
-                "type"=> "text",
+                "type"=> "flex",
                 "altText"=> "Flex Message",
                 "contents"=> [
                   "type"=> "bubble",
