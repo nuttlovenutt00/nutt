@@ -238,7 +238,7 @@
         {
           for($zz=0;$zz<count($idpro_pass);$zz++)
           {
-            $textpro_pass[$a]=[
+            $textpro_pass[$zz]=[
                   "type"=> "text",
                               "text"=> $idpro_pass[$zz],
                               "size"=> "xs",
@@ -246,7 +246,7 @@
                 ];
           }
         }else{
-          $textpro_pass[$a]=[
+          $textpro_pass[$zz]=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
@@ -258,7 +258,7 @@
         {
           for($zzz=0;$zzz<count($idpro_error);$zzz++)
           {
-            $textpro_error[$a]=[
+            $textpro_error[$zzz]=[
                   "type"=> "text",
                               "text"=> $idpro_error[$zzz],
                               "size"=> "xs",
@@ -266,7 +266,7 @@
                 ];
           }
         }else{
-          $textpro_error[$a]=[
+          $textpro_error[$zzz]=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
