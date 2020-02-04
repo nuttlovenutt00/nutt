@@ -86,6 +86,7 @@
             $countArrayorder_text2 = count($order_list_text[$a]);         
             for($b=0;$b<$countArrayorder_text2;$b++)//
             {
+              $id[2]="";
               $id[$b]= $order_list_text[$a][$b];
             }
 
