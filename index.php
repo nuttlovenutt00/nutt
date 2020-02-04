@@ -306,14 +306,7 @@
                       [
                         "type"=> "box",
                         "layout"=> "vertical",
-                        "contents"=> [
-                          [
-                            "type"=> "text",
-                            "text"=> "Text",
-                            "size"=> "xxs",
-                            "color"=> "#000000"
-                          ]
-                        ]
+                        "contents"=> [$textpro_pass]
                       ],
                       [
                         "type"=> "box",
@@ -344,14 +337,7 @@
                           [
                             "type"=> "box",
                             "layout"=> "vertical",
-                            "contents"=> [
-                          [
-                            "type"=> "text",
-                            "text"=> "Text",
-                            "size"=> "xxs",
-                            "color"=> "#000000"
-                          ]
-                        ]
+                            "contents"=> [$textpro_error]
                           ]
                         ]
                       ]
