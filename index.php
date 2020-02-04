@@ -237,7 +237,7 @@
 
         if(isset($idpro_pass))
         {
-          for($zz=0;$zz<=0;$zz++)
+          for($zz=0;$zz<=1;$zz++)
           {
             $textpro_pass[$zz]=[
                   "type"=> "text",
@@ -247,7 +247,7 @@
                 ];
           }
         }else{
-          $textpro_pass[0]=[
+          $textpro_pass=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
@@ -257,7 +257,7 @@
 
         if(isset($idpro_error))
         {
-          for($zzz=0;$zzz<0;$zzz++)
+          for($zzz=0;$zzz<1;$zzz++)
           {
             $textpro_error[$zzz]=[
                   "type"=> "text",
@@ -267,7 +267,7 @@
                 ];
           }
         }else{
-          $textpro_error[0]=[
+          $textpro_error=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
