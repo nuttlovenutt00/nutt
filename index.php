@@ -239,7 +239,7 @@
           
             $textpro_pass[0]=[
                   "type"=> "text",
-                              "text"=> $idpro_pass[0],
+                              "text"=> "xs",
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
@@ -250,7 +250,7 @@
           
             $textpro_error[0]=[
                   "type"=> "text",
-                              "text"=> $idpro_error[0],
+                              "text"=> "xs",
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
