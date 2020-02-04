@@ -235,8 +235,7 @@
 
         }
 
-        if(isset($idpro_pass))
-        {
+       
           for($zz=0;$zz<=1;$zz++)
           {
             $textpro_pass[$zz]=[
@@ -246,18 +245,10 @@
                               "color"=> "#000000"
                 ];
           }
-        }else{
-          $textpro_pass=[
-                  "type"=> "text",
-                              "text"=> "ไม่มี",
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
-        }
+        
 
-        if(isset($idpro_error))
-        {
-          for($zzz=0;$zzz<1;$zzz++)
+        
+          for($zzz=0;$zzz<=1;$zzz++)
           {
             $textpro_error[$zzz]=[
                   "type"=> "text",
@@ -266,14 +257,7 @@
                               "color"=> "#000000"
                 ];
           }
-        }else{
-          $textpro_error=[
-                  "type"=> "text",
-                              "text"=> "ไม่มี",
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
-        }
+       
 
         
 
