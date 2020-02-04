@@ -235,23 +235,28 @@
 
         }
 
-        
-            $textpro_pass=[
+        for($zz=0;$zz<count($idpro_pass);$zz++)
+          {
+            $textpro_pass[$zz]=[
                   "type"=> "text",
-                              "text"=> "ไม่มี",
+                              "text"=> $idpro_pass[$zz],
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
+          }
        
-          $textpro_error=[
+
+        
+          for($zzz=0;$zzz<count($idpro_error);$zzz++)
+          {
+            $textpro_error[$zzz]=[
                   "type"=> "text",
-                              "text"=> "ไม่มี",
+                              "text"=> $idpro_error[$zzz],
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
+          }
         
-        
-      
 
         
 
@@ -284,7 +289,7 @@
                       [
                         "type"=> "box",
                         "layout"=> "vertical",
-                        "contents"=> [$textpro_pass]
+                        "contents"=> $textpro_pass
                       ],
                       [
                         "type"=> "box",
@@ -315,7 +320,7 @@
                           [
                             "type"=> "box",
                             "layout"=> "vertical",
-                            "contents"=> [$textpro_error]
+                            "contents"=> $textpro_error
                           ]
                         ]
                       ]
