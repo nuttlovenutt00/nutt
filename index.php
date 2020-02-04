@@ -235,7 +235,9 @@
 
         }
 
-        for($zz=0;$zz<count($idpro_pass);$zz++)
+        if(isset($idpro_pass))
+        {
+          for($zz=0;$zz<=count($idpro_pass);$zz++)
           {
             $textpro_pass[$zz]=[
                   "type"=> "text",
@@ -244,10 +246,18 @@
                               "color"=> "#000000"
                 ];
           }
-       
+        }else{
+          $textpro_pass[0]=[
+                  "type"=> "text",
+                              "text"=> "ไม่มี",
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+        }
 
-        
-          for($zzz=0;$zzz<count($idpro_error);$zzz++)
+        if(isset($idpro_error))
+        {
+          for($zzz=0;$zzz<=count($idpro_error);$zzz++)
           {
             $textpro_error[$zzz]=[
                   "type"=> "text",
@@ -256,7 +266,14 @@
                               "color"=> "#000000"
                 ];
           }
-        
+        }else{
+          $textpro_error[0]=[
+                  "type"=> "text",
+                              "text"=> "ไม่มี",
+                              "size"=> "xs",
+                              "color"=> "#000000"
+                ];
+        }
 
         
 
@@ -289,15 +306,7 @@
                       [
                         "type"=> "box",
                         "layout"=> "vertical",
-                        "contents"=> [
-                          [
-                        "type"=> "text",
-                        "text"=> count($idpro_pass),
-                        "size"=> "xxs",
-                        "color"=> "#FFFFFF"
-                      ]
-
-                        ]
+                        "contents"=> $textpro_pass
                       ],
                       [
                         "type"=> "box",
@@ -328,15 +337,7 @@
                           [
                             "type"=> "box",
                             "layout"=> "vertical",
-                            "contents"=> [
-                          [
-                        "type"=> "text",
-                        "text"=> count($idpro_error),
-                        "size"=> "xxs",
-                        "color"=> "#FFFFFF"
-                      ]
-
-                        ]
+                            "contents"=> $textpro_error
                           ]
                         ]
                       ]
