@@ -243,7 +243,7 @@
                               "color"=> "#000000"
                 ];
        
-          $textpro_pass=[
+          $textpro_error=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
