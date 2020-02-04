@@ -236,27 +236,25 @@
         }
 
        
-          for($zz=0;$zz<1;$zz++)
-          {
-            $textpro_pass[$zz]=[
+          
+            $textpro_pass[0]=[
                   "type"=> "text",
-                              "text"=> $idpro_pass[$zz],
+                              "text"=> $idpro_pass[0],
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
-          }
+          
         
 
         
-          for($zzz=0;$zzz<1;$zzz++)
-          {
-            $textpro_error[$zzz]=[
+          
+            $textpro_error[0]=[
                   "type"=> "text",
-                              "text"=> $idpro_error[$zzz],
+                              "text"=> $idpro_error[0],
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
-          }
+         
        
 
         
