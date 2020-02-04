@@ -247,7 +247,7 @@
                 ];
           }
         }else{
-          $textpro_pass[$zz]=[
+          $textpro_pass[0]=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
@@ -267,7 +267,7 @@
                 ];
           }
         }else{
-          $textpro_error[$zzz]=[
+          $textpro_error[0]=[
                   "type"=> "text",
                               "text"=> "ไม่มี",
                               "size"=> "xs",
@@ -279,7 +279,88 @@
 
               $showstatusorder=[
                 "type"=> "text",
-                "text"=> "Flex Message"
+                "text"=> "Flex Message",
+                "contents"=> [
+                  "type"=> "bubble",
+                  "direction"=> "ltr",
+                  "header"=> [
+                    "type"=> "box",
+                    "layout"=> "vertical",
+                    "contents"=> [
+                      [
+                        "type"=> "text",
+                        "text"=> "สำเร็จ",
+                        "align"=> "start",
+                        "weight"=> "bold",
+                        "color"=> "#11B000"
+                      ],
+                      [
+                        "type"=> "separator"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "box",
+                        "layout"=> "vertical",
+                        "contents"=> $textpro_pass
+                      ],
+                      [
+                        "type"=> "box",
+                        "layout"=> "vertical",
+                        "contents"=> [
+                          [
+                            "type"=> "text",
+                            "text"=> "Text",
+                            "size"=> "xxs",
+                            "color"=> "#FFFFFF"
+                          ],
+                          [
+                            "type"=> "text",
+                            "text"=> "แจ้งเตือนผิดพลาด",
+                            "size"=> "sm",
+                            "weight"=> "bold",
+                            "color"=> "#FF0000"
+                          ],
+                          [
+                            "type"=> "separator"
+                          ],
+                          [
+                            "type"=> "text",
+                            "text"=> "Text",
+                            "size"=> "xxs",
+                            "color"=> "#FFFFFF"
+                          ],
+                          [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> $textpro_error
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  "footer"=> [
+                    "type"=> "box",
+                    "layout"=> "horizontal",
+                    "contents"=> [
+                      [
+                        "type"=> "button",
+                        "action"=> [
+                          "type"=> "message",
+                          "label"=> "แสดงรายการทั้งหมดในต",
+                          "text"=> "รายการของฉัน"
+                        ],
+                        "color"=> "#6E422D",
+                        "height"=> "sm",
+                        "style"=> "primary"
+                      ]
+                    ]
+                  ]
+                ]
               ];
               $replyJson["messages"][0] = $showstatusorder;
 
