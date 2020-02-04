@@ -237,7 +237,7 @@
 
         if(isset($idpro_pass))
         {
-          for($zz=0;$zz<=count($idpro_pass);$zz++)
+          for($zz=0;$zz<=0;$zz++)
           {
             $textpro_pass[$zz]=[
                   "type"=> "text",
@@ -257,7 +257,7 @@
 
         if(isset($idpro_error))
         {
-          for($zzz=0;$zzz<=count($idpro_error);$zzz++)
+          for($zzz=0;$zzz<0;$zzz++)
           {
             $textpro_error[$zzz]=[
                   "type"=> "text",
