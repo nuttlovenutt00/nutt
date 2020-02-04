@@ -169,7 +169,7 @@
                          //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ตั้งแต่แรกเลยมั้ย       
                         if($numpro==0){
 
-                            $idpro_error[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                            $idpro_pass[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                         }else{
                             //เก็บข้อมูลลงฐานข้อมูล      
                             $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
@@ -212,17 +212,17 @@
                                $idpro_pass[$a]=$idpro." รับออเด้อเรียบร้อย";
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
-                              $idpro_error[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                              $idpro_pass[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                           }
 
               }
 
           }elseif($chkpro=="no" && $chkpronum=="yes"){
-            $idpro_error[$a]=$idpro." ไม่มีรหัสสินค้านี้";
+            $idpro_pass[$a]=$idpro." ไม่มีรหัสสินค้านี้";
           }elseif($chkpro=="no" && $chkpronum=="no"){
-             $idpro_error[$a]=$idpro." ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
+             $idpro_pass[$a]=$idpro." ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
           }elseif($chkpronum=="no"){
-             $idpro_error[$a]=$idpro." พิมพ์จำนวนผิด";
+             $idpro_pass[$a]=$idpro." พิมพ์จำนวนผิด";
           }
 
 
@@ -256,14 +256,6 @@
                 ];
         }
 
-        
-            $textt=$idpro_error[0];
-            $textpro_error[0]=[
-                  "type"=> "text",
-                              "text"=> $textt,
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
           
 
 
@@ -299,40 +291,8 @@
                         "type"=> "box",
                         "layout"=> "vertical",
                         "contents"=> $textpro_pass
-                      ],
-                      [
-                        "type"=> "box",
-                        "layout"=> "vertical",
-                        "contents"=> [
-                          [
-                            "type"=> "text",
-                            "text"=> "Text",
-                            "size"=> "xxs",
-                            "color"=> "#FFFFFF"
-                          ],
-                          [
-                            "type"=> "text",
-                            "text"=> "แจ้งเตือนผิดพลาด",
-                            "size"=> "sm",
-                            "weight"=> "bold",
-                            "color"=> "#FF0000"
-                          ],
-                          [
-                            "type"=> "separator"
-                          ],
-                          [
-                            "type"=> "text",
-                            "text"=> "Text",
-                            "size"=> "xxs",
-                            "color"=> "#FFFFFF"
-                          ],
-                          [
-                            "type"=> "box",
-                            "layout"=> "vertical",
-                            "contents"=> $textpro_error
-                          ]
-                        ]
                       ]
+                      
                     ]
                   ],
                   "footer"=> [
