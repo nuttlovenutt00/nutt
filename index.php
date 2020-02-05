@@ -186,7 +186,7 @@
 
                             $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
 
-                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." เพิ่มออร์เดอร์";
+                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                         }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -213,13 +213,13 @@
                                 $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
-                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." แก้ไขออร์เดอร์";
+                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
-                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." เพิ่มออร์เดอร์";" เพิ่มออร์เดอร์";
+                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
                               $idpro_status[$a]=$idpro.":".$namePro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
@@ -476,6 +476,18 @@
                                   "altText"=> "Flex Message",
                                   "contents"=> [
                                     "type"=> "bubble",
+                                    "hero"=> [
+                                      "type"=> "image",
+                                      "url"=> "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+                                      "size"=> "full",
+                                      "aspectRatio"=> "20:13",
+                                      "aspectMode"=> "cover",
+                                      "action"=> [
+                                        "type"=> "uri",
+                                        "label"=> "Action",
+                                        "uri"=> "https://linecorp.com"
+                                      ]
+                                    ],
                                     "body"=> [
                                       "type"=> "box",
                                       "layout"=> "vertical",
@@ -1032,12 +1044,12 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "=> ให้กดเมนู "รายการของฉัน" หรือ",
+                    "text"=> '=> ให้กดเมนู "รายการของฉัน" หรือ',
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "ปุ่ม "แสดงรายการทั้งหมดในตะกร้า"",
+                    "text"=> 'ปุ่ม "แสดงรายการทั้งหมดในตะกร้า"',
                     "size"=> "sm"
                   ],
                   [
@@ -1047,7 +1059,7 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "=>  ให้กด ปุ่ม "ยืนยันการสั่ง"",
+                    "text"=> '=>  ให้กด ปุ่ม "ยืนยันการสั่ง"',
                     "size"=> "sm"
                   ],
                   [
