@@ -74,10 +74,10 @@
       */
 
  //ฟังก์ชั่น คำนวนหาความห่างของเวลา
-               function DateTimeDiff($strDateTime1,$strDateTime2)
-               {
-                    return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
-               }
+      function DateTimeDiff($strDateTime1,$strDateTime2)
+      {
+          return (strtotime($strDateTime2) - strtotime($strDateTime1))/  ( 60 * 60 ); // 1 Hour =  60*60
+      }
 
       $countArrayorder_text1 = count($order_list_text);//นับจำนวนข้อมูลที่แยกออกมาจาก @ ว่ามีกี่คำ
       for($a=0;$a<$countArrayorder_text1;$a++)
@@ -106,6 +106,13 @@
               left join Unit as b on a.PUnit = b.UId
               where PId= '$idpro' ";
             $result_SPro = $mysql->query($sql_SPro);
+
+            $array_SPro=$result_SPro->fetch_assoc();
+            $namePro=$array_SPro["PName"];
+            $nameProUnit=$array_SPro["UName"];
+            $priceproorder=$array_SPro["PPrice"];
+
+
              if($result_SPro->num_rows > 0)
             {
                 $chkpro="yes";
@@ -169,14 +176,14 @@
                          //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ตั้งแต่แรกเลยมั้ย       
                         if($numpro==0){
 
-                            $idpro_pass[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                            $idpro_status[$a]=$idpro.":".$namePro.":คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                         }else{
                             //เก็บข้อมูลลงฐานข้อมูล      
                             $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
                             $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
 
-                              $idpro_pass[$a]=$idpro." รับออเด้อเรียบร้อย";
+                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." รับออร์เดอร์เรียบร้อย";
                         }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -200,46 +207,42 @@
                                       $mysql->query("DELETE FROM  OrderTemp where orId='$cid'");
                                  }
 
-                                $idpro_pass[$a]=$idpro." ลบออเด้อเรียบร้อย";
+                                $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
-                                $idpro_pass[$a]=$idpro." แก้ไขออเด้อเรียบร้อย";
+                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." แก้ไขออร์เดอร์เรียบร้อย";
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
-                               $idpro_pass[$a]=$idpro." รับออเด้อเรียบร้อย";
+                               $idpro_status[$a]=$idpro." รับออเด้อเรียบร้อย";
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
-                              $idpro_pass[$a]=$idpro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                              $idpro_status[$a]=$idpro.":".$namePro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                           }
 
               }
 
           }elseif($chkpro=="no" && $chkpronum=="yes"){
-            $idpro_pass[$a]=$idpro." ไม่มีรหัสสินค้านี้";
+            $idpro_status[$a]=$idpro.": ไม่มีรหัสสินค้านี้";
           }elseif($chkpro=="no" && $chkpronum=="no"){
-             $idpro_pass[$a]=$idpro." ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
+             $idpro_status[$a]=$idpro.": ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
           }elseif($chkpronum=="no"){
-             $idpro_pass[$a]=$idpro." พิมพ์จำนวนผิด";
+             $idpro_status[$a]=$idpro.": พิมพ์จำนวนผิด";
           }
 
 
-              $array_SPro=$result_SPro->fetch_assoc();
-              $namePro=$array_SPro["PName"];
-              $nameProUnit=$array_SPro["UName"];
-              $priceproorder=$array_SPro["PPrice"];
-
+              
               
 
         }
 
-        if(isset($idpro_pass))
+        if(isset($idpro_status))
         {
-          for($zz=0;$zz<count($idpro_pass);$zz++)
+          for($zz=0;$zz<count($idpro_status);$zz++)
           {
-            $textt=$idpro_pass[$zz];
+            $textt=$idpro_status[$zz];
             $textpro_pass[$zz]=[
                   "type"=> "text",
                               "text"=> $textt,
@@ -250,7 +253,7 @@
         }else{
           $textpro_pass[0]=[
                   "type"=> "text",
-                              "text"=> "ไม่มี",
+                              "text"=> "ไม่มีการรับออร์เดอร์",
                               "size"=> "xs",
                               "color"=> "#000000"
                 ];
@@ -273,10 +276,10 @@
                     "contents"=> [
                       [
                         "type"=> "text",
-                        "text"=> "สำเร็จ",
+                        "text"=> "รับออร์เดอร์ลูกค้า",
                         "align"=> "start",
                         "weight"=> "bold",
-                        "color"=> "#11B000"
+                        "color"=> "#6E422D"
                       ],
                       [
                         "type"=> "separator"
