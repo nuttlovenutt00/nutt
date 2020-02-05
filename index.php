@@ -186,7 +186,7 @@
 
                             $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
 
-                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." รับออร์เดอร์เรียบร้อย";
+                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." เพิ่มออร์เดอร์";
                         }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -213,13 +213,13 @@
                                 $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
-                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." แก้ไขออร์เดอร์เรียบร้อย";
+                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." แก้ไขออร์เดอร์";
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
-                               $idpro_status[$a]=$idpro." รับออเด้อเรียบร้อย";
+                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$nameProUnit." เพิ่มออร์เดอร์";
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
                               $idpro_status[$a]=$idpro.":".$namePro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
