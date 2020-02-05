@@ -247,7 +247,7 @@
                 $textpro_pass[$zz]=[
                       "type"=> "text",
                                   "text"=> $textt,
-                                  "size"=> "xxs",
+                                  "size"=> "xs",
                                   "color"=> "#000000"
                     ];
               }
@@ -255,7 +255,7 @@
               $textpro_pass[0]=[
                       "type"=> "text",
                                   "text"=> "ไม่มีการรับออร์เดอร์",
-                                  "size"=> "xxs",
+                                  "size"=> "xs",
                                   "color"=> "#000000"
                     ];
             }
