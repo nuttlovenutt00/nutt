@@ -213,7 +213,7 @@
                                 $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
-                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." เพิ่มออร์เดอร์";" แก้ไขออร์เดอร์";
+                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." แก้ไขออร์เดอร์";
                               }
                               
                             
