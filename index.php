@@ -526,6 +526,7 @@
                                           "type"=> "text",
                                           "text"=> "ราคารวม ฿".number_format($totalpriceorder,2),
                                           "size"=> "sm",
+                                          "weight": "bold",
                                           "color"=> "#000000"
                                         ],
                                         [
