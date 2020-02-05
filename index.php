@@ -186,7 +186,7 @@
 
                             $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
 
-                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." เพิ่มออร์เดอร์";
+                              $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                         }
               }else{
                         //เก็บข้อมูลลงฐานข้อมูล      
@@ -213,13 +213,13 @@
                                 $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
                                 $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
-                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." แก้ไขออร์เดอร์";
+                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
                               $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
-                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." ".$nameProUnit." เพิ่มออร์เดอร์";" เพิ่มออร์เดอร์";
+                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro." *".$more;
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
                               $idpro_status[$a]=$idpro.":".$namePro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
@@ -836,6 +836,43 @@
                   ],
                   [
                     "type"=> "text",
+                    "text"=> "การสั่งหลายรายการในครั้งเดียว",
+                    "size"=> "sm",
+                    "weight"=> "bold",
+                    "color"=> "#000000"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "แล้วกด Enter ที่คีย์บอร์ดแล้วสั่งรายการ",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "P123@2",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "P101@5@หวานน้อย",
+                    "size"=> "sm"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "separator"
+                  ],
+                  [
+                    "type"=> "text",
+                    "text"=> "Text",
+                    "size"=> "xxs",
+                    "color"=> "#FFFFFF"
+                  ],
+                  [
+                    "type"=> "text",
                     "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
                     "size"=> "sm",
                     "weight"=> "bold",
@@ -850,9 +887,6 @@
                     "type"=> "text",
                     "text"=> "เช่น P123@2@หวานน้อย",
                     "size"=> "sm"
-                  ],
-                  [
-                    "type"=> "spacer"
                   ]
                 ]
               ]
@@ -910,12 +944,7 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> "เช่น P123@4 ",
-                    "size"=> "sm"
-                  ],
-                  [
-                    "type"=> "text",
-                    "text"=> "*ระบบจะนับจำนวนตามครั้งที่สั่งล่าสุด",
+                    "text"=> "เช่น P123@4",
                     "size"=> "sm"
                   ],
                   [
@@ -1003,12 +1032,12 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> '=> ให้กดเมนู "รายการของฉัน" หรือ',
+                    "text"=> "=> ให้กดเมนู "รายการของฉัน" หรือ",
                     "size"=> "sm"
                   ],
                   [
                     "type"=> "text",
-                    "text"=> 'ปุ่ม "แสดงรายการทั้งหมดในตะกร้า"',
+                    "text"=> "ปุ่ม "แสดงรายการทั้งหมดในตะกร้า"",
                     "size"=> "sm"
                   ],
                   [
@@ -1018,7 +1047,7 @@
                   ],
                   [
                     "type"=> "text",
-                    "text"=> '=>  ให้กด ปุ่ม "ยืนยันการสั่ง"',
+                    "text"=> "=>  ให้กด ปุ่ม "ยืนยันการสั่ง"",
                     "size"=> "sm"
                   ],
                   [
