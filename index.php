@@ -185,7 +185,7 @@
                          //ตรวจสอบว่าลูกค้ายกเลิกออเดอร์ตั้งแต่แรกเลยมั้ย       
                         if($numpro==0){
 
-                            $idpro_status[$a]=$idpro.":".$namePro.":คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                            $idpro_status[$a]=$idpro.": คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                         }else{
                             //เก็บข้อมูลลงฐานข้อมูล      
                             $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
@@ -228,7 +228,7 @@
                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro.$ordtComment;
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
-                              $idpro_status[$a]=$idpro.":".$namePro." คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
+                              $idpro_status[$a]=$idpro.": คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                           }
 
               }
