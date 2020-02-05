@@ -484,7 +484,7 @@
                                     "type"=> "bubble",
                                     "hero"=> [
                                       "type"=> "image",
-                                      "url"=> "https://www.thairath.co.th/media/dFQROr7oWzulq5FZX95HTSxpQX2TozT4PTVUNrsk3GyEgUjhzEYqizsEhfhxOJREQTS.jpg",
+                                      "url"=> "https://bottomlineis.co/uploads/images/image_750x415_5d5639e418cc2.jpg",
                                       "size"=> "full",
                                       "aspectRatio"=> "20:13",
                                       "aspectMode"=> "cover",
