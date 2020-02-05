@@ -53,7 +53,8 @@
   if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง")
   {
 
-      $order_text = explode("\n", $text);//ตัดคำ
+      $arr_results = explode("\n", $text);//ตัดคำ
+     $order_text = array_filter( $arr_results );//ตัดค่าที่ว่างใน array ออก
       $countArrayorder_text = count($order_text);//นับว่าลูกค้าพิมมากี่บรรทัด
       for($i=0;$i<$countArrayorder_text;$i++)//ลูปว่าลูกค้าพิมมาตามจำนวนบรรทัด
       {
@@ -94,6 +95,12 @@
             $idpro=$id[0];
             $numpro=$id[1];
 
+            if(count($id)==1){
+              $noformat="yes";
+            }else{
+              $noformat="no";
+            }
+
             //ตรวจสอบว่าลูกค้าพิมพ์ข้อความเพิ่มเติมหรือป่าว
             if(isset($id[2]) && $id[2]!==""){
               $more=$id[2];
@@ -131,7 +138,7 @@
 
 
 
-          if($chkpro=="yes" && $chkpronum=="yes")
+          if($chkpro=="yes" && $chkpronum=="yes" && $noformat=="no")
           {
             //ค้นหาข้อมูลในฐานข้อมูล
               $sql_sdrt = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
@@ -224,12 +231,14 @@
 
               }
 
-          }elseif($chkpro=="no" && $chkpronum=="yes"){
+          }elseif($chkpro=="no" && $chkpronum=="yes" && $noformat=="no"){
             $idpro_status[$a]=$idpro.": ไม่มีรหัสสินค้านี้";
-          }elseif($chkpro=="no" && $chkpronum=="no"){
+          }elseif($chkpro=="no" && $chkpronum=="no" && $noformat=="no"){
              $idpro_status[$a]=$idpro.": ไม่มีรหัสสินค้านี้ และพิมพ์จำนวนไม่ถูกต้อง";
-          }elseif($chkpronum=="no"){
+          }elseif($chkpronum=="no" && $noformat=="no"){
              $idpro_status[$a]=$idpro.": พิมพ์จำนวนผิด";
+          }else{
+
           }
 
 
@@ -238,32 +247,85 @@
 
         }
 
-        if(isset($idpro_status))
+
+        if($noformat=="no")
         {
-          for($zz=0;$zz<count($idpro_status);$zz++)
-          {
-            $textt=$idpro_status[$zz];
-            $textpro_pass[$zz]=[
-                  "type"=> "text",
-                              "text"=> $textt,
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
-          }
-        }else{
-          $textpro_pass[0]=[
-                  "type"=> "text",
-                              "text"=> "ไม่มีการรับออร์เดอร์",
-                              "size"=> "xs",
-                              "color"=> "#000000"
-                ];
-        }
 
-          
+            if(isset($idpro_status))
+            {
+              for($zz=0;$zz<count($idpro_status);$zz++)
+              {
+                $textt=$idpro_status[$zz];
+                $textpro_pass[$zz]=[
+                      "type"=> "text",
+                                  "text"=> $textt,
+                                  "size"=> "xs",
+                                  "color"=> "#000000"
+                    ];
+              }
+            }else{
+              $textpro_pass[0]=[
+                      "type"=> "text",
+                                  "text"=> "ไม่มีการรับออร์เดอร์",
+                                  "size"=> "xs",
+                                  "color"=> "#000000"
+                    ];
+            }
 
-
-        
-
+                  $showstatusorder=[
+                    "type"=> "flex",
+                    "altText"=> "Flex Message",
+                    "contents"=> [
+                      "type"=> "bubble",
+                      "direction"=> "ltr",
+                      "header"=> [
+                        "type"=> "box",
+                        "layout"=> "vertical",
+                        "contents"=> [
+                          [
+                            "type"=> "text",
+                            "text"=> "รับออร์เดอร์ลูกค้า",
+                            "align"=> "start",
+                            "weight"=> "bold",
+                            "color"=> "#6E422D"
+                          ],
+                          [
+                            "type"=> "separator"
+                          ],
+                          [
+                            "type"=> "text",
+                            "text"=> "Text",
+                            "size"=> "xxs",
+                            "color"=> "#FFFFFF"
+                          ],
+                          [
+                            "type"=> "box",
+                            "layout"=> "vertical",
+                            "contents"=> $textpro_pass
+                          ]
+                          
+                        ]
+                      ],
+                      "footer"=> [
+                        "type"=> "box",
+                        "layout"=> "horizontal",
+                        "contents"=> [
+                          [
+                            "type"=> "button",
+                            "action"=> [
+                              "type"=> "message",
+                              "label"=> "แสดงรายการทั้งหมดในต",
+                              "text"=> "รายการของฉัน"
+                            ],
+                            "color"=> "#6E422D",
+                            "height"=> "sm",
+                            "style"=> "primary"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ];
+          }else{
               $showstatusorder=[
                 "type"=> "flex",
                 "altText"=> "Flex Message",
@@ -276,10 +338,17 @@
                     "contents"=> [
                       [
                         "type"=> "text",
-                        "text"=> "รับออร์เดอร์ลูกค้า",
-                        "align"=> "start",
+                        "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
+                        "size"=> "sm",
+                        "align"=> "center",
                         "weight"=> "bold",
-                        "color"=> "#6E422D"
+                        "color"=> "#FF0000"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
                       ],
                       [
                         "type"=> "separator"
@@ -291,32 +360,60 @@
                         "color"=> "#FFFFFF"
                       ],
                       [
-                        "type"=> "box",
-                        "layout"=> "vertical",
-                        "contents"=> $textpro_pass
-                      ]
-                      
-                    ]
-                  ],
-                  "footer"=> [
-                    "type"=> "box",
-                    "layout"=> "horizontal",
-                    "contents"=> [
+                        "type"=> "text",
+                        "text"=> "วิธีสั่งเมนู",
+                        "size"=> "sm",
+                        "weight"=> "bold",
+                        "color"=> "#000000"
+                      ],
                       [
-                        "type"=> "button",
-                        "action"=> [
-                          "type"=> "message",
-                          "label"=> "แสดงรายการทั้งหมดในต",
-                          "text"=> "รายการของฉัน"
-                        ],
-                        "color"=> "#6E422D",
-                        "height"=> "sm",
-                        "style"=> "primary"
+                        "type"=> "text",
+                        "text"=> "พิมพ์ รหัสสินค้า@จำนวนที่ต้องการ  ",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "เช่น P123@2",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "separator"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "Text",
+                        "size"=> "xxs",
+                        "color"=> "#FFFFFF"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "ถ้าต้องการพิมพ์ข้อความเพิ่มเติม",
+                        "size"=> "sm",
+                        "weight"=> "bold",
+                        "color"=> "#000000"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "พิมพ์ รหัสสินค้า@จำนวน@ข้อความ",
+                        "size"=> "sm"
+                      ],
+                      [
+                        "type"=> "text",
+                        "text"=> "เช่น P123@2@หวานน้อย",
+                        "size"=> "sm"
                       ]
                     ]
                   ]
                 ]
               ];
+
+          }
               $replyJson["messages"][0] = $showstatusorder;
 
 
