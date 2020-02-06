@@ -584,7 +584,7 @@
 
 
                                 //ค้นหารหัส order ก่อนหน้านี้และสร้างใหม่
-                                $sql_sirt = "Select Max(orId) as MaxID from  OrderMenu";
+                                $sql_sirt = "Select orId as MaxID from  OrderMenu order by orAutoId DESC";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
                                 if($objResult["MaxID"]=="")
