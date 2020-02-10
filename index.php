@@ -113,7 +113,7 @@
             //ตรวจสอบรหัสสินค้าในฐานข้อมูลว่ามีหรือไม่
             $sql_SPro = "SELECT PAutoId,PName,UName,PPrice FROM  Product as a
               left join Unit as b on a.PUnit = b.UId
-              where PId= '$idpro' ";
+              where PId= '$idpro' and PStatus='เปิดใช้งาน' ";
             $result_SPro = $mysql->query($sql_SPro);
 
             $array_SPro=$result_SPro->fetch_assoc();
