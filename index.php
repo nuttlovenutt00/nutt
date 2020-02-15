@@ -329,8 +329,7 @@
     $numl_ProHot=0;  
     //ค้นหาเมนูแนะนำ
     $sql_ProHot = "SELECT PHPic,PName,PId FROM ProductHot as a
-        left join Product as b  on a.PHPId = b.PId
-        where PHStatus= 'เปิดใช้งาน'";
+        left join Product as b  on a.PHPId = b.PId";
     $result_ProHot = $mysql->query($sql_ProHot);
      if( $result_ProHot->num_rows > 0)
     {
