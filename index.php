@@ -661,7 +661,12 @@
                                 if($id_Q==1){
                                   $ccQ=0;
                                 }else{
-                                  $ccQ=$id_Q-$cQ;
+                                  if($cQ==0){
+                                    $ccQ=0;
+                                  }else{
+                                    $ccQ=$id_Q-$cQ;
+                                  }
+                                  
                                 }
                                 //สิ้นสุดคำนวน Q 
 
