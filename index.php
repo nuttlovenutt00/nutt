@@ -1114,11 +1114,11 @@
                 "contents"=> [
                   [
                     "type"=> "text",
-                    "text"=> "เมนูแนะนำ วิธีสั่งเมนู",
-                    "size"=> "md",
+                    "text"=> "คุณพิมพ์รูปแบบการสั่งไม่ถูกต้องค่ะ!",
+                    "size"=> "sm",
                     "align"=> "center",
                     "weight"=> "bold",
-                    "color"=> "#6E422D"
+                    "color"=> "#FF0000"
                   ],
                   [
                     "type"=> "text",
