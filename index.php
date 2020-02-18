@@ -47,11 +47,11 @@
    //บันทึก Log ไฟล์
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
-        $chktext="no";
+        $text="no";
      
 
 
-  if($chktext=="yes")
+  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $text!="no")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
@@ -1093,7 +1093,7 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
-  }else if($chktext=="no")
+  }elseif($text=="no")
     {
       $reply_help=[
           "type"=> "flex",
