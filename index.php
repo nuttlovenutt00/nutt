@@ -1093,7 +1093,7 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
-  }elseif($chktext=="no")
+  }else if($chktext=="no")
     {
       $reply_help=[
           "type"=> "flex",
