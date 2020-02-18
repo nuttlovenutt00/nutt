@@ -48,7 +48,7 @@
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
     $chktext="";
-    if( strpos( $text, "@" )) {
+    if( strpos( $text, "@" )!==FALSE) {
      
         $chktext="yes";
      
