@@ -51,7 +51,7 @@
      
 
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง")
+  if($chktext=="yes")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
