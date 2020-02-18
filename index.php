@@ -47,7 +47,18 @@
    //บันทึก Log ไฟล์
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $text!="no")
+   $chktext="";
+   if( strpos( $text, "@" )!==FALSE) {
+     
+        $chktext="yes";
+     
+    } else {
+     
+       $chktext="no";
+     
+    }
+
+  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $text=="yes")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
@@ -1089,7 +1100,7 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
-  }elseif($text=="no")
+  }elseif($chktext=="no")
     {
       $reply_help=[
           "type"=> "sticker",
