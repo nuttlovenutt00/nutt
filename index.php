@@ -47,11 +47,11 @@
    //บันทึก Log ไฟล์
    $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
-        $chktext="yes";
+  $chktext="yes";
      
 
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
+  if($text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
