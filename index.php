@@ -9,10 +9,10 @@
   $timestamp = $jsonData["events"][0]["timestamp"];
 
   //เชื่อมต่อฐานข้อมูล
-  $servername = "37.59.55.185";
-  $username = "Z01XVlWSlA";
-  $password = "ogqvLgVKmd";
-  $dbname = "Z01XVlWSlA";
+  $servername = "db4free.net:3306";
+  $username = "coffeeorder";
+  $password = "coffeeorder";
+  $dbname = "coffeeorder";
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   
