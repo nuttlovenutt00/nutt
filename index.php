@@ -9,10 +9,10 @@
   $timestamp = $jsonData["events"][0]["timestamp"];
 
   //เชื่อมต่อฐานข้อมูล
-  $servername = "37.59.55.185";
-  $username = "Z01XVlWSlA";
-  $password = "ogqvLgVKmd";
-  $dbname = "Z01XVlWSlA";
+  $servername = "db4free.net:3306";
+  $username = "coffeeorder";
+  $password = "coffeeorder";
+  $dbname = "coffeeorder";
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   
@@ -45,7 +45,7 @@
   $time=date("H:i:s");
 
    //บันทึก Log ไฟล์
-   $mysql->query("INSERT INTO `LOG`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
+   $mysql->query("INSERT INTO `log`(`UserID`, `replyToken`, `Text`, `Timestamp`, `date`, `time`) VALUES ('$userID','$replyToken','$text','$timestamp','$datetime','$time')");
 
    $chktext="";
    if( strpos( $text, "@" )!==FALSE) {
@@ -119,8 +119,8 @@
              }
 
             //ตรวจสอบรหัสสินค้าในฐานข้อมูลว่ามีหรือไม่
-            $sql_SPro = "SELECT PAutoId,PName,UName,PPrice FROM  Product as a
-              left join Unit as b on a.PUnit = b.UId
+            $sql_SPro = "SELECT PAutoId,PName,UName,PPrice FROM  product as a
+              left join unit as b on a.PUnit = b.UId
               where PId= '$idpro' and PStatus='เปิดใช้งาน' ";
             $result_SPro = $mysql->query($sql_SPro);
 
@@ -151,7 +151,7 @@
           if($chkpro=="yes" && $chkpronum=="yes" )
           {
             //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sdrt = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID' order by orAutoId DESC";
+              $sql_sdrt = "Select orId,ortDate,ortTime,ortStatus from  ordertemp  where ortUserId='$userID' order by orAutoId DESC";
               $result_sdrt = $mysql->query($sql_sdrt);
               $objResult_sdrt = $result_sdrt->fetch_assoc(); 
 
@@ -178,7 +178,7 @@
               if(DateTimeDiff($datetime_ort,$datetime_now)>0.083 || $noid == "yes" || $ortStatus=="complete")
               {
                                 //คำนวนรหัส Temp ของ Order
-                               $sql_sirt = "Select Max(orId) as MaxID from  OrderTemp";
+                               $sql_sirt = "Select Max(orId) as MaxID from  ordertemp";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
                                 if($objResult["MaxID"]=="")
@@ -196,9 +196,9 @@
                             $idpro_status[$a]=$idpro.": คุณไม่มีออร์เดอร์ให้ยกเลิกค่ะ";
                         }else{
                             //เก็บข้อมูลลงฐานข้อมูล      
-                            $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
+                            $mysql->query("INSERT INTO ordertemp(orId,ortDate,ortTime,ortUserId) VALUES ('$id_temp','$datetime','$time','$userID')");
 
-                            $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
+                            $mysql->query("INSERT INTO orderDetailtemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$id_temp','$idpro','$numpro','$more')");
 
                               $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro.$ordtComment;
                         }
@@ -207,7 +207,7 @@
                         $mysql->query("INSERT INTO OrderTemp(orId,ortDate,ortTime,ortUserId) VALUES ('$cid','$datetime','$time','$userID')");
 
                         //ค้นหาข้อมูลในฐานข้อมูลว่าเพิ่มซ้ำกันมั้ย ถ้าใช่ให้เปลี่ยนแค่จำนวน
-                          $sql_sordt = "Select ordtId from  OrderDetailTemp  where ordtMId='$idpro' and ordtOrId='$cid' ";
+                          $sql_sordt = "Select ordtId from  orderdetailtemp  where ordtMId='$idpro' and ordtOrId='$cid' ";
                           $result_sordt = $mysql->query($sql_sordt);
 
                           //ถ้ามีอยู่แล้ว
@@ -215,10 +215,10 @@
 
                               //ลูกค้าพิมพ์ยกเลิกออเดอร์
                               if($numpro==0){
-                                $mysql->query("DELETE FROM  OrderDetailTemp where ordtMId='$idpro' and ordtOrId='$cid'");
+                                $mysql->query("DELETE FROM  orderdetailtemp where ordtMId='$idpro' and ordtOrId='$cid'");
 
                                 //เช็คว่าเมื่อยกเลิกสินค้าแล้ว ในตาราง temp มีรายการเหลืออยู่มั้ย ถ้าลบออกหมดให้ลบข้อมูลในตาราง order หลักด้วย
-                                $sql_sordt_num = "Select ordtId from  OrderDetailTemp  where ordtOrId='$cid'";
+                                $sql_sordt_num = "Select ordtId from  orderdetailtemp  where ordtOrId='$cid'";
                                  $result_sordt_num = $mysql->query($sql_sordt_num);
                                  if($result_sordt_num->num_rows == 0){
                                       $mysql->query("DELETE FROM  OrderTemp where orId='$cid'");
@@ -226,13 +226,13 @@
 
                                 $idpro_status[$a]=$idpro.":".$namePro." ลบออร์เดอร์เรียบร้อย";
                               }else{ //ลูกค้าเปลี่ยนจำนวนรายการ
-                                $mysql->query("UPDATE  OrderDetailTemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
+                                $mysql->query("UPDATE  orderdetailtemp set ordtUnit='$numpro',ordtComment='$more' where ordtMId='$idpro' and ordtOrId='$cid'");
                                 $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro.$ordtComment;
                               }
                               
                             
                           }elseif($result_sordt->num_rows ==0 && $numpro!=="0"){
-                              $mysql->query("INSERT INTO OrderDetailTemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
+                              $mysql->query("INSERT INTO orderdetailtemp(ordtOrId,ordtMId,ordtUnit,ordtComment) VALUES ('$cid','$idpro','$numpro','$more')");
                                $idpro_status[$a]=$idpro.":".$namePro." ฿".number_format($priceproorder,2)." x".$numpro.$ordtComment;
                           }elseif($result_sordt->num_rows ==0 && $numpro=="0"){
 
@@ -336,8 +336,8 @@
 
     $numl_ProHot=0;  
     //ค้นหาเมนูแนะนำ
-    $sql_ProHot = "SELECT PHPic,PName,PId FROM ProductHot as a
-        left join Product as b  on a.PHPId = b.PId";
+    $sql_ProHot = "SELECT PHPic,PName,PId FROM producthot as a
+        left join product as b  on a.PHPId = b.PId";
     $result_ProHot = $mysql->query($sql_ProHot);
      if( $result_ProHot->num_rows > 0)
     {
@@ -392,7 +392,7 @@
   {
 
               //ค้นหาข้อมูลในฐานข้อมูล
-              $sql_sorderme = "Select orId,ortDate,ortTime,ortStatus from  OrderTemp  where ortUserId='$userID'  order by orAutoId DESC";
+              $sql_sorderme = "Select orId,ortDate,ortTime,ortStatus from  ordertemp  where ortUserId='$userID'  order by orAutoId DESC";
               $result_sorderme = $mysql->query($sql_sorderme);
               $objResult_sorderme = $result_sorderme->fetch_assoc(); 
 
@@ -451,9 +451,9 @@
                             $showorderme_detail=[];
                             $totalpriceorder=0;
                             //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                            $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment,PPrice from  OrderDetailTemp as a
-                              left join Product as b on a.ordtMId = b.PId
-                              left join Unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
+                            $sql_slorderme = "Select ordtMId,PName,ordtUnit,UName,ordtComment,PPrice from  orderdetailtemp as a
+                              left join product as b on a.ordtMId = b.PId
+                              left join unit as c on b.PUnit = c.UId   where ordtOrId='$cid'";
                             $result_slorderme = $mysql->query($sql_slorderme);
                             while($objResult_slorderme = $result_slorderme->fetch_assoc())
                             {
@@ -591,7 +591,7 @@
 
 
                                 //ค้นหารหัส order ก่อนหน้านี้และสร้างใหม่
-                                $sql_sirt = "Select orId as MaxID from  OrderMenu order by orAutoId DESC";
+                                $sql_sirt = "Select orId as MaxID from  ordermenu order by orAutoId DESC";
                                 $result_sirt = $mysql->query($sql_sirt);
                                 $objResult = $result_sirt->fetch_assoc();
                                 if($objResult["MaxID"]=="")
@@ -632,7 +632,7 @@
 
 
                                 //ค้นหารหัส Q ก่อนหน้านี้และสร้างใหม่
-                                $sql_Q = "Select orDate,orQ from  OrderMenu order by orAutoId DESC";
+                                $sql_Q = "Select orDate,orQ from  ordermenu order by orAutoId DESC";
                                 $result_Q = $mysql->query($sql_Q);
                                 $objResult_Q = $result_Q->fetch_assoc();
 
@@ -659,7 +659,7 @@
 
 
                                 //คำนวน Q 
-                                $sql_cQ = "Select orQ from  OrderMenu where orDate='$datetime' and orStatus='รอชำระเงิน' order by orAutoId DESC";
+                                $sql_cQ = "Select orQ from  ordermenu where orDate='$datetime' and orStatus='รอชำระเงิน' order by orAutoId DESC";
                                 $result_cQ = $mysql->query($sql_cQ);
                                 $objResult_cQ = $result_cQ->fetch_assoc();
 
@@ -692,7 +692,7 @@
                                 $timee=date("H:i");
 
                                 //ค้นหาข้อมูลในฐานข้อมูลในตาราง Temp
-                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment,PPrice from  OrderDetailTemp as a left join Product as b on a.ordtMId = b.PId where ordtOrId='$cid' ";
+                                $sql_slorderme = "Select ordtMId,ordtUnit,ordtComment,PPrice from  orderdetailtemp as a left join Product as b on a.ordtMId = b.PId where ordtOrId='$cid' ";
                                 $result_slorderme = $mysql->query($sql_slorderme);
                                 while($objResult_slorderme = $result_slorderme->fetch_assoc())
                                 {
@@ -701,16 +701,16 @@
                                   $ordtUnit=$objResult_slorderme["ordtUnit"];
                                   $ordtComment=$objResult_slorderme["ordtComment"];
                                   $PPrice=$objResult_slorderme["PPrice"];
-                                  $mysql->query("INSERT INTO OrderDetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
+                                  $mysql->query("INSERT INTO orderdetail(OrdOrId,OrdPId,OrdUnit,OrdComment) VALUES ('$id_temp','$ordtMId','$ordtUnit','$ordtComment')");
                                   $numpro=$numpro+$ordtUnit; //รวมจำนวนสินค้า
                                   $PricePro=$PricePro+($PPrice*$ordtUnit);//รวมราคาสินค้า
                                 }
 
                                 //บันทึกข้อมูลลงตาราง OrderMenu
-                                $mysql->query("INSERT INTO OrderMenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$numpro','$PricePro')");
+                                $mysql->query("INSERT INTO ordermenu(orId,orDate,orTime,orQ,orStatus,orUserId,orUnit,orPriceTotal) VALUES               ('$id_temp','$datetime','$timee','$id_Q','รอชำระเงิน','$userID','$numpro','$PricePro')");
 
                                 //แก้ไขข้อมูลในตาราง Temp ว่ายืนยันการสั่งแล้ว
-                                 $mysql->query("UPDATE OrderTemp set ortStatus='complete' where orId='$cid' ");
+                                 $mysql->query("UPDATE ordertemp set ortStatus='complete' where orId='$cid' ");
                                 
                                 //แสดงคิว
                                   $showQ=[
