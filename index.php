@@ -1104,8 +1104,9 @@
   {
 
   $reply_help=[
-    "type"=> "text",
-    "text"=> "Hello, world"
+    "type"=> "image",
+  "originalContentUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg",
+  "previewImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg"
 ];
   $replyJson["messages"][0] = $reply_help;
 
