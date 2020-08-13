@@ -1100,6 +1100,15 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
+  }elseif($text=="เมนูทั้งหมด")
+  {
+
+  $reply_help=[
+    "type"=> "text",
+    "text"=> "Hello, world"
+];
+  $replyJson["messages"][0] = $reply_help;
+
   }elseif($chktext=="no")
     {
       $reply_help=[
@@ -1228,17 +1237,6 @@
 
       ];
       $replyJson["messages"][0] = $reply_help;
-  }elseif($text=="เมนูทั้งหมด")
-  {
-
-  $reply_help=[
-    "type"=> "image",
-  "originalContentUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg",
-  "previewImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg",
-  "animated"=> false
-];
-  $replyJson["messages"][0] = $reply_help;
-
   }
 
   
