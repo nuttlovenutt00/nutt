@@ -491,7 +491,7 @@
                                     "type"=> "bubble",
                                     "hero"=> [
                                       "type"=> "image",
-                                      "url"=> "https://bottomlineis.co/uploads/images/image_750x415_5d5639e418cc2.jpg",
+                                      "url"=> "https://res.cloudinary.com/dk0z4ums3/image/upload/v1575367591/attached_image_th/2231-%25e0%25b8%2594%25e0%25b8%25b5%25e0%25b9%2581%25e0%25b8%2584%25e0%25b8%259f.jpg",
                                       "size"=> "full",
                                       "aspectRatio"=> "20:13",
                                       "aspectMode"=> "cover",
