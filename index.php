@@ -1103,12 +1103,19 @@
   }elseif($text=="เมนูทั้งหมด")
   {
 
+    $reply_help=[
+      "type"=> "image",
+    "originalContentUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0",
+    "previewImageUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0"
+  ];
+    $replyJson["messages"][0] = $reply_help;
+
   $reply_help=[
     "type"=> "image",
   "originalContentUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0",
   "previewImageUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0"
 ];
-  $replyJson["messages"][0] = $reply_help;
+  $replyJson["messages"][1] = $reply_help;
 
   }elseif($chktext=="no")
     {
