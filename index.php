@@ -58,7 +58,7 @@
      
     }
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
+  if($text!="" && $text!="เมนูทั้งหมด" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
@@ -1100,6 +1100,17 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
+  }elseif($text=="เมนูทั้งหมด")
+  {
+
+  $reply_help=[
+    "type"=> "image",
+  "originalContentUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg",
+  "previewImageUrl"=> "https://raw.githubusercontent.com/nuttlovenutt00/nutt/master/เมนูกาแฟ2-01_0_optimized.jpg",
+  "animated"=> false
+];
+  $replyJson["messages"][0] = $reply_help;
+
   }elseif($chktext=="no")
     {
       $reply_help=[
