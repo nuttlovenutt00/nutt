@@ -58,7 +58,7 @@
      
     }
 
-  if($text!="" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
+  if($text!="" && $text!="เมนูทั้งหมด" && $text!="เมนูแนะนำ"  && $text!="รายการของฉัน"  && $text!="ช่วยเหลือ" && $text!="ยืนยันการสั่ง" && $chktext=="yes")
   {
 
       $arr_results = explode("\n", $text);//ตัดคำ
@@ -491,7 +491,7 @@
                                     "type"=> "bubble",
                                     "hero"=> [
                                       "type"=> "image",
-                                      "url"=> "https://bottomlineis.co/uploads/images/image_750x415_5d5639e418cc2.jpg",
+                                      "url"=> "https://res.cloudinary.com/dk0z4ums3/image/upload/v1575367591/attached_image_th/2231-%25e0%25b8%2594%25e0%25b8%25b5%25e0%25b9%2581%25e0%25b8%2584%25e0%25b8%259f.jpg",
                                       "size"=> "full",
                                       "aspectRatio"=> "20:13",
                                       "aspectMode"=> "cover",
@@ -1100,6 +1100,23 @@
         
   ];
       $replyJson["messages"][0] = $reply_help;
+  }elseif($text=="เมนูทั้งหมด")
+  {
+
+    $reply_help=[
+      "type"=> "image",
+    "originalContentUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117721547_216237343161877_9086683759337534951_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFFeHfEo6VaEVM7frIdNDsWGK3SJXaBTs8YrdIldoFOz_PIFgz1DLhbthqJr71KjvBuwV0VP7wP14Y9ZUCo4Doq&_nc_ohc=-MMtulkplJsAX91O0do&_nc_ht=scontent.fbkk14-1.fna&oh=67a9fc7711379a1eebe426c41e1ae671&oe=5F5CB51F",
+    "previewImageUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117721547_216237343161877_9086683759337534951_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFFeHfEo6VaEVM7frIdNDsWGK3SJXaBTs8YrdIldoFOz_PIFgz1DLhbthqJr71KjvBuwV0VP7wP14Y9ZUCo4Doq&_nc_ohc=-MMtulkplJsAX91O0do&_nc_ht=scontent.fbkk14-1.fna&oh=67a9fc7711379a1eebe426c41e1ae671&oe=5F5CB51F"
+  ];
+    $replyJson["messages"][0] = $reply_help;
+
+  $reply_help=[
+    "type"=> "image",
+  "originalContentUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0",
+  "previewImageUrl"=> "https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.15752-9/117769947_2625043077825229_8603675424584954436_n.jpg?_nc_cat=100&_nc_sid=b96e70&_nc_eui2=AeFtoiW8-44rlacFQ4Q2rrqmJMtkzf-3szkky2TN_7ezOQ_BIeFP3zeWweQWzpgzAcXP3PE_HSSkoysPRvXHl9vJ&_nc_ohc=QmVqoE19W58AX8dFu5E&_nc_ht=scontent.fbkk14-1.fna&oh=3e974a452f04c1a46a4706dad7ac65f8&oe=5F5A43D0"
+];
+  $replyJson["messages"][1] = $reply_help;
+
   }elseif($chktext=="no")
     {
       $reply_help=[
